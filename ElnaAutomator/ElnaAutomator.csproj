@@ -21,10 +21,7 @@
       <Page Update="Config\Pages\DiscreteOutputsPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
-      <Page Update="Config\Pages\SingleInputsPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-      <Page Update="Config\Pages\SingleOutputsPage.xaml">
+      <Page Update="Config\Pages\ExecutiveMechanismPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
       <Page Update="Config\Windows\MainWindow.xaml">
@@ -39,6 +36,11 @@
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>
       </ApplicationDefinition>
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <PackageReference Include="IronXL.Excel" Version="2023.10.8" />
     </ItemGroup>
 
 </Project>
