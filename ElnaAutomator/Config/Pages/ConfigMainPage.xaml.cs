@@ -10,8 +10,7 @@ public partial class ConfigMainPage : Page
     private readonly DiscreteInputsPage _discreteInputsPage;
     private readonly DiscreteOutputsPage _discreteOutputsPage;
     private readonly ProtectionsPage _protectionsPage;
-    private readonly SingleInputsPage _singleInputsPage;
-    private readonly SingleOutputsPage _singleOutputsPage;
+    private readonly ExecutiveMechanismPage _singleInputsPage;
     
     public ConfigMainPage()
     {
@@ -19,39 +18,33 @@ public partial class ConfigMainPage : Page
         _discreteInputsPage = new DiscreteInputsPage();
         _discreteOutputsPage = new DiscreteOutputsPage();
         _protectionsPage = new ProtectionsPage();
-        _singleInputsPage = new SingleInputsPage();
-        _singleOutputsPage = new SingleOutputsPage();
+        _singleInputsPage = new ExecutiveMechanismPage();
         
         InitializeComponent();
     }
 
     private void AnalogSignalsShowButton_OnClick(object sender, RoutedEventArgs e)
     {
-        MainFrame.Navigate(_analogInputsPage);
+        ThisFrame.Navigate(_analogInputsPage);
     }
 
     private void DiscreteInputsShowButton_OnClick(object sender, RoutedEventArgs e)
     {
-        MainFrame.Navigate(_discreteInputsPage);
+        ThisFrame.Content = _discreteInputsPage;
     }
 
     private void DiscreteOutputsShowButton_OnClick(object sender, RoutedEventArgs e)
     {
-        MainFrame.Navigate(_discreteOutputsPage);
+        ThisFrame.Navigate(_discreteOutputsPage);
     }
 
     private void SingleInputsShowButton_OnClick(object sender, RoutedEventArgs e)
     {
-        MainFrame.Navigate(_singleInputsPage);
-    }
-
-    private void SingleOutputsShowButton_OnClick(object sender, RoutedEventArgs e)
-    {
-        MainFrame.Navigate(_singleOutputsPage);
+        ThisFrame.Navigate(_singleInputsPage);
     }
 
     private void ProtectionsShowButton_OnClick(object sender, RoutedEventArgs e)
     {
-        MainFrame.Navigate(_protectionsPage);
+        ThisFrame.Navigate(_protectionsPage);
     }
 }
