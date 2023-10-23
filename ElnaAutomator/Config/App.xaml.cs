@@ -3,7 +3,6 @@ using System.IO;
 using System.Windows;
 using ElnaAutomator.Config.ConfigStructs;
 using ElnaAutomator.Config.Windows;
-using ElnaAutomator.ConfigStructs;
 using Microsoft.Win32;
 
 namespace ElnaAutomator.Config;

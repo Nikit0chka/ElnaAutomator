@@ -1,4 +1,4 @@
-﻿namespace ElnaAutomator.ConfigStructs;
+﻿namespace ElnaAutomator.Config.ConfigStructs;
 
 public class AnalogSignalProtection
 {

@@ -1,35 +1,35 @@
-﻿<Page x:Class="ElnaAutomator.Config.Pages.ProtectionsPage"
+﻿<Page x:Class="ElnaAutomator.Config.Pages.DataTypesPages.ExecutiveMechanismPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       
       mc:Ignorable="d"
-      Title="DiscreteProtectionsPage" Height="400" Width="625">
+      Title="SingleInputsPage" Height="400" Width="625">
     <Grid>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Name="GenerateProtectionsConfigButton" Margin="5" Width="100">
+            <Button Name="GenerateImConfigButton" Margin="5" Width="100">
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Protection_config" HorizontalAlignment="Center" />
+                    <TextBlock Text="Im_config" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             
-            <Button Name="GenerateProcProtectionsButton" Margin="5" Width="100">
+            <Button Name="GenerateProcImButton" Margin="5" Width="100">
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Proc_Protection" HorizontalAlignment="Center" />
+                    <TextBlock Text="Proc_Im" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             
-            <Button Name="GenerateProcProtectionInitButton" Margin="5" Width="100">
+            <Button Name="GenerateProcImInitButton" Margin="5" Width="100">
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Proc_Protect_INIT" HorizontalAlignment="Center" />
+                    <TextBlock Text="Proc_Im_INIT" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             
-            <Button Name="ChangeProtectionConfigButton" Margin="5" Width="100" >
+            <Button Name="ChangeImConfigButton" Margin="5" Width="100" >
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Text="Change" HorizontalAlignment="Center" />
                     <TextBlock Text="config" HorizontalAlignment="Center" />

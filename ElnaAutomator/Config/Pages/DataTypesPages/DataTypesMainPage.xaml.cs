@@ -1,10 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using ElnaAutomator.Pages;
 
-namespace ElnaAutomator.Config.Pages;
+namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
-public partial class ConfigMainPage : Page
+public partial class DataTypesMainPage : Page
 {
     private readonly AnalogInputsPage _analogInputsPage;
     private readonly DiscreteInputsPage _discreteInputsPage;
@@ -12,7 +11,7 @@ public partial class ConfigMainPage : Page
     private readonly ProtectionsPage _protectionsPage;
     private readonly ExecutiveMechanismPage _singleInputsPage;
     
-    public ConfigMainPage()
+    public DataTypesMainPage()
     {
         _analogInputsPage = new AnalogInputsPage();
         _discreteInputsPage = new DiscreteInputsPage();

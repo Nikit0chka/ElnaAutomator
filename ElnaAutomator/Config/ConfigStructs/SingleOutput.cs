@@ -1,6 +1,4 @@
-﻿using ElnaAutomator.Config.ConfigStructs;
-
-namespace ElnaAutomator.ConfigStructs;
+﻿namespace ElnaAutomator.Config.ConfigStructs;
 
 public class SingleOutput
 {

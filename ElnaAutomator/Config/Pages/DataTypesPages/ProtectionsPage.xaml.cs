@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace ElnaAutomator.Config.Pages;
+namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class ProtectionsPage : Page
 {
