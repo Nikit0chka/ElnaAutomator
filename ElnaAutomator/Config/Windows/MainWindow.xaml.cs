@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using ElnaAutomator.Config.Pages;
-using ElnaAutomator.Pages;
+using ElnaAutomator.Config.Pages.DataTypesPages;
 
 namespace ElnaAutomator.Config.Windows;
 
@@ -9,11 +9,11 @@ namespace ElnaAutomator.Config.Windows;
 /// </summary>
 public partial class MainWindow
 {
-    private readonly ConfigMainPage _configMainPage;
+    private readonly DataTypesMainPage _configMainPage;
 
     public MainWindow()
     {
-        _configMainPage = new ConfigMainPage();
+        _configMainPage = new DataTypesMainPage();
         InitializeComponent();
     }
     
