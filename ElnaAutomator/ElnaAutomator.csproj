@@ -9,23 +9,38 @@
 
 
     <ItemGroup>
-      <Page Update="Config\Pages\ConfigMainPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-      <Page Update="Config\Pages\AnalogInputsPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-      <Page Update="Config\Pages\DiscreteInputsPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-      <Page Update="Config\Pages\DiscreteOutputsPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
-      <Page Update="Config\Pages\ExecutiveMechanismPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </Page>
       <Page Update="Config\Windows\MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="Config\Pages\DataTypes\AnalogInputsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Config\Pages\DataTypes\ConfigMainPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Config\Pages\DataTypes\DiscreteInputsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Config\Pages\DataTypes\DiscreteOutputsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Config\Pages\DataTypes\ExecutiveMechanismPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Config\Pages\DataTypes\ProtectionsPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
       </Page>
     </ItemGroup>
 
