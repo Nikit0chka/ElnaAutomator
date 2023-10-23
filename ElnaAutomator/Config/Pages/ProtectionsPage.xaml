@@ -3,33 +3,33 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:ElnaAutomator.Config.Pages"
+      
       mc:Ignorable="d"
-      Title="DiscreteProtectionsPage" Height="450" Width="800">
+      Title="DiscreteProtectionsPage" Height="400" Width="625">
     <Grid>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Name="GenerateDiConfigButton" Margin="5" Width="75">
+            <Button Name="GenerateProtectionsConfigButton" Margin="5" Width="100">
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Di_config" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protection_config" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             
-            <Button Name="GenerateProcDiButton" Margin="5" Width="75">
+            <Button Name="GenerateProcProtectionsButton" Margin="5" Width="100">
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Proc_Di" HorizontalAlignment="Center" />
+                    <TextBlock Text="Proc_Protection" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             
-            <Button Name="GenerateProcDiInitButton" Margin="5" Width="75">
+            <Button Name="GenerateProcProtectionInitButton" Margin="5" Width="100">
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Proc_Di_INIT" HorizontalAlignment="Center" />
+                    <TextBlock Text="Proc_Protect_INIT" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
             
-            <Button Name="ChangeDiConfigButton" Margin="5" Width="75" >
+            <Button Name="ChangeProtectionConfigButton" Margin="5" Width="100" >
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Text="Change" HorizontalAlignment="Center" />
                     <TextBlock Text="config" HorizontalAlignment="Center" />
