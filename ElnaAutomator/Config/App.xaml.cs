@@ -12,34 +12,27 @@ namespace ElnaAutomator.Config;
 /// </summary>
 public partial class App : Application
 {
-    private List<DiscreteInput> _discreteInputs;
-    private List<DiscreteOutput> _discreteOutputs;
-    private List<SingleInput> _singleInputs;
-    private List<SingleOutput> _singleOutputs;
-    private List<AnalogSignalProtection> _analogSignalProtections;
-    private List<DiscreteSignalProtection> _discreteSignalProtections;
+    public List<DiscreteInput> DiscreteInputs;
+    public List<DiscreteOutput> DiscreteOutputs;
+    public List<SingleInput> SingleInputs;
+    public List<SingleOutput> SingleOutputs;
+    public List<AnalogSignalProtection> AnalogSignalProtections;
+    public List<DiscreteSignalProtection> DiscreteSignalProtections;
 
     public App()
     {
-        _discreteInputs = new List<DiscreteInput>();
-        _discreteOutputs = new List<DiscreteOutput>();
-        _singleInputs = new List<SingleInput>();
-        _singleOutputs = new List<SingleOutput>();
-        _analogSignalProtections = new List<AnalogSignalProtection>();
-        _discreteSignalProtections = new List<DiscreteSignalProtection>();
+        DiscreteInputs = new List<DiscreteInput>();
+        DiscreteOutputs = new List<DiscreteOutput>();
+        SingleInputs = new List<SingleInput>();
+        SingleOutputs = new List<SingleOutput>();
+        AnalogSignalProtections = new List<AnalogSignalProtection>();
+        DiscreteSignalProtections = new List<DiscreteSignalProtection>();
 
         ChooseLocalConfigFile();
         MainWindow mainWindow = new();
         mainWindow.Show();
     }
-
-    public List<DiscreteInput> GetDiscreteInputsConfig() => _discreteInputs;
-    public List<DiscreteOutput> GetDiscreteOutputs() => _discreteOutputs;
-    public List<SingleInput> GetSingleInputs() => _singleInputs;
-    public List<SingleOutput> GetSingleOutputs() => _singleOutputs;
-    public List<AnalogSignalProtection> GetAnalogSignalProtections() => _analogSignalProtections;
-    public List<DiscreteSignalProtection> GetDiscreteSignalProtections() => _discreteSignalProtections;
-
+    
     private void ChooseLocalConfigFile()
     {
         MessageBoxResult messageBoxResult =
