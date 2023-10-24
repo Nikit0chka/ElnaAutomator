@@ -7,34 +7,21 @@
       mc:Ignorable="d"
       Title="DiscreteProtectionsPage" Height="400" Width="625">
     <Grid>
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Name="GenerateProtectionsConfigButton" Margin="5" Width="100">
-                <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Protection_config" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            
-            <Button Name="GenerateProcProtectionsButton" Margin="5" Width="100">
-                <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Proc_Protection" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            
-            <Button Name="GenerateProcProtectionInitButton" Margin="5" Width="100">
-                <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Generate" HorizontalAlignment="Center" />
-                    <TextBlock Text="Proc_Protect_INIT" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            
-            <Button Name="ChangeProtectionConfigButton" Margin="5" Width="100" >
-                <StackPanel HorizontalAlignment="Center">
-                    <TextBlock Text="Change" HorizontalAlignment="Center" />
-                    <TextBlock Text="config" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        
+        <DataGrid Grid.Row="0" Name="DoDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Select" Width="auto"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Name="AddDo" Margin="5" Content="Add" Width="100"/>
+            <Button Name="DeleteDo" Margin="5" Content="Delete" Width="100"/>
         </StackPanel>
     </Grid>
 </Page>
