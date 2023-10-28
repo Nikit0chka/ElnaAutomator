@@ -12,7 +12,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="DiDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
+        <DataGrid Grid.Row="0" Name="DiDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
@@ -20,8 +20,8 @@
         </DataGrid>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Name="AddDi" Margin="5" Content="Add" Width="100"/>
-            <Button Name="DeleteDi" Margin="5" Content="Delete" Width="100"/>
+            <Button Name="AddDi" Margin="5" Content="Add" Width="100" Click="AddDi_OnClick"/>
+            <Button Name="DeleteDi" Margin="5" Content="Delete" Width="100" Click="DeleteDi_OnClick"/>
         </StackPanel>
     </Grid>
 </Page>
