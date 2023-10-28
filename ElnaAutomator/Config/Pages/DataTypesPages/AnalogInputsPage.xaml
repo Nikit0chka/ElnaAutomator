@@ -12,22 +12,22 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="AiDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
+        <DataGrid Grid.Row="0" Name="AiDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="LL" Binding="{Binding Surname}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="LA" Binding="{Binding BedId}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="LW" Binding="{Binding CheckInDate}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="HW" Binding="{Binding CheckOutDate}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="HA" Binding="{Binding CheckOutDate}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="HL" Binding="{Binding CheckOutDate}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="LL" Binding="{Binding LowLimit}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="LA" Binding="{Binding LowAlarm}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="LW" Binding="{Binding LowWarning}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="HW" Binding="{Binding HighWarning}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="HA" Binding="{Binding HighAlarm}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="HL" Binding="{Binding HighLimit}" Selector.IsSelected="False" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Name="AddAi" Margin="5" Content="Add" Width="100"/>
-            <Button Name="DeleteAi" Margin="5" Content="Delete" Width="100"/>
+            <Button Name="AddAi" Margin="5" Content="Add" Width="100" Click="AddAi_OnClick"/>
+            <Button Name="DeleteAi" Margin="5" Content="Delete" Width="100" Click="DeleteAi_OnClick"/>
         </StackPanel>
     </Grid>
 </Page>
