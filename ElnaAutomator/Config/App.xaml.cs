@@ -25,22 +25,54 @@ public partial class App : Application
 
     public App()
     {
-        AnalogInputs = new List<AnalogInput>()
+        var ai = new AnalogInput()
         {
-            new AnalogInput { Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90, LowAlarm = 10, HighWarning = 80, LowWarning = 20 }
+            Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
+            LowAlarm = 10, HighWarning = 80, LowWarning = 20
         };
-        DiscreteInputs = new List<DiscreteInput>(){new DiscreteInput{Name = "Di1"}};
-        DiscreteOutputs = new List<DiscreteOutput>() { new DiscreteOutput { Name = "Do1" } };
-        SingleInputs = new List<SingleInput>(){new SingleInput{Name = "Di1"}};
-        SingleOutputs = new List<SingleOutput>(){new DiscreteInput{Name = "Di1"};
-        AnalogSignalProtections = new List<AnalogSignalProtection>(){new DiscreteInput{Name = "Di1"};
-        DiscreteSignalProtections = new List<DiscreteSignalProtection>(){new DiscreteInput{Name = "Di1"};
+        var di = new DiscreteInput()
+        {
+            Name = "Di"
+        };
+
+        var do1 = new DiscreteOutput()
+        {
+            Name = "Do1"
+        };
+
+        var singleInput = new SingleInput()
+        {
+            Name = "SingleInput", DiscreteInput = di
+        };
+
+        var singleOutput = new SingleOutput()
+        {
+            Name = "SingleOutput", DigitalOutput = do1
+        };
+
+        var analogSignalProtection = new AnalogSignalProtection()
+        {
+            AnalogInput = ai, IsUpperLimitProtection = true, Name = "Ap1"
+        };
+
+        var discreteSignalProtection = new DiscreteSignalProtection()
+        {
+            IsOnLimitProtection = true, Name = "Dip1", SingleInput = singleInput
+        };
+
+        AnalogInputs = new List<AnalogInput>(){ai};
+        DiscreteInputs = new List<DiscreteInput>(){di};
+        DiscreteOutputs = new List<DiscreteOutput>(){do1};
+        SingleInputs = new List<SingleInput>(){singleInput};
+        SingleOutputs = new List<SingleOutput>(){singleOutput};
+        AnalogSignalProtections = new List<AnalogSignalProtection>(){analogSignalProtection};
+        DiscreteSignalProtections = new List<DiscreteSignalProtection>(){discreteSignalProtection};
 
         ChooseLocalConfigDirectory();
         MainWindow mainWindow = new();
         mainWindow.Show();
     }
-    
+
     private void ChooseLocalConfigDirectory()
     {
         var messageBoxResult =
@@ -50,22 +82,24 @@ public partial class App : Application
         OpenFileDialog openFileDialog = new()
         {
             Filter = "Excel Files (*.xls, *.xlsx)|*.xls;*.xlsx|Text Files (*.txt)|*.txt"
-        };        
-        
+        };
+
         if (openFileDialog.ShowDialog() != true) return;
-        
+
         var extension = Path.GetExtension(openFileDialog.FileName);
         var path = Path.GetFullPath(openFileDialog.FileName);
-        
+
         switch (extension)
         {
             case ".xls" or ".xlsx":
                 CreateConfigByExcel();
                 break;
             case ".txt":
-                CreateConfigByTxt(path);
+                WriteConfigToTxt(path);
                 break;
         }
+
+        CreateConfigByTxt(path);
     }
 
     private void CreateConfigByTxt(string path)
@@ -119,6 +153,6 @@ public partial class App : Application
 
     private void CreateConfigByExcel()
     {
-        
+
     }
 }
