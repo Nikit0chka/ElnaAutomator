@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ElnaAutomator.Config.ConfigStructs;
 
-namespace ElnaAutomator.Config.Windows;
+namespace ElnaAutomator.Config;
 
 /// <summary>
 /// Logic for writing/reading config from json
