@@ -5,19 +5,27 @@ using ElnaAutomator.Config.ConfigStructs;
 
 namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
-public partial class SingleInputsPage : Page
+public partial class SingleSignalsPage : Page
 {
     private readonly App? _currentApp;
-    public SingleInputsPage()
+
+    public SingleSignalsPage()
     {
         InitializeComponent();
         _currentApp = Application.Current as App;
-        SingleInputsDataGrid.ItemsSource = _currentApp?.DiscreteInputs;
+        SingleInputsDataGrid.ItemsSource = _currentApp?.SingleInputs;
     }
+
     private void AddSingleInput_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        var singleInput = new SingleInput()
+        {
+            Name = $"Di{_currentApp?.SingleInputs.Count}",
+        };
+        _currentApp?.SingleInputs.Add(singleInput);
+        SingleInputsDataGrid.Items.Refresh();
     }
+
     private void DeleteSingleInput_OnClick(object sender, RoutedEventArgs e)
     {
         List<object> selectedItems = new();
@@ -35,8 +43,8 @@ public partial class SingleInputsPage : Page
 
         selectedItems.ForEach(c =>
         {
-            if (c is DiscreteInput discreteInput)
-                _currentApp?.DiscreteInputs.Remove(discreteInput);
+            if (c is SingleInput singleInput)
+                _currentApp?.SingleInputs.Remove(singleInput);
         });
 
         SingleInputsDataGrid.Items.Refresh();
