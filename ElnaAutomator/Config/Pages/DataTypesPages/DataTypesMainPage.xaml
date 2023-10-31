@@ -18,12 +18,14 @@
                     Click="DiscreteInputsShowButton_OnClick" />
             <Button Name="DiscreteOutputsShowButton" Content="Do" Margin="5" Width="80"
                     Click="DiscreteOutputsShowButton_OnClick" />
+            <Button Name="SingleSignalsShowButton" Content="SingleSignals" Margin="5" Width="80"
+                    Click="SingleSignalsShowButton_OnClick"/>
             <Button Name="Im" Content="Im" Margin="5" Width="80"
                     Click="SingleInputsShowButton_OnClick" />
             <Button Name="ProtectionsShowButton" Content="Protections" Margin="5" Width="80"
                     Click="ProtectionsShowButton_OnClick"/>
         </StackPanel>
-            
+              
         <Frame Grid.Row="1" Name="ThisFrame" Height="auto"></Frame>
     </Grid>
 </Page>
