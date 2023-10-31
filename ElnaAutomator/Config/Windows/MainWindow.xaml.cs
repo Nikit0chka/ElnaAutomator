@@ -16,7 +16,7 @@ public partial class MainWindow
         _configMainPage = new DataTypesMainPage();
         InitializeComponent();
     }
-    
+
     private void ShowConfigButton_OnClick(object sender, RoutedEventArgs e)
     {
         MainFrame.Navigate(_configMainPage);
