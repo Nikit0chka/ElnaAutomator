@@ -12,7 +12,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="DoDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
+        <DataGrid Grid.Row="0" Name="SingleInputsDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
@@ -20,8 +20,8 @@
         </DataGrid>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Name="AddDo" Margin="5" Content="Add" Width="100"/>
-            <Button Name="DeleteDo" Margin="5" Content="Delete" Width="100"/>
+            <Button Name="AddSingleInput" Margin="5" Content="Add" Width="100" Click="AddSingleInput_OnClick"/>
+            <Button Name="DeleteSingleInput" Margin="5" Content="Delete" Width="100" Click="DeleteSingleInput_OnClick"/>
         </StackPanel>
     </Grid>
 </Page>
