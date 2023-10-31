@@ -8,6 +8,7 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 public partial class DiscreteInputsPage : Page
 {
     private readonly App? _currentApp;
+
     public DiscreteInputsPage()
     {
         InitializeComponent();
