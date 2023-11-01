@@ -3,6 +3,6 @@
 public class SingleInput
 {
     public required string Name { get; set; }
-    public DiscreteInput DiscreteInput { get; set; }
+    public DiscreteInput? DiscreteInput { get; set; }
     public int Address { get; set; }
 }
