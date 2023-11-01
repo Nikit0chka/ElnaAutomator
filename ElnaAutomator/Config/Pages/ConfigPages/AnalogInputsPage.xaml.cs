@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ElnaAutomator.Config.ConfigStructs;
 
-namespace ElnaAutomator.Config.Pages.DataTypesPages;
+namespace ElnaAutomator.Config.Pages.ConfigPages;
 
 public partial class AnalogInputsPage : Page
 {

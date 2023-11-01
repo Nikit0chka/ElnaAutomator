@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace ElnaAutomator.Config.ConfigStructs;
+﻿namespace ElnaAutomator.Config.ConfigStructs;
 
 public class DiscreteInput
 {

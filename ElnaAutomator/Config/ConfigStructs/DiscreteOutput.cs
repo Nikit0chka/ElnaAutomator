@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ElnaAutomator.Config.ConfigStructs;
+﻿namespace ElnaAutomator.Config.ConfigStructs;
 
 public class DiscreteOutput
 {
