@@ -3,13 +3,13 @@ using System.Windows;
 using System.Windows.Controls;
 using ElnaAutomator.Config.ConfigStructs;
 
-namespace ElnaAutomator.Config.Pages.ConfigPages;
+namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
-public partial class SingleSignalsPage : Page
+public partial class SingleInputsPage
 {
     private readonly App? _currentApp;
 
-    public SingleSignalsPage()
+    public SingleInputsPage()
     {
         InitializeComponent();
         _currentApp = Application.Current as App;

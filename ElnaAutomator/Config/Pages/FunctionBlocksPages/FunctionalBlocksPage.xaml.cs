@@ -1,8 +1,6 @@
-﻿using System.Windows.Controls;
+﻿namespace ElnaAutomator.Config.Pages.FunctionBlocksPages;
 
-namespace ElnaAutomator.Config.Pages.FunctionBlocksPages;
-
-public partial class FunctionalBlocksPage : Page
+public partial class FunctionalBlocksPage
 {
     public FunctionalBlocksPage()
     {

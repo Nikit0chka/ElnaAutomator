@@ -74,7 +74,7 @@
 //         {
 //             DiscreteOutput discreteOutput = new(name: $"DI{row}");
 //
-//             discreteOutputs.Add(discreteOutput); 
+//             discreteOutputs.Add(discreteOutput);
 //         }
 //
 //         return discreteOutputs;
