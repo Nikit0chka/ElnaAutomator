@@ -3,9 +3,9 @@ using System.Windows;
 using System.Windows.Controls;
 using ElnaAutomator.Config.ConfigStructs;
 
-namespace ElnaAutomator.Config.Pages.ConfigPages;
+namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
-public partial class DiscreteInputsPage : Page
+public partial class DiscreteInputsPage
 {
     private readonly App? _currentApp;
 
