@@ -12,7 +12,7 @@ namespace ElnaAutomator.Config;
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application
+public partial class App
 {
     public List<AnalogInput> AnalogInputs;
     public List<DiscreteInput> DiscreteInputs;
@@ -60,6 +60,11 @@ public partial class App : Application
             IsOnLimitProtection = true, Name = "Dip1", SingleInput = singleInput
         };
 
+        var executiveMechanism = new ExecutiveMechanism()
+        {
+            Name = "Exmech"
+        };
+
         AnalogInputs = new List<AnalogInput>(){ai};
         DiscreteInputs = new List<DiscreteInput>(){di};
         DiscreteOutputs = new List<DiscreteOutput>(){do1};
@@ -67,6 +72,7 @@ public partial class App : Application
         SingleOutputs = new List<SingleOutput>(){singleOutput};
         AnalogSignalProtections = new List<AnalogSignalProtection>(){analogSignalProtection};
         DiscreteSignalProtections = new List<DiscreteSignalProtection>(){discreteSignalProtection};
+        ExecutiveMechanisms = new List<ExecutiveMechanism>() {executiveMechanism};
 
         ChooseLocalConfigDirectory();
         MainWindow mainWindow = new();
