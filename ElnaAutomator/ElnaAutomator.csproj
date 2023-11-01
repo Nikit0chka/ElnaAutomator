@@ -42,7 +42,7 @@
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>
       </Page>
-      <Page Update="Config\Pages\DataTypesPages\SingleSignalsPage.xaml">
+      <Page Update="Config\Pages\DataTypesPages\SingleInputsPage.xaml">
         <Generator>MSBuild:Compile</Generator>
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>
