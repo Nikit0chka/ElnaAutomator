@@ -1,18 +1,18 @@
-﻿<Page x:Class="ElnaAutomator.Config.Pages.ConfigPages.ExecutiveMechanismPage"
+﻿<Page x:Class="ElnaAutomator.Config.Pages.DataTypesPages.DiscreteOutputsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       
       mc:Ignorable="d"
-      Title="SingleInputsPage" Height="400" Width="625">
+      Title="DiscreteOutputsPage" d:DesignWidth="500" d:DesignHeight="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="DoDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch">
+        <DataGrid Grid.Row="0" Name="DoDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"  HorizontalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
@@ -20,8 +20,8 @@
         </DataGrid>
         
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Name="AddDo" Margin="5" Content="Add" Width="100"/>
-            <Button Name="DeleteDo" Margin="5" Content="Delete" Width="100"/>
+            <Button Name="AddDo" Margin="5" Content="Add" Width="100" Click="AddDo_OnClick"/>
+            <Button Name="DeleteDo" Margin="5" Content="Delete" Width="100" Click="DeleteDo_OnClick"/>
         </StackPanel>
     </Grid>
 </Page>
