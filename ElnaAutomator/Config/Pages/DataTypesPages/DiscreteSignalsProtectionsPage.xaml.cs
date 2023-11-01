@@ -2,9 +2,9 @@
 
 namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
-public partial class DataTypesPage : Page
+public partial class DiscreteSignalsProtectionsPage : Page
 {
-    public DataTypesPage()
+    public DiscreteSignalsProtectionsPage()
     {
         InitializeComponent();
     }
