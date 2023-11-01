@@ -11,15 +11,15 @@ namespace ElnaAutomator.Config.Windows;
 /// </summary>
 public partial class MainWindow
 {
-    private readonly ConfigMainPage _configMainPage;
-    private readonly DataTypesPage _dataTypesPage;
+    private readonly DataTypesMainPage _configMainPage;
+    private readonly ConfigsPages _dataTypesPage;
     private readonly FunctionalBlocksPage _functionalBlocksPage;
     private readonly FunctionsPage _functionsPage;
 
     public MainWindow()
     {
-        _configMainPage = new ConfigMainPage();
-        _dataTypesPage = new DataTypesPage();
+        _configMainPage = new DataTypesMainPage();
+        _dataTypesPage = new ConfigsPages();
         _functionalBlocksPage = new FunctionalBlocksPage();
         _functionsPage = new FunctionsPage();
 
