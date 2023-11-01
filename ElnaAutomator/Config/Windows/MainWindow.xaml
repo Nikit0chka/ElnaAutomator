@@ -16,9 +16,10 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Margin="1 2 0 0">
-            <Button x:Name="ShowConfigButton" BorderBrush="White" Content="Data Types" Height="70" FontSize="16" Click="ShowConfigButton_OnClick"/>
-            <Button x:Name="ShowFunctionsButton" BorderBrush="White" Content="Functions" Height="70" FontSize="16"/>
-            <Button x:Name="ShowFunctionBlocksButton" BorderBrush="White" Content="Function Blocks" Height="70" FontSize="16"/>
+            <Button x:Name="ShowConfigButton" BorderBrush="White" Content="Config" Height="70" FontSize="16" Click="ShowConfigButton_OnClick"/>
+            <Button x:Name="ShowDataTypesButton" BorderBrush="White" Content="Data Types" Height="70" FontSize="16" Click="ShowDataTypesButton_OnClick"/>
+            <Button x:Name="ShowFunctionsButton" BorderBrush="White" Content="Functions" Height="70" FontSize="16" Click="ShowFunctionsButton_OnClick"/>
+            <Button x:Name="ShowFunctionBlocksButton" BorderBrush="White" Content="Function Blocks" Height="70" FontSize="16" Click="ShowFunctionBlocksButton_OnClick"/>
         </StackPanel>
        
         <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
