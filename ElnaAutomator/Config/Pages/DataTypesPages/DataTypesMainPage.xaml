@@ -23,7 +23,7 @@
             <Button Name="SingleInputsShowButton" Content="SingleInputs" Margin="5" Width="80"
                     Click="SingleInputsShowButton_OnClick" />
             <Button Name="SingleOutputsShowButton" Content="SingleOutputs" Margin="5" Width="80"
-                    Click="SingleInputsShowButton_OnClick" />
+                    Click="SingleOutputsShowButton_OnClick" />
             <Button Name="AnalogInputsProtectionsShowButton" Content="AiProtections" Margin="5" Width="80"
                     Click="AnalogInputsProtectionsShowButton_OnClick" />
             <Button Name="DiscreteSignalsProtectionsShowButton" Content="DiProtections" Margin="5" Width="80"
