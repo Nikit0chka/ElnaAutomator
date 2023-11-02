@@ -7,9 +7,10 @@ public partial class DataTypesMainPage
     private readonly AnalogInputsPage _analogInputsPage;
     private readonly DiscreteInputsPage _discreteInputsPage;
     private readonly DiscreteOutputsPage _discreteOutputsPage;
-    private readonly AnalogSignalsProtectionsPage _analogSignalsProtectionsPage;
-    private readonly ExecutiveMechanismPage _executiveMechanismPage;
     private readonly SingleInputsPage _singleInputsPage;
+    private readonly SingleOutputsPage _singleOutputsPage;
+    private readonly ExecutiveMechanismPage _executiveMechanismPage;
+    private readonly AnalogSignalsProtectionsPage _analogSignalsProtectionsPage;
     private readonly DiscreteSignalsProtectionsPage _discreteSignalsProtectionsPage;
 
     public DataTypesMainPage()
@@ -17,9 +18,10 @@ public partial class DataTypesMainPage
         _analogInputsPage = new AnalogInputsPage();
         _discreteInputsPage = new DiscreteInputsPage();
         _discreteOutputsPage = new DiscreteOutputsPage();
-        _analogSignalsProtectionsPage = new AnalogSignalsProtectionsPage();
-        _executiveMechanismPage = new ExecutiveMechanismPage();
         _singleInputsPage = new SingleInputsPage();
+        _singleOutputsPage = new SingleOutputsPage();
+        _executiveMechanismPage = new ExecutiveMechanismPage();
+        _analogSignalsProtectionsPage = new AnalogSignalsProtectionsPage();
         _discreteSignalsProtectionsPage = new DiscreteSignalsProtectionsPage();
 
         InitializeComponent();
@@ -54,8 +56,14 @@ public partial class DataTypesMainPage
     {
         ThisFrame.Navigate(_executiveMechanismPage);
     }
+
     private void DiscreteSignalsProtectionsShowButton_OnClick(object sender, RoutedEventArgs e)
     {
         ThisFrame.Navigate(_discreteSignalsProtectionsPage);
+    }
+
+    private void SingleOutputsShowButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        ThisFrame.Navigate(_singleOutputsPage);
     }
 }
