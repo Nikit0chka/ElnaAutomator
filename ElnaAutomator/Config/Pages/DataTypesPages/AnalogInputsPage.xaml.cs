@@ -22,7 +22,7 @@ public partial class AnalogInputsPage
     /// <param name="e"></param>
     private void AddAi_OnClick(object sender, RoutedEventArgs e)
     {
-        var newAnalogInput = new AnalogInput()
+        var newAnalogInput = new AnalogInput
         {
             Name = $"Ai{_currentApp?.AnalogInputs.Count}",
             HighLimit = 0,
