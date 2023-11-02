@@ -16,7 +16,9 @@
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="DiName" Binding="{Binding DiscreteInput.Name}" Selector.IsSelected="False" Width="*"/>
+                <DataGridComboBoxColumn x:Name="DiscreteInputsCmbBx" Header="Di signal" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding DiscreteInput}" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="*" Selector.IsSelected="False"/>
             </DataGrid.Columns>
         </DataGrid>
         
