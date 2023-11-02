@@ -4,24 +4,25 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
-      Title="DataTypesPage" Height="450" Width="625">
+      Title="DataTypesPage" d:DesignWidth="500" d:DesignHeight="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="AnalogSignalsConfig" Content="AiConfig" Margin="5" Width="80" />
-            <Button Name="DiscreteInputsConfig" Content="DiConfig" Margin="5" Width="80" />
-            <Button Name="DiscreteOutputsConfig" Content="DoConfig" Margin="5" Width="80" />
+        <UniformGrid Grid.Row="0" Rows="1" HorizontalAlignment="Center">
+            <Button Name="AnalogSignalsConfig" Content="AiConfig" Margin="5" Width="80"
+                    Click="AnalogSignalsConfig_OnClick" />
+            <Button Name="DiscreteInputsConfig" Content="DiConfig" Margin="5" Width="80" Click="DiscreteInputsConfig_OnClick"/>
+            <Button Name="DiscreteOutputsConfig" Content="DoConfig" Margin="5" Width="80" Click="DiscreteOutputsConfig_OnClick"/>
             <Button Name="ImConfig" Content="ImConfig" Margin="5" Width="80" />
-            <Button Name="ProtectionsConfig" Margin="5" Width="80">
+            <Button Name="ProtectionsConfig" Margin="5" Width="80" Click="ProtectionsConfig_OnClick">
                 <StackPanel>
-                    <TextBlock Text="Protections" />
-                    <TextBlock Text="Config" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                    <TextBlock Text="Config" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
-        </StackPanel>
+        </UniformGrid>
     </Grid>
 </Page>
