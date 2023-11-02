@@ -14,13 +14,14 @@ public partial class SingleInputsPage
         InitializeComponent();
         _currentApp = Application.Current as App;
         SingleInputsDataGrid.ItemsSource = _currentApp?.SingleInputs;
+        DiscreteInputsCmbBx.ItemsSource = _currentApp?.DiscreteInputs;
     }
 
     private void AddSingleInput_OnClick(object sender, RoutedEventArgs e)
     {
-        var singleInput = new SingleInput()
+        var singleInput = new SingleInput
         {
-            Name = $"Di{_currentApp?.SingleInputs.Count}",
+            Name = $"SI{_currentApp?.SingleInputs.Count}",
         };
         _currentApp?.SingleInputs.Add(singleInput);
         SingleInputsDataGrid.Items.Refresh();
