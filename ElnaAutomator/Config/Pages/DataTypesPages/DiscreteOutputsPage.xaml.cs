@@ -18,7 +18,7 @@ public partial class DiscreteOutputsPage
 
     private void AddDo_OnClick(object sender, RoutedEventArgs e)
     {
-        var discreteOutput = new DiscreteOutput()
+        var discreteOutput = new DiscreteOutput
         {
             Name = $"Do{_currentApp?.DiscreteOutputs.Count}",
         };
