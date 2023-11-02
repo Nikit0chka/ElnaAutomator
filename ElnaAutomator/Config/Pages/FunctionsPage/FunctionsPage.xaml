@@ -6,6 +6,9 @@
       mc:Ignorable="d"
       Title="FunctionsPage" Height="400" Width="625">
     <Grid>
-        
+        <UniformGrid Grid.Row="0" Rows="1" HorizontalAlignment="Center">
+            <Button Name="AnyAnalogPsFunc" Content="AnyAnalogPs" Margin="5" Width="80"
+                    Click="AnyAnalogPsFunc_OnClick" />
+        </UniformGrid>
     </Grid>
 </Page>
