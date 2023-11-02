@@ -18,7 +18,7 @@ public partial class DiscreteInputsPage
 
     private void AddDi_OnClick(object sender, RoutedEventArgs e)
     {
-        var discreteInput = new DiscreteInput()
+        var discreteInput = new DiscreteInput
         {
             Name = $"Di{_currentApp?.DiscreteInputs.Count}",
         };
