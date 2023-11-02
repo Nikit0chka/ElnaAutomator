@@ -7,6 +7,25 @@
       mc:Ignorable="d"
       Title="DiscreteSignalsProtectionsPage" d:DesignWidth="500" d:DesignHeight="500">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
         
+        <DataGrid Grid.Row="0" Name="DiProtectionsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+                  HorizontalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Select" Width="auto" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*" />
+                <DataGridComboBoxColumn x:Name="SingleSignalsCmbBx" Header="Single signal" DisplayMemberPath="Name"
+                                        SelectedItemBinding="{Binding SingleInput}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Is on alarm" Binding="{Binding IsOnLimitProtection}" Width="auto" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Name="AddDiProtection" Margin="5" Content="Add" Width="100" Click="AddDiProtection_OnClick" />
+            <Button Name="DeleteDiProtection" Margin="5" Content="Delete" Width="100"
+                    Click="DeleteDiProtection_OnClick" />
+        </StackPanel>
     </Grid>
 </Page>
