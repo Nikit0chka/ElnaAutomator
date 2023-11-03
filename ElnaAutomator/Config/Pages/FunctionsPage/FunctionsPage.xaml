@@ -4,11 +4,35 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
-      Title="FunctionsPage" Height="400" Width="625">
+      Title="FunctionsPage" d:DesignHeight="400" d:DesignWidth="625">
     <Grid>
-        <UniformGrid Grid.Row="0" Rows="1" HorizontalAlignment="Center">
-            <Button Name="AnyAnalogPsFunc" Content="AnyAnalogPs" Margin="5" Width="80"
-                    Click="AnyAnalogPsFunc_OnClick" />
+        <UniformGrid Grid.Row="0" Columns="5" Rows="3" HorizontalAlignment="Center">
+            <Button Name="AnyAnalogPs" Content="AnyAnalogPs" Margin="5" Width="80"
+                    Click="AnyAnalogPs_OnClick" />
+            <Button Name="AnyAnalogNs" Content="AnyAnalogNs" Margin="5" Width="80"
+                    Click="AnyAnalogNs_OnClick" />
+            <Button Name="AnyDiscretePs" Content="AnyDiscretePs" Margin="5" Width="80"
+                    Click="AnyDiscretePs_OnClick" />
+            <Button Name="AnyProtectionInRemont" Content="AnyProtectionInRemont" Margin="5" Width="80"
+                    Click="AnyProtectionInRemont_OnClick" />
+            <Button Name="AnyProtectionSignaling" Content="AnyProtectionSignaling" Margin="5" Width="80"
+                    Click="AnyProtectionSignaling_OnClick" />
+            <Button Name="AutoRunProtections" Content="AutoRunProtections" Margin="5" Width="80"
+                    Click="AutoRunProtections_OnClick" /> 
+            <Button Name="BlockAllProtections" Content="BlockAllProtections" Margin="5" Width="80"
+                    Click="BlockAllProtections_OnClick" />
+            <Button Name="DisableAiLimits" Content="DisableAiLimits" Margin="5" Width="80"
+                    Click="DisableAiLimits_OnClick" /> 
+            <Button Name="AnyDiscreteNs" Content="AnyDiscretNs" Margin="5" Width="80"
+                    Click="AnyDiscreteNs_OnClick" />
+            <Button Name="EnableAiLimits" Content="EnableAiLimits" Margin="5" Width="80"
+                    Click="EnableAiLimits_OnClick" />
+            <Button Name="RemontAllProtections" Content="RemontAllProtections" Margin="5" Width="80"
+                    Click="RemontAllProtections_OnClick" /> 
+            <Button Name="ResetAllProtections" Content="ResetAllProtections" Margin="5" Width="80"
+                    Click="ResetAllProtections_OnClick" />
+            <Button Name="ResetAllSignalling" Content="ResetAllSignalling" Margin="5" Width="80"
+                    Click="ResetAllSignalling_OnClick" />
         </UniformGrid>
     </Grid>
 </Page>
