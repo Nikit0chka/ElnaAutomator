@@ -6,7 +6,7 @@ using Microsoft.Extensions.Primitives;
 
 namespace ElnaAutomator.Config.Generators;
 
-public class FunctionsGenerator
+public static class FunctionsGenerator
 {
     private const string FunctionsFolderName = "Functions";
 
@@ -233,14 +233,30 @@ public class FunctionsGenerator
         content.Append("VAR_IN_OUT\n\tProtections : ProtectionsConfig;\nEND_VAR\n\n");
 
         foreach (var analogSignalProtection in analogSignalProtections)
-            content.Append($"IF {analogSignalProtection.Name}.Signalling THEN\n\tResetAiProtection({analogSignalProtection.Name}); END_IF;\n");
+            content.Append($"IF {analogSignalProtection.Name}.Signalling THEN\n\tResetAiProtection(tProtections.{analogSignalProtection.Name}); END_IF;\n");
 
         foreach (var discreteSignalProtection in discreteSignalProtections)
-            content.Append($"IF {discreteSignalProtection.Name}.Signalling THEN\n\tResetDiProtection({discreteSignalProtection.Name}); END_IF;\n");
+            content.Append($"IF {discreteSignalProtection.Name}.Signalling THEN\n\tResetDiProtection(tProtections.{discreteSignalProtection.Name}); END_IF;\n");
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAllSignaling.st", content);
     }
 
+    public static void GenerateUnBlockAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
+        List<DiscreteSignalProtection> discreteSignalProtections)
+    {StringBuilder content = new();
+
+        content.Append("FUNCTION UnBlockAllProtections : BOOL\n\n");
+        content.Append("VAR_IN_OUT\n\tProtections : ProtectionsConfig;\nEND_VAR\n\n");
+
+        foreach (var analogSignalProtection in analogSignalProtections)
+            content.Append($"protections.{analogSignalProtection.Name}.inOpcCommandsDisabled := FALSE;\n");
+
+        foreach (var discreteSignalProtection in discreteSignalProtections)
+            content.Append($"protections.{discreteSignalProtection.Name}.inOpcCommandsDisabled := FALSE;\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\UnBlockAllProtections.st", content);
+    }
+    
 
     private static void CreateFile(string path, StringBuilder content)
     {
