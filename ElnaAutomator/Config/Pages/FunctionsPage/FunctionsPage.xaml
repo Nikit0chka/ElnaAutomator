@@ -33,6 +33,8 @@
                     Click="ResetAllProtections_OnClick" />
             <Button Name="ResetAllSignalling" Content="ResetAllSignalling" Margin="5" Width="80"
                     Click="ResetAllSignalling_OnClick" />
+            <Button Name="UnBlockAllProtections" Content="UnBlockAllProtections" Margin="5" Width="80"
+                    Click="UnBlockAllProtections_OnClick" />
         </UniformGrid>
     </Grid>
 </Page>
