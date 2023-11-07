@@ -6,6 +6,9 @@
       mc:Ignorable="d"
       Title="FunctionalBlocksPage" Height="400" Width="625">
     <Grid>
-        
+         <UniformGrid Grid.Row="0" Columns="5" Rows="3" HorizontalAlignment="Center">
+            <Button Name="ProcAiInit" Content="ProcAiInit" Margin="5" Width="80"
+                    Click="ProcAiInit_OnClick" />
+        </UniformGrid>
     </Grid>
 </Page>
