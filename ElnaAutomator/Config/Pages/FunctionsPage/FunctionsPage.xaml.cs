@@ -98,4 +98,10 @@ public partial class FunctionsPage
         if (_currentApp != null)
             FunctionsGenerator.GenerateResetAllSignalling(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
     }
+
+    private void UnBlockAllProtections_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (_currentApp != null)
+            FunctionsGenerator.GenerateUnBlockAllProtections(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+    }
 }
