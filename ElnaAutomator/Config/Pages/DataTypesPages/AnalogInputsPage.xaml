@@ -22,6 +22,7 @@
                 <DataGridTextColumn Header="HW" Binding="{Binding HighWarning}" Selector.IsSelected="False" Width="*"/>
                 <DataGridTextColumn Header="HA" Binding="{Binding HighAlarm}" Selector.IsSelected="False" Width="*"/>
                 <DataGridTextColumn Header="HL" Binding="{Binding HighLimit}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Selector.IsSelected="False" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         
