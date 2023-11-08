@@ -29,14 +29,14 @@ public partial class App
         var ai = new AnalogInput
         {
             Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
-            LowAlarm = 10, HighWarning = 80, LowWarning = 20, ModuleAddress = 0,
-            Address = 0
+            LowAlarm = 10, HighWarning = 80, LowWarning = 20, ModuleName = "A",
+            Address = 0, ModuleAddress = 0
         };
         var ai2 = new AnalogInput
         {
             Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
-            LowAlarm = 10, HighWarning = 80, LowWarning = 20, ModuleAddress = 0,
-            Address = 0
+            LowAlarm = 10, HighWarning = 80, LowWarning = 20, ModuleName = "A",
+            Address = 0, ModuleAddress = 0
         };
         var di = new DiscreteInput
         {
