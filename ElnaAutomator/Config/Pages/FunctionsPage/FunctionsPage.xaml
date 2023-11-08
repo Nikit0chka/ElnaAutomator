@@ -6,35 +6,150 @@
       mc:Ignorable="d"
       Title="FunctionsPage" d:DesignHeight="400" d:DesignWidth="625">
     <Grid>
-        <UniformGrid Grid.Row="0" Columns="5" Rows="3" HorizontalAlignment="Center">
-            <Button Name="AnyAnalogPs" Content="AnyAnalogPs" Margin="5" Width="80"
+        <UniformGrid Grid.Row="0" Columns="auto" Rows="auto" HorizontalAlignment="Center">
+            <Button Name="AnyAnalogPs" Content="AnyAnalogPs" Margin="5" Width="90"
                     Click="AnyAnalogPs_OnClick" />
-            <Button Name="AnyAnalogNs" Content="AnyAnalogNs" Margin="5" Width="80"
+            <Button Name="AnyAnalogNs" Content="AnyAnalogNs" Margin="5" Width="90"
                     Click="AnyAnalogNs_OnClick" />
-            <Button Name="AnyDiscretePs" Content="AnyDiscretePs" Margin="5" Width="80"
+            <Button Name="AnyDiscretePs" Content="AnyDiscretePs" Margin="5" Width="90"
                     Click="AnyDiscretePs_OnClick" />
-            <Button Name="AnyProtectionInRemont" Content="AnyProtectionInRemont" Margin="5" Width="80"
-                    Click="AnyProtectionInRemont_OnClick" />
-            <Button Name="AnyProtectionSignaling" Content="AnyProtectionSignaling" Margin="5" Width="80"
-                    Click="AnyProtectionSignaling_OnClick" />
-            <Button Name="AutoRunProtections" Content="AutoRunProtections" Margin="5" Width="80"
-                    Click="AutoRunProtections_OnClick" /> 
-            <Button Name="BlockAllProtections" Content="BlockAllProtections" Margin="5" Width="80"
-                    Click="BlockAllProtections_OnClick" />
-            <Button Name="DisableAiLimits" Content="DisableAiLimits" Margin="5" Width="80"
-                    Click="DisableAiLimits_OnClick" /> 
-            <Button Name="AnyDiscreteNs" Content="AnyDiscretNs" Margin="5" Width="80"
+            <Button Name="AnyProtectionInRemont" Margin="5" Width="90"
+                    Click="AnyProtectionInRemont_OnClick">
+                <StackPanel>
+                    <TextBlock Text="AnyProtection" HorizontalAlignment="Center" />
+                    <TextBlock Text="InRemont" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="AnyProtectionSignaling" Margin="5" Width="90"
+                    Click="AnyProtectionSignaling_OnClick">
+                <StackPanel>
+                    <TextBlock Text="AnyProtection" HorizontalAlignment="Center" />
+                    <TextBlock Text="Signalling" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="AutoRunProtections" Margin="5" Width="90"
+                    Click="AutoRunProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="AutoRun" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="BlockAllProtections" Margin="5" Width="90"
+                    Click="BlockAllProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="BlockAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="DisableAiLimits" Content="DisableAiLimits" Margin="5" Width="90"
+                    Click="DisableAiLimits_OnClick" />
+            <Button Name="AnyDiscreteNs" Content="AnyDiscretNs" Margin="5" Width="90"
                     Click="AnyDiscreteNs_OnClick" />
-            <Button Name="EnableAiLimits" Content="EnableAiLimits" Margin="5" Width="80"
+            <Button Name="EnableAiLimits" Content="EnableAiLimits" Margin="5" Width="90"
                     Click="EnableAiLimits_OnClick" />
-            <Button Name="RemontAllProtections" Content="RemontAllProtections" Margin="5" Width="80"
-                    Click="RemontAllProtections_OnClick" /> 
-            <Button Name="ResetAllProtections" Content="ResetAllProtections" Margin="5" Width="80"
-                    Click="ResetAllProtections_OnClick" />
-            <Button Name="ResetAllSignalling" Content="ResetAllSignalling" Margin="5" Width="80"
-                    Click="ResetAllSignalling_OnClick" />
-            <Button Name="UnBlockAllProtections" Content="UnBlockAllProtections" Margin="5" Width="80"
-                    Click="UnBlockAllProtections_OnClick" />
+            <Button Name="RemontAllProtections" Margin="5" Width="90"
+                    Click="RemontAllProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="RemontAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="ResetAllProtections" Margin="5" Width="90"
+                    Click="ResetAllProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="ResetAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="ResetAllSignalling" Margin="5" Width="90"
+                    Click="ResetAllSignalling_OnClick">
+                <StackPanel>
+                    <TextBlock Text="ResetAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Signalling" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="AskQuestion" Content="AskQuestion" Margin="5" Width="90"
+                    Click="AskQuestion_OnClick" />
+            <Button Name="ImpulseSo" Content="ImpulseSo" Margin="5" Width="90"
+                    Click="ImpulseSo_OnClick" />
+            <Button Name="ResetAiProtection" Margin="5" Width="90"
+                    Click="ResetAiProtection_OnClick">
+                <StackPanel>
+                    <TextBlock Text="ResetAi" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protection" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="ResetAndDisable" Margin="5" Width="90"
+                    Click="ResetAndDisable_OnClick">
+                <StackPanel>
+                    <TextBlock Text="ResetAnd" HorizontalAlignment="Center" />
+                    <TextBlock Text="Disable" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="ResetDiProtection" Margin="5" Width="90"
+                    Click="ResetDiProtection_OnClick">
+                <StackPanel>
+                    <TextBlock Text="ResetDi" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protection" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="ResetIfRunning" Content="ResetIfRunning" Margin="5" Width="90"
+                    Click="ResetIfRunning_OnClick" />
+            <Button Name="ResetIfRunningSo" Margin="5" Width="90"
+                    Click="ResetIfRunningSo_OnClick">
+                <StackPanel>
+                    <TextBlock Text="ResetIf" HorizontalAlignment="Center" />
+                    <TextBlock Text="RunningSo" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="ResetPhase" Content="ResetPhase" Margin="5" Width="90"
+                    Click="ResetPhase_OnClick" />
+            <Button Name="ResetQuestion" Content="ResetQuestion" Margin="5" Width="90"
+                    Click="ResetQuestion_OnClick" />
+            <Button Name="RunAiProtection" Margin="5" Width="90"
+                    Click="RunAiProtection_OnClick">
+                <StackPanel>
+                    <TextBlock Text="RunAi" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protection" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="RunDiProtection" Margin="5" Width="90"
+                    Click="RunDiProtection_OnClick">
+                <StackPanel>
+                    <TextBlock Text="RunDi" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protection" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="RunIfNotRunning" Margin="5" Width="90"
+                    Click="RunIfNotRunning_OnClick">
+                <StackPanel>
+                    <TextBlock Text="RunIfNot" HorizontalAlignment="Center" />
+                    <TextBlock Text="Running" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="RunIfNotRunningSo" Margin="5" Width="90"
+                    Click="RunIfNotRunningSo_OnClick">
+                <StackPanel>
+                    <TextBlock Text="RunIfNot" HorizontalAlignment="Center" />
+                    <TextBlock Text="RunningSo" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="UnBlockAllProtections" Margin="5" Width="90"
+                    Click="UnBlockAllProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="UnblockAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="RunPhase" Content="RunPhase" Margin="5" Width="90"
+                    Click="RunPhase_OnClick" />
+            <Button Name="TwoUint_To_UDINT" Margin="5" Width="90"
+                    Click="TwoUint_To_UDINT_OnClick">
+                <StackPanel>
+                    <TextBlock Text="TwoUint_To" HorizontalAlignment="Center" />
+                    <TextBlock Text="_UDINT" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
         </UniformGrid>
     </Grid>
 </Page>
