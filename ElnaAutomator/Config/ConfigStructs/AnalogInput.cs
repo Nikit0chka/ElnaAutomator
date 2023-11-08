@@ -2,12 +2,13 @@
 
 public class AnalogInput
 {
-    public required string Name { get; set; }
+    public required string Name { get; init; }
     public required int HighLimit { get; set; }
     public required int LowLimit { get; set; }
-    public required int ModuleAddress { get; set; }
-    public int? HighAlarm { get; set; }
-    public int? LowAlarm { get; set; }
-    public int? HighWarning { get; set; }
-    public int? LowWarning { get; set; }
+    public required int ModuleAddress { get; init; }
+    public required int Address { get; init; }
+    public int? HighAlarm { get; init; }
+    public int? LowAlarm { get; init; }
+    public int? HighWarning { get; init; }
+    public int? LowWarning { get; init; }
 }

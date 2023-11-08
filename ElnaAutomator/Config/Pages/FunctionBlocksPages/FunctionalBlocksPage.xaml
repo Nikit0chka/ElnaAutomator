@@ -8,7 +8,9 @@
     <Grid>
          <UniformGrid Grid.Row="0" Columns="5" Rows="3" HorizontalAlignment="Center">
             <Button Name="ProcAiInit" Content="ProcAiInit" Margin="5" Width="80"
-                    Click="ProcAiInit_OnClick" />
+                    Click="ProcAiInit_OnClick" /> 
+            <Button Name="ProcAi" Content="ProcAi" Margin="5" Width="80"
+                    Click="ProcAi_OnClick" />
         </UniformGrid>
     </Grid>
 </Page>

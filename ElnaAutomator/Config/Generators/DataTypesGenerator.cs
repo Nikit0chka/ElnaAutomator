@@ -5,7 +5,7 @@ using ElnaAutomator.Config.ConfigStructs;
 
 namespace ElnaAutomator.Config.Generators;
 
-public static class ConfigGenerator
+public static class DataTypesGenerator
 {
     private const string DataTypesFolderName = "DataTypes";
 

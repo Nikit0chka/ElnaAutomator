@@ -2,5 +2,5 @@
 
 public class DiscreteOutput
 {
-    public required string Name { get; set; }
+    public required string Name { get; init; }
 }

@@ -18,4 +18,10 @@ public partial class FunctionalBlocksPage
         if (_currentApp != null)
             FunctionBlocksGenerator.GenerateProcAiInit(_currentApp.PathToProject, _currentApp.AnalogInputs);
     }
+
+    private void ProcAi_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (_currentApp != null)
+            FunctionBlocksGenerator.GenerateProcAi(_currentApp.PathToProject, _currentApp.AnalogInputs);
+    }
 }
