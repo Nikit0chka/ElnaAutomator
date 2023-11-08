@@ -63,7 +63,7 @@ public static class FunctionBlocksGenerator
         for (var i = 0; i < analogInputs.Count; i++)
             content.Append($"\tAI_{i}_dblValue : LREAL;\n");
 
-        var modules = analogInputs.Select(c => c.ModuleAddress).ToList();
+        var modules = analogInputs.Select(c => c.ModuleName).ToList();
 
         foreach (var t in modules)
             content.Append($"\tarERR_{t};\n");
@@ -74,9 +74,9 @@ public static class FunctionBlocksGenerator
         for (var i = 0; i < analogInputs.Count; i++)
         {
             content.Append(
-                $"fb_{analogInputs[i].Name}(arAIN := arAIN_{i}, strAI := ai.{analogInputs[i].Name}, err_mod := arERR_{analogInputs[i].ModuleAddress};\n");
+                $"fb_{analogInputs[i].Name}(arAIN := arAIN_{i}, strAI := ai.{analogInputs[i].Name}, err_mod := arERR_{analogInputs[i].ModuleName};\n");
             content.Append(
-                $"AI_{i}_dblValue := arAIN{i}.dblValue;\n");
+                $"AI_{i}_dblValue := arAIN{i}.dblValue;\n\n");
         }
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_AI.st", content);
