@@ -90,7 +90,8 @@ public static class FunctionsGenerator
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyProtectionInRemont.st", content);
     }
 
-    public static void GenerateAnyProtectionSignalling(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
+    public static void GenerateAnyProtectionSignalling(string pathToProjectDirectory,
+        List<AnalogSignalProtection> analogSignalProtections,
         List<DiscreteSignalProtection> discreteSignalProtections)
     {
         StringBuilder content = new();
@@ -183,6 +184,7 @@ public static class FunctionsGenerator
         content.Append("VAR_IN_OUT\n\tAi : AiConfig;\nEND_VAR\n\n");
 
         content.Append("EnableAiLimits := \n");
+
         foreach (var analogInput in analogInputs)
         {
             content.Append($"Ai.{analogInput.Name}.Disabled_LA := FALSE;\n");
@@ -191,8 +193,9 @@ public static class FunctionsGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\EnableAiLimits.st", content);
     }
-    
-    public static void GenerateRemontAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
+
+    public static void GenerateRemontAllProtections(string pathToProjectDirectory,
+        List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
     {
         StringBuilder content = new();
 
@@ -208,8 +211,9 @@ public static class FunctionsGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RemontAllProtections.st", content);
     }
-    
-    public static void GenerateResetAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
+
+    public static void GenerateResetAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
+        List<DiscreteSignalProtection> discreteSignalProtections)
     {
         StringBuilder content = new();
 
@@ -224,8 +228,9 @@ public static class FunctionsGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAllProtections.st", content);
     }
-    
-    public static void GenerateResetAllSignalling(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
+
+    public static void GenerateResetAllSignalling(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
+        List<DiscreteSignalProtection> discreteSignalProtections)
     {
         StringBuilder content = new();
 
@@ -233,17 +238,21 @@ public static class FunctionsGenerator
         content.Append("VAR_IN_OUT\n\tProtections : ProtectionsConfig;\nEND_VAR\n\n");
 
         foreach (var analogSignalProtection in analogSignalProtections)
-            content.Append($"IF {analogSignalProtection.Name}.Signalling THEN\n\tResetAiProtection(tProtections.{analogSignalProtection.Name}); END_IF;\n");
+            content.Append(
+                $"IF {analogSignalProtection.Name}.Signalling THEN\n\tResetAiProtection(tProtections.{analogSignalProtection.Name}); END_IF;\n");
 
         foreach (var discreteSignalProtection in discreteSignalProtections)
-            content.Append($"IF {discreteSignalProtection.Name}.Signalling THEN\n\tResetDiProtection(tProtections.{discreteSignalProtection.Name}); END_IF;\n");
+            content.Append(
+                $"IF {discreteSignalProtection.Name}.Signalling THEN\n\tResetDiProtection(tProtections.{discreteSignalProtection.Name}); END_IF;\n");
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAllSignaling.st", content);
     }
 
-    public static void GenerateUnBlockAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
+    public static void GenerateUnBlockAllProtections(string pathToProjectDirectory,
+        List<AnalogSignalProtection> analogSignalProtections,
         List<DiscreteSignalProtection> discreteSignalProtections)
-    {StringBuilder content = new();
+    {
+        StringBuilder content = new();
 
         content.Append("FUNCTION UnBlockAllProtections : BOOL\n\n");
         content.Append("VAR_IN_OUT\n\tProtections : ProtectionsConfig;\nEND_VAR\n\n");
@@ -256,7 +265,173 @@ public static class FunctionsGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\UnBlockAllProtections.st", content);
     }
+
+    public static void GenerateAskQuestion(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION AskQuestion : BOOL\n\nVAR_IN_OUT\n\tStrQ : struct_Question;\nEND_VAR\n\nIF NOT StrQ.ask THEN\n" +
+            "\tStrQ.inOpcCommandsDisabled:=FALSE;\n\tStrQ.ask:=TRUE;\t\nEND_IF;\n\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AskQuestion.st", content);
+    }
+
+    public static void GenerateImpulseSo(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION ImpulseSo : BOOL\n\nVAR_IN_OUT\n\tSo : struct_singleOutput;\n" +
+            "END_VAR\n\nVAR CONSTANT\n\tcmdImpulse : WORD := 3;\nEND_VAR\n\nIF NOT So.Q THEN\n" +
+            "\tso.inOpcCommandsDisabled:=TRUE;\n\tso.inCommand_Alg:=cmdImpulse;\nEND_IF;\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ImpulseSo.st", content);
+    }
+
+    public static void GenerateResetAiProtection(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION ResetAiProtection : BOOL\n\nVAR_IN_OUT\n\tProtection : struct_AiProtection;\nEND_VAR\n\nVAR CONSTANT\n\tcmdReset : WORD := 2;\nEND_VAR\n" +
+            "\nIF Protection.isRunning THEN\n\tProtection.inOpcCommandsDisabled:=TRUE;\n\tProtection.inCommand_Alg:=cmdReset;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAiProtection.st", content);
+    }
+
+    public static void GenerateResetAndDisable(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION ResetAndDisable : BOOL\n\nVAR_IN_OUT\n\tAlg : struct_Alg;\nEND_VAR\n\nVAR CONSTANT\n\tcmdReset : WORD := 2;\nEND_VAR\n" +
+            "\nIF Alg.isRuning THEN\n\tAlg.inOpcCommandsDisabled:=TRUE;\n\tAlg.inCommand_Alg:=cmdReset;\nEND_IF;\n\n Alg.inCanRun:=FALSE;\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAndDisable.st", content);
+    }
+
+    public static void GenerateResetDiProtection(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION ResetDiProtection : BOOL\n\nVAR_IN_OUT\n\tProtection : struct_DiProtection;\nEND_VAR\n\nVAR CONSTANT\n\tcmdReset : WORD := 2;\nEND_VAR\n\n" +
+            "IF protection.isRunning THEN\n\tprotection.inOpcCommandsDisabled:=TRUE;\n\tProtection.inCommand_Alg:=cmdReset;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetDiProtection.st", content);
+    }
+
+    public static void GenerateResetIfRunning(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION ResetIfRunning : BOOL\n\nVAR_IN_OUT\n\tAlg : struct_Alg;\nEND_VAR\n\nVAR CONSTANT\n\tcmdReset : WORD := 2;\nEND_VAR\n\n" +
+            "IF Alg.isRuning THEN\n\tAlg.inOpcCommandsDisabled:=TRUE;\n\tAlg.inCommand_Alg:=cmdReset;\nEND_IF;\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetIfRunning.st", content);
+    }
+
+    public static void GenerateResetIfRunningSo(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION ResetIfRunningSo : BOOL\n\nVAR_IN_OUT\n\tSo : struct_singleOutput;\nEND_VAR\n\nVAR CONSTANT\n\tcmdReset : WORD := 2;\nEND_VAR\n\n" +
+            "IF So.Q THEN\n\tSo.inOpcCommandsDisabled:=TRUE;\n\tSo.inCommand_Alg:=cmdReset;\nEND_IF;\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetIfRunningSo.st", content);
+    }
+
+    public static void GenerateResetPhase(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION ResetPhase : BOOL\n\nVAR_IN_OUT\n\tPh : struct_PhaseAlgoritm;\nEND_VAR\n\n" +
+            "IF Ph.start OR ph.top THEN\n\tPh.reset:=TRUE;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetPhase.st", content);
+    }
+
+    public static void GenerateResetQuestion(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION ResetQuestion : BOOL\n\nVAR_IN_OUT\n\tStrQ : struct_Question;\nEND_VAR\n\n" +
+            "IF StrQ.ask THEN\n\tStrQ.inOpcCommandsDisabled:=TRUE;\n\tStrQ.reset:=TRUE;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetQuestion.st", content);
+    }
+
+    public static void GenerateRunAiProtection(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION RunAiProtection : BOOL\n\nVAR_IN_OUT\n\tProtection : struct_AiProtection;\nEND_VAR\n\nVAR CONSTANT\n\tcmdRun : WORD := 1;\nEND_VAR\n\n" +
+            "IF NOT Protection.isRunning THEN\n\t}Protection.inOpcCommandsDisabled:=TRUE;\n\tProtection.inCommand_Alg:=cmdRun;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunAiProtection.st", content);
+    }
+
+    public static void GenerateRunDiProtection(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION RunDiProtection : BOOL\n\nVAR_IN_OUT\n\tProtection : struct_DiProtection;\nEND_VAR\n\nVAR CONSTANT\n\tcmdRun : WORD := 1;\nEND_VAR\n\n" +
+            "IF NOT Protection.isRunning THEN\n\tprotection.inOpcCommandsDisabled:=TRUE;\n\tProtection.inCommand_Alg:=cmdRun;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunDiProtection.st", content);
+    }
     
+    public static void GenerateRunIfNotRunning(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION RunIfNotRunning : BOOL\n\nVAR_IN_OUT\n\tAlg : struct_Alg;\nEND_VAR\n\nVAR CONSTANT\n\tcmdRun : WORD := 1;\nEND_VAR\n\n" +
+            "IF NOT Alg.isRuning THEN\n\tAlg.inOpcCommandsDisabled:=TRUE;\n\tAlg.inCanRun:=TRUE;\n\tAlg.inCommand_Alg:=cmdRun;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunIfNotRunning.st", content);
+    }
+    
+    public static void GenerateRunIfNotRunningSo(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION RunIfNotRunningSo : BOOL\n\nVAR_IN_OUT\n\tSo : struct_singleOutput;\nEND_VAR\nVAR CONSTANT\n\tcmdRun : WORD := 1;\nEND_VAR\n\n" +
+            "IF NOT So.Q THEN\n\tSo.inOpcCommandsDisabled:=TRUE;\n\tSo.inCommand_Alg:=cmdRun;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunIfNotRunningSo.st", content);
+    }
+    
+    public static void GenerateRunPhase(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION RunPhase : BOOL\n\nVAR_IN_OUT\n\tPh : struct_PhaseAlgoritm;\nEND_VAR\n" +
+            "IF NOT Ph.start THEN\nP\th.run:=TRUE;\nEND_IF;");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunPhase.st", content);
+    }    
+    
+    public static void GenerateTwoUintToUdint(string pathToProjectDirectory)
+    {
+        StringBuilder content = new();
+
+        content.Append(
+            "FUNCTION TwoUint_To_UDINT : UDINT\n\nVAR_INPUT\n\tval1 : UINT;\n\tval2 : UINT;\nEND_VAR\n\n" +
+            "TwoUint_To_UDINT:= DWORD_TO_UDINT(UINT_TO_DWORD(val1) OR shl(UINT_TO_DWORD(val2), 16));");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\TwoUint_To_UDINT.st", content);
+    }
+
 
     private static void CreateFile(string path, StringBuilder content)
     {
