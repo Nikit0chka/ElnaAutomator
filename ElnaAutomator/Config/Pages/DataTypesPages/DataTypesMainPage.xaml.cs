@@ -9,7 +9,9 @@ public partial class DataTypesMainPage
     private readonly DiscreteOutputsPage _discreteOutputsPage;
     private readonly SingleInputsPage _singleInputsPage;
     private readonly SingleOutputsPage _singleOutputsPage;
-    private readonly ExecutiveMechanismPage _executiveMechanismPage;
+    private readonly KransPage _kransPage;
+    private readonly SwitchesPage _switchesPage;
+    private readonly OilPumpsPage _oilPumpsPage;
     private readonly AnalogSignalsProtectionsPage _analogSignalsProtectionsPage;
     private readonly DiscreteSignalsProtectionsPage _discreteSignalsProtectionsPage;
 
@@ -20,7 +22,9 @@ public partial class DataTypesMainPage
         _discreteOutputsPage = new DiscreteOutputsPage();
         _singleInputsPage = new SingleInputsPage();
         _singleOutputsPage = new SingleOutputsPage();
-        _executiveMechanismPage = new ExecutiveMechanismPage();
+        _kransPage = new KransPage();
+        _switchesPage = new SwitchesPage();
+        _oilPumpsPage = new OilPumpsPage();
         _analogSignalsProtectionsPage = new AnalogSignalsProtectionsPage();
         _discreteSignalsProtectionsPage = new DiscreteSignalsProtectionsPage();
 
@@ -52,11 +56,6 @@ public partial class DataTypesMainPage
         ThisFrame.Navigate(_singleInputsPage);
     }
 
-    private void ExecutiveMechanismsShowButtons_OnClick(object sender, RoutedEventArgs e)
-    {
-        ThisFrame.Navigate(_executiveMechanismPage);
-    }
-
     private void DiscreteSignalsProtectionsShowButton_OnClick(object sender, RoutedEventArgs e)
     {
         ThisFrame.Navigate(_discreteSignalsProtectionsPage);
@@ -65,5 +64,20 @@ public partial class DataTypesMainPage
     private void SingleOutputsShowButton_OnClick(object sender, RoutedEventArgs e)
     {
         ThisFrame.Navigate(_singleOutputsPage);
+    }
+
+    private void KransShowButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        ThisFrame.Navigate(_kransPage);
+    }
+
+    private void OilPumpsShowButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        ThisFrame.Navigate(_oilPumpsPage);
+    }
+
+    private void SwtichesShowButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        ThisFrame.Navigate(_switchesPage);
     }
 }
