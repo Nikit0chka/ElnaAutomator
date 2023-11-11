@@ -1,0 +1,52 @@
+﻿<Page x:Class="ElnaAutomator.Config.Pages.DataTypesPages.KransPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      
+      mc:Ignorable="d"
+      Title="SingleInputsPage" d:DesignWidth="500" d:DesignHeight="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        
+        <DataGrid Grid.Row="0" Name="KransDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" CanUserSortColumns="False" CanUserAddRows="False"
+                  d:DataContext="{d:DesignInstance }">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Select" Width="auto"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
+               
+                <DataGridComboBoxColumn x:Name="KranStatOnDiscreteInput" Header="StatOnDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding StatOnDiscreteInput}" />
+                <DataGridTextColumn Header="StatOnDiBit" Binding="{Binding StatOnDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="KranStatOffDiscreteInput" Header="StatOffDi" Width="*" DisplayMemberPath="Name"
+                                        SelectedItemBinding="{Binding StatOffDiscreteInput}" />
+                <DataGridTextColumn Header="StatOffDiBit" Binding="{Binding StatOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="KranInSoDiscreteInput" Header="InSoDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding InSoDiscreteInput}" />
+                <DataGridTextColumn Header="InSoDiBit" Binding="{Binding InSoDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="KranInSzDiscreteInput" Header="InSzDiscreteInput" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding InSzDiscreteInput}" />
+                <DataGridTextColumn Header="InSzDiBit" Binding="{Binding InSzDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="KranCmdOnDiscreteInput" Header="CmdOnDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding CmdOnDiscreteInput}" />
+                <DataGridTextColumn Header="CmdOnDiBit" Binding="{Binding CmdOnDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+               
+                <DataGridComboBoxColumn x:Name="KranCmdOffDiscreteInput" Header="CmdOffDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding CmdOffDiscreteInput}" />
+                <DataGridTextColumn Header="CmdOffDiBit" Binding="{Binding CmdOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Name="AddKran" Margin="5" Content="Add" Width="100" Click="AddKran_OnClick"/>
+            <Button Name="DeleteKran" Margin="5" Content="Delete" Width="100" Click="DeleteKran_OnClick"/>
+        </StackPanel>
+    </Grid>
+</Page>
