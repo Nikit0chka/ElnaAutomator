@@ -12,14 +12,14 @@ namespace ElnaAutomator.Config.Windows;
 public partial class MainWindow
 {
     private readonly DataTypesMainPage _configMainPage;
-    private readonly ConfigsPages _dataTypesPage;
+    private readonly ConfigsPage _dataTypesPage;
     private readonly FunctionalBlocksPage _functionalBlocksPage;
     private readonly FunctionsPage _functionsPage;
 
     public MainWindow()
     {
         _configMainPage = new DataTypesMainPage();
-        _dataTypesPage = new ConfigsPages();
+        _dataTypesPage = new ConfigsPage();
         _functionalBlocksPage = new FunctionalBlocksPage();
         _functionsPage = new FunctionsPage();
 
