@@ -5,7 +5,7 @@ using ElnaAutomator.Config.ConfigStructs;
 
 namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
-public partial class DiscreteSignalsProtectionsPage : Page
+public partial class DiscreteSignalsProtectionsPage
 {
 
     private readonly App? _currentApp;
