@@ -3,11 +3,11 @@ using ElnaAutomator.Config.Generators;
 
 namespace ElnaAutomator.Config.Pages.ConfigPages;
 
-public partial class ConfigsPages
+public partial class ConfigsPage
 {
     private readonly App? _currentApp;
 
-    public ConfigsPages()
+    public ConfigsPage()
     {
         InitializeComponent();
         _currentApp = Application.Current as App;
@@ -34,6 +34,17 @@ public partial class ConfigsPages
     private void ProtectionsConfig_OnClick(object sender, RoutedEventArgs e)
     {
         if (_currentApp != null)
-            DataTypesGenerator.GenerateProtectionsConfig(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+            DataTypesGenerator.GenerateProtectionsConfig(_currentApp.PathToProject,
+                _currentApp.AnalogSignalProtections,
+                _currentApp.DiscreteSignalProtections);
+    }
+    private void ImConfig_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (_currentApp != null)
+            DataTypesGenerator.GenerateImConfig(_currentApp.PathToProject,
+                _currentApp.Krans,
+                _currentApp.OilPumps,
+                _currentApp.Switches,
+                _currentApp.SectionSwitches);
     }
 }
