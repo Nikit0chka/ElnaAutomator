@@ -21,7 +21,7 @@ public partial class SingleInputsPage
     {
         var singleInput = new SingleInput
         {
-            Name = $"SI{_currentApp?.SingleInputs.Count}",
+            Name = $"SI{_currentApp?.SingleInputs.Count}"
         };
         _currentApp?.SingleInputs.Add(singleInput);
         SingleInputsDataGrid.Items.Refresh();
