@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
+using ElnaAutomator.Config.ConfigStructs;
 using ElnaAutomator.Config.Generators;
 
 namespace ElnaAutomator.Config.Pages.FunctionsPage;
@@ -84,25 +86,33 @@ public partial class FunctionsPage
     private void RemontAllProtections_OnClick(object sender, RoutedEventArgs e)
     {
         if (_currentApp != null)
-            FunctionsGenerator.GenerateRemontAllProtections(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+            FunctionsGenerator.GenerateRemontAllProtections(_currentApp.PathToProject,
+                _currentApp.AnalogSignalProtections,
+                _currentApp.DiscreteSignalProtections);
     }
 
     private void ResetAllProtections_OnClick(object sender, RoutedEventArgs e)
     {
         if (_currentApp != null)
-            FunctionsGenerator.GenerateResetAllProtections(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+            FunctionsGenerator.GenerateResetAllProtections(_currentApp.PathToProject,
+                _currentApp.AnalogSignalProtections,
+                _currentApp.DiscreteSignalProtections);
     }
 
     private void ResetAllSignalling_OnClick(object sender, RoutedEventArgs e)
     {
         if (_currentApp != null)
-            FunctionsGenerator.GenerateResetAllSignalling(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+            FunctionsGenerator.GenerateResetAllSignalling(_currentApp.PathToProject,
+                _currentApp.AnalogSignalProtections,
+                _currentApp.DiscreteSignalProtections);
     }
 
     private void UnBlockAllProtections_OnClick(object sender, RoutedEventArgs e)
     {
         if (_currentApp != null)
-            FunctionsGenerator.GenerateUnBlockAllProtections(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+            FunctionsGenerator.GenerateUnBlockAllProtections(_currentApp.PathToProject,
+                _currentApp.AnalogSignalProtections,
+                _currentApp.DiscreteSignalProtections);
     }
     private void AskQuestion_OnClick(object sender, RoutedEventArgs e)
     {
@@ -178,5 +188,57 @@ public partial class FunctionsPage
     {
         if (_currentApp != null)
             FunctionsGenerator.GenerateTwoUintToUdint(_currentApp.PathToProject);
+    }
+    private void BlockAllIm_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (_currentApp == null)
+            return;
+
+        List<ExecutiveMechanism> executiveMechanisms = new();
+        executiveMechanisms.AddRange(_currentApp.Krans);
+        executiveMechanisms.AddRange(_currentApp.OilPumps);
+        executiveMechanisms.AddRange(_currentApp.Switches);
+        executiveMechanisms.AddRange(_currentApp.SectionSwitches);
+
+        FunctionsGenerator.GenerateBlockAllIm(_currentApp.PathToProject, executiveMechanisms);
+    }
+    private void NsCepeiControl_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (_currentApp == null)
+            return;
+
+        List<ExecutiveMechanism> executiveMechanisms = new();
+        executiveMechanisms.AddRange(_currentApp.Krans);
+        executiveMechanisms.AddRange(_currentApp.OilPumps);
+        executiveMechanisms.AddRange(_currentApp.Switches);
+        executiveMechanisms.AddRange(_currentApp.SectionSwitches);
+
+        FunctionsGenerator.GenerateNsCepeiControl(_currentApp.PathToProject, executiveMechanisms);
+    }
+    private void NsCepeiUpravlenya_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (_currentApp == null)
+            return;
+
+        List<ExecutiveMechanism> executiveMechanisms = new();
+        executiveMechanisms.AddRange(_currentApp.Krans);
+        executiveMechanisms.AddRange(_currentApp.OilPumps);
+        executiveMechanisms.AddRange(_currentApp.Switches);
+        executiveMechanisms.AddRange(_currentApp.SectionSwitches);
+
+        FunctionsGenerator.GenerateNsCepeiUpravlenya(_currentApp.PathToProject, executiveMechanisms);
+    }
+    private void UnBlockAllIm_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (_currentApp == null)
+            return;
+
+        List<ExecutiveMechanism> executiveMechanisms = new();
+        executiveMechanisms.AddRange(_currentApp.Krans);
+        executiveMechanisms.AddRange(_currentApp.OilPumps);
+        executiveMechanisms.AddRange(_currentApp.Switches);
+        executiveMechanisms.AddRange(_currentApp.SectionSwitches);
+
+        FunctionsGenerator.GenerateUnBlockAllIm(_currentApp.PathToProject, executiveMechanisms);
     }
 }
