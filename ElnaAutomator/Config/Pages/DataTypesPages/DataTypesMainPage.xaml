@@ -18,8 +18,12 @@
                     Click="DiscreteInputsShowButton_OnClick" />
             <Button Name="DiscreteOutputsShowButton" Content="Do" Margin="5" Width="80"
                     Click="DiscreteOutputsShowButton_OnClick" />
-            <Button Name="ExecutiveMechanismsShowButtons" Content="Im" Margin="5" Width="80"
-                    Click="ExecutiveMechanismsShowButtons_OnClick" />
+            <Button Name="KransShowButton" Content="Krans" Margin="5" Width="80"
+                    Click="KransShowButton_OnClick" /> 
+            <Button Name="OilPumpsShowButton" Content="OilPumps" Margin="5" Width="80"
+                    Click="OilPumpsShowButton_OnClick" />
+            <Button Name="SwtichesShowButton" Content="Switches" Margin="5" Width="80"
+                    Click="SwtichesShowButton_OnClick" />
             <Button Name="SingleInputsShowButton" Content="SingleInputs" Margin="5" Width="80"
                     Click="SingleInputsShowButton_OnClick" />
             <Button Name="SingleOutputsShowButton" Content="SingleOutputs" Margin="5" Width="80"
@@ -30,6 +34,6 @@
                     Click="DiscreteSignalsProtectionsShowButton_OnClick" />
         </UniformGrid>
 
-        <Frame Grid.Row="1" Name="ThisFrame" Height="auto"></Frame>
+        <Frame Grid.Row="1" Name="ThisFrame" Height="auto" />
     </Grid>
 </Page>
