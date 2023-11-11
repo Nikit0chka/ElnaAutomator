@@ -5,7 +5,7 @@ using ElnaAutomator.Config.ConfigStructs;
 
 namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
-public partial class SingleOutputsPage : Page
+public partial class SingleOutputsPage
 {
     private readonly App? _currentApp;
 
