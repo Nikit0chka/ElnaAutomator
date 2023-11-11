@@ -1,4 +1,4 @@
-﻿<Page x:Class="ElnaAutomator.Config.Pages.ConfigPages.ConfigsPages"
+﻿<Page x:Class="ElnaAutomator.Config.Pages.ConfigPages.ConfigsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -16,7 +16,7 @@
                     Click="AnalogSignalsConfig_OnClick" />
             <Button Name="DiscreteInputsConfig" Content="DiConfig" Margin="5" Width="80" Click="DiscreteInputsConfig_OnClick"/>
             <Button Name="DiscreteOutputsConfig" Content="DoConfig" Margin="5" Width="80" Click="DiscreteOutputsConfig_OnClick"/>
-            <Button Name="ImConfig" Content="ImConfig" Margin="5" Width="80" />
+            <Button Name="ImConfig" Content="ImConfig" Margin="5" Width="80" Click="ImConfig_OnClick"/>
             <Button Name="ProtectionsConfig" Margin="5" Width="80" Click="ProtectionsConfig_OnClick">
                 <StackPanel>
                     <TextBlock Text="Protections" HorizontalAlignment="Center" />
