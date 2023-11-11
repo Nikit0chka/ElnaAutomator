@@ -68,7 +68,6 @@ public static class FunctionBlocksGenerator
         foreach (var t in modules)
             content.Append($"\tarERR_{t};\n");
 
-        //ne ponual kak sdelat A1_10_err_mode
         content.Append("END_VAR\n");
 
         for (var i = 0; i < analogInputs.Count; i++)
@@ -82,6 +81,28 @@ public static class FunctionBlocksGenerator
         CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_AI.st", content);
     }
 
+
+    // public static void GenerateProcIm(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms,
+    //     List<SingleInput> singleInputs, List<SingleOutput> singleOutputs)
+    // {
+    //     StringBuilder content = new();
+    //
+    //     content.Append("FUNCTION_BLOCK Proc_AI\n\n");
+    //     content.Append("VAR\n");
+    //
+    //     foreach (var analogInput in analogInputs)
+    //         content.Append($"\tfb_{analogInput.Name} : fb_AiSourceMlp;\n");
+    //
+    //     content.Append("END_VAR\n\n");
+    //     content.Append("VAR_EXTERNAL\n");
+    //     content.Append("Ai : AiConfig");
+    //
+    //     for (var i = 0; i < analogInputs.Count; i++)
+    //         content.Append($"\tarAIN_{i} : TItemAIN;\n");
+    //     for (var i = 0; i < analogInputs.Count; i++)
+    //         content.Append($"\tAI_{i}_dblValue : LREAL;\n");
+    //     
+    // }
     private static void CreateFile(string path, StringBuilder content)
     {
         try
