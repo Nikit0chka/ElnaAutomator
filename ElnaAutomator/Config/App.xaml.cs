@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using System.Windows;
 using ElnaAutomator.Config.ConfigStructs;
 using ElnaAutomator.Config.Windows;
 using Microsoft.Win32;
@@ -21,11 +20,15 @@ public partial class App
     public List<SingleOutput> SingleOutputs;
     public List<AnalogSignalProtection> AnalogSignalProtections;
     public List<DiscreteSignalProtection> DiscreteSignalProtections;
-    public List<ExecutiveMechanism> ExecutiveMechanisms;
-    public string PathToProject;
+    public List<Kran> Krans;
+    public List<OilPump> OilPumps;
+    public List<Switch> Switches;
+    public List<SectionSwitch> SectionSwitches;
+    public required string PathToProject;
 
     public App()
     {
+
         var ai = new AnalogInput
         {
             Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
@@ -68,27 +71,69 @@ public partial class App
             IsOnLimitProtection = true, Name = "Dip1", SingleInput = singleInput
         };
 
-        var executiveMechanism = new ExecutiveMechanism
+        var kran = new Kran
         {
-            Name = "Exmech"
+            Name = "Kran1",
+            CmdOffDiscreteInput = do1,
+            CmdOffDiscreteInputBit = 0,
+            CmdOnDiscreteInput = do1,
+            CmdOnDiscreteInputBit = 1,
+            StatOnDiscreteInput = di,
+            StatOnDiscreteInputBit = 1,
+            StatOffDiscreteInput = di,
+            StatOffDiscreteInputBit = 2
+        };
+
+        var switch1 = new Switch
+        {
+            Name = "Switch1",
+            CmdOffDiscreteInput = do1,
+            CmdOffDiscreteInputBit = 0,
+            CmdOnDiscreteInput = do1,
+            CmdOnDiscreteInputBit = 1,
+            StatOnDiscreteInput = di,
+            StatOnDiscreteInputBit = 1,
+            StatOffDiscreteInput = di,
+            StatOffDiscreteInputBit = 2
+        };
+
+        var oilPump = new OilPump
+        {
+            Name = "OilPump1",
+            CmdOffDiscreteInput = do1,
+            CmdOffDiscreteInputBit = 0,
+            CmdOnDiscreteInput = do1,
+            CmdOnDiscreteInputBit = 1,
+            StatOnDiscreteInput = di,
+            StatOnDiscreteInputBit = 1,
+            StatOffDiscreteInput = di,
+            StatOffDiscreteInputBit = 2
+        };
+
+        var sectionSwitch = new SectionSwitch
+        {
+            Name = "Sw1"
         };
 
         AnalogInputs = new List<AnalogInput>
-            { ai, ai2 };
+            {ai, ai2};
         DiscreteInputs = new List<DiscreteInput>
-            { di };
+            {di};
         DiscreteOutputs = new List<DiscreteOutput>
-            { do1 };
+            {do1};
         SingleInputs = new List<SingleInput>
-            { singleInput };
+            {singleInput};
         SingleOutputs = new List<SingleOutput>
-            { singleOutput };
+            {singleOutput};
         AnalogSignalProtections = new List<AnalogSignalProtection>
-            { analogSignalProtection };
+            {analogSignalProtection};
         DiscreteSignalProtections = new List<DiscreteSignalProtection>
-            { discreteSignalProtection };
-        ExecutiveMechanisms = new List<ExecutiveMechanism>
-            { executiveMechanism };
+            {discreteSignalProtection};
+        Krans = new List<Kran>
+            {kran};
+        OilPumps = new List<OilPump> {oilPump};
+        Switches = new List<Switch> {switch1};
+        SectionSwitches = new List<SectionSwitch> {sectionSwitch};
 
         ChooseLocalConfigDirectory();
         MainWindow mainWindow = new();
@@ -125,12 +170,17 @@ public partial class App
 
             var json = JsonSerializer.Deserialize<ConfigJson>(data);
 
+            if (json == null)
+                return;
+
             AnalogInputs = json.AnalogInputs;
             AnalogSignalProtections = json.AnalogSignalProtections;
             DiscreteInputs = json.DiscreteInputs;
             DiscreteOutputs = json.DiscreteOutputs;
             DiscreteSignalProtections = json.DiscreteSignalProtections;
-            ExecutiveMechanisms = json.ExecutiveMechanisms;
+            Krans = json.Krans;
+            Switches = json.Switches;
+            OilPumps = json.OilPumps;
             SingleInputs = json.SingleInputs;
             SingleOutputs = json.SingleOutputs;
         }
@@ -149,7 +199,9 @@ public partial class App
             DiscreteInputs = DiscreteInputs,
             DiscreteOutputs = DiscreteOutputs,
             DiscreteSignalProtections = DiscreteSignalProtections,
-            ExecutiveMechanisms = ExecutiveMechanisms,
+            OilPumps = OilPumps,
+            Krans = Krans,
+            Switches = Switches,
             SingleInputs = SingleInputs,
             SingleOutputs = SingleOutputs
         };
@@ -166,7 +218,7 @@ public partial class App
         }
     }
 
-    private void CreateConfigByExcel()
-    {
-    }
+    // private void CreateConfigByExcel()
+    // {
+    // }
 }
