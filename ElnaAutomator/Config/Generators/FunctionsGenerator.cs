@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text;
 using ElnaAutomator.Config.ConfigStructs;
-using Microsoft.Extensions.Primitives;
 
 namespace ElnaAutomator.Config.Generators;
 
@@ -126,6 +125,22 @@ public static class FunctionsGenerator
             content.Append($"RunDiProtection(Protections.{discreteSignalProtection.Name});\n");
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AutoRunProtections.st", content);
+    }
+
+    public static void GenerateRunAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
+        List<DiscreteSignalProtection> discreteSignalProtections)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION RunAllProtections : BOOL\n\n");
+        content.Append("VAR_IN_OUT\n\tProtections : ProtectionsConfig;\nEND_VAR\n\n");
+
+        foreach (var analogSignalProtection in analogSignalProtections)
+            content.Append($"RunAiProtection(Protections.{analogSignalProtection.Name});\n");
+        foreach (var discreteSignalProtection in discreteSignalProtections)
+            content.Append($"RunDiProtection(Protections.{discreteSignalProtection.Name});\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunAllProtections.st", content);
     }
 
     public static void GenerateBlockAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -387,7 +402,7 @@ public static class FunctionsGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunDiProtection.st", content);
     }
-    
+
     public static void GenerateRunIfNotRunning(string pathToProjectDirectory)
     {
         StringBuilder content = new();
@@ -398,7 +413,7 @@ public static class FunctionsGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunIfNotRunning.st", content);
     }
-    
+
     public static void GenerateRunIfNotRunningSo(string pathToProjectDirectory)
     {
         StringBuilder content = new();
@@ -409,7 +424,7 @@ public static class FunctionsGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunIfNotRunningSo.st", content);
     }
-    
+
     public static void GenerateRunPhase(string pathToProjectDirectory)
     {
         StringBuilder content = new();
@@ -419,8 +434,8 @@ public static class FunctionsGenerator
             "IF NOT Ph.start THEN\nP\th.run:=TRUE;\nEND_IF;");
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RunPhase.st", content);
-    }    
-    
+    }
+
     public static void GenerateTwoUintToUdint(string pathToProjectDirectory)
     {
         StringBuilder content = new();
@@ -430,6 +445,77 @@ public static class FunctionsGenerator
             "TwoUint_To_UDINT:= DWORD_TO_UDINT(UINT_TO_DWORD(val1) OR shl(UINT_TO_DWORD(val2), 16));");
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\TwoUint_To_UDINT.st", content);
+    }
+
+    public static void GenerateBlockAllIm(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION BlockAllIm : BOOL\n\n");
+        content.Append("VAR_IN_OUT\n\tIM : ImConfig;\nEND_VAR\n\n");
+
+        foreach (var executiveMechanism in executiveMechanisms)
+            content.Append(
+                $"IF NOT IM.{executiveMechanism.Name}.inOpcCommandsDisabled THEN IM.{executiveMechanism.Name}.inOpcCommandsDisabled := TRUE; END_IF;\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\BlockAllIm.st", content);
+    }
+
+    public static void GenerateUnBlockAllIm(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION UnBlockAllIm : BOOL\n\n");
+        content.Append("VAR_IN_OUT\n\tIM : ImConfig;\nEND_VAR\n\n");
+
+        foreach (var executiveMechanism in executiveMechanisms)
+            content.Append(
+                $"IF IM.{executiveMechanism.Name}.inOpcCommandsDisabled THEN IM.{executiveMechanism.Name}.inOpcCommandsDisabled := FALSE; END_IF;\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\UnBlockAllIm.st", content);
+    }
+
+    public static void GenerateNsCepeiControl(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION NsCepeiControl : BOOL\n\n");
+        content.Append("VAR_INPUT\n\tIM : ImConfig;\nEND_VAR\n\n");
+        content.Append("NsCepeiControl := NOT (\n");
+
+        foreach (var executiveMechanism in executiveMechanisms)
+            content.Append(
+                $"\tIM.{executiveMechanism.Name}.reliability OR\n");
+
+        content.Length -= 4;
+        content.Append(");");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\NsCepeiControl.st", content);
+    }
+
+    public static void GenerateNsCepeiUpravlenya(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION NsCepeiUpravlenya : BOOL\n\n");
+        content.Append("VAR_INPUT\n\tIM : ImConfig;\nEND_VAR\n\n");
+        content.Append("NsCepeiUpravlenya := (\n");
+
+        foreach (var executiveMechanism in executiveMechanisms)
+        {
+            if (executiveMechanism is Kran)
+            {
+                content.Append($"\tIM.{executiveMechanism.Name}.So OR IM.{executiveMechanism.Name}.Sz OR\n");
+                continue;
+            }
+            content.Append(
+                $"\tIM.{executiveMechanism.Name}.breakCmdOn OR\n");
+        }
+
+        content.Length -= 4;
+        content.Append(");");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\NsCepeiUpravlenya.st", content);
     }
 
 
