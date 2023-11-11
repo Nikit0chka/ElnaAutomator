@@ -63,6 +63,26 @@ public static class DataTypesGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\ProtectionsConfig.st", content);
     }
+
+    public static void GenerateImConfig(string pathToProjectDirectory, List<Kran> krans, List<OilPump> oilPumps, List<Switch> switches,
+        List<SectionSwitch> sectionSwitches)
+    {
+        StringBuilder content = new();
+        content.Append("TYPE\nstruct_SectionSwitch : STRUCT \n");
+
+        foreach (var kran in krans)
+            content.Append($"\t{kran.Name} : struct_Kran;\n");
+        foreach (var oilPump in oilPumps)
+            content.Append($"\t{oilPump.Name} : struct_OilPump;\n");
+        foreach (var @switch in switches)
+            content.Append($"\t{@switch.Name} : struct_Switch;\n");
+        foreach (var sectionSwitch in sectionSwitches)
+            content.Append($"\t{sectionSwitch.Name} : struct_SectionSwitch;\n");
+
+        content.Append("END_STRUCT;\nEND_TYPE");
+
+        CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\ImConfig.st", content);
+    }
     private static void CreateFile(string path, StringBuilder content)
     {
         File.WriteAllText(path, content.ToString());
