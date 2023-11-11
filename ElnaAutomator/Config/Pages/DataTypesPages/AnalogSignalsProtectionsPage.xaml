@@ -11,7 +11,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="0" Name="AiProtectionsDataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+        <DataGrid Grid.Row="0" Name="AiProtectionsDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False"
                   HorizontalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto" />

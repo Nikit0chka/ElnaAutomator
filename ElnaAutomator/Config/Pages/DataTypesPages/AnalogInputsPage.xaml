@@ -12,7 +12,7 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="AiDataGrid" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch">
+        <DataGrid Grid.Row="0" Name="AiDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
