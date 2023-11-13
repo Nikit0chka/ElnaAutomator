@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Windows;
 using ElnaAutomator.Config.ConfigStructs;
 using ElnaAutomator.Config.Windows;
 using Microsoft.Win32;
@@ -24,11 +25,10 @@ public partial class App
     public List<OilPump> OilPumps;
     public List<Switch> Switches;
     public List<SectionSwitch> SectionSwitches;
-    public required string PathToProject;
+    readonly public string PathToProject;
 
     public App()
     {
-
         var ai = new AnalogInput
         {
             Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
@@ -135,90 +135,27 @@ public partial class App
         Switches = new List<Switch> {switch1};
         SectionSwitches = new List<SectionSwitch> {sectionSwitch};
 
-        ChooseLocalConfigDirectory();
+        try
+        {
+            PathToProject = FileWork.GetLocalConfigDirectory();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            Current.Shutdown();
+        }
+
+        try
+        {
+            if (PathToProject != null)
+                FileWork.ReadConfig(PathToProject);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+
         MainWindow mainWindow = new();
         mainWindow.Show();
     }
-
-    private void ChooseLocalConfigDirectory()
-    {
-        OpenFileDialog openFileDialog = new()
-        {
-            ValidateNames = false,
-            CheckFileExists = false,
-        };
-
-        if (openFileDialog.ShowDialog() != true) return;
-
-        var path = Path.GetDirectoryName(openFileDialog.FileName);
-
-        if (path == null)
-            return;
-
-        PathToProject = path;
-        CreateConfigByTxt(path);
-    }
-
-    private void CreateConfigByTxt(string path)
-    {
-        if (!File.Exists(path + "config.txt"))
-            return;
-
-        try
-        {
-            var data = File.ReadAllText(path);
-
-            var json = JsonSerializer.Deserialize<ConfigJson>(data);
-
-            if (json == null)
-                return;
-
-            AnalogInputs = json.AnalogInputs;
-            AnalogSignalProtections = json.AnalogSignalProtections;
-            DiscreteInputs = json.DiscreteInputs;
-            DiscreteOutputs = json.DiscreteOutputs;
-            DiscreteSignalProtections = json.DiscreteSignalProtections;
-            Krans = json.Krans;
-            Switches = json.Switches;
-            OilPumps = json.OilPumps;
-            SingleInputs = json.SingleInputs;
-            SingleOutputs = json.SingleOutputs;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Exception by trying to read config from file {ex.Message}");
-        }
-    }
-
-    public void WriteConfigToTxt(string path)
-    {
-        var json = new ConfigJson
-        {
-            AnalogInputs = AnalogInputs,
-            AnalogSignalProtections = AnalogSignalProtections,
-            DiscreteInputs = DiscreteInputs,
-            DiscreteOutputs = DiscreteOutputs,
-            DiscreteSignalProtections = DiscreteSignalProtections,
-            OilPumps = OilPumps,
-            Krans = Krans,
-            Switches = Switches,
-            SingleInputs = SingleInputs,
-            SingleOutputs = SingleOutputs
-        };
-
-        var data = JsonSerializer.Serialize(json);
-
-        try
-        {
-            File.WriteAllText(path, data);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error trying write config to file {ex.Message}");
-        }
-    }
-
-    // private void CreateConfigByExcel()
-    // {
-    // }
 }
