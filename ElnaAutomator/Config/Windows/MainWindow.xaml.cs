@@ -15,6 +15,7 @@ public partial class MainWindow
     private readonly ConfigsPage _dataTypesPage;
     private readonly FunctionalBlocksPage _functionalBlocksPage;
     private readonly FunctionsPage _functionsPage;
+    private readonly App _currentApp;
 
     public MainWindow()
     {
@@ -22,8 +23,20 @@ public partial class MainWindow
         _dataTypesPage = new ConfigsPage();
         _functionalBlocksPage = new FunctionalBlocksPage();
         _functionsPage = new FunctionsPage();
+        _currentApp = (App) Application.Current;
 
-        InitializeComponent();
+        Closing += MainWindow_Closing;
+    }
+
+    private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+    {
+        var result = MessageBox.Show("Save config?", "", MessageBoxButton.YesNoCancel);
+
+        if (result == MessageBoxResult.No)
+            e.Cancel = true;
+
+        // if (result == MessageBoxResult.Yes)
+        //     _currentApp.WriteConfigToTxt(_currentApp.PathToProject);
     }
 
     private void ShowConfigButton_OnClick(object sender, RoutedEventArgs e)
