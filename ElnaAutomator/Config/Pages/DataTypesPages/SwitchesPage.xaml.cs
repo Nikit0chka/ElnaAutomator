@@ -7,27 +7,27 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class SwitchesPage
 {
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
     public SwitchesPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        SwitchesDataGrid.ItemsSource = _currentApp?.Switches;
-        SwitchStatOnDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        SwitchStatOffDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        SwitchCmdOffDiscreteInput.ItemsSource = _currentApp?.DiscreteOutputs;
-        SwitchCmdOnDiscreteInput.ItemsSource = _currentApp?.DiscreteOutputs;
-        SwitchInSoDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        SwitchInSzDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
+        _currentApp = (App) Application.Current;
+        SwitchesDataGrid.ItemsSource = _currentApp.Switches;
+        SwitchStatOnDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SwitchStatOffDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SwitchCmdOffDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        SwitchCmdOnDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        SwitchInSoDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SwitchInSzDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
     private void AddSwitch_OnClick(object sender, RoutedEventArgs e)
     {
         var newSwitch = new Switch()
         {
-            Name = $"Switch{_currentApp?.Switches.Count}"
+            Name = $"Switch{_currentApp.Switches.Count}"
         };
 
-        _currentApp?.Switches.Add(newSwitch);
+        _currentApp.Switches.Add(newSwitch);
         SwitchesDataGrid.Items.Refresh();
     }
     private void DeleteSwitch_OnClick(object sender, RoutedEventArgs e)
@@ -48,7 +48,7 @@ public partial class SwitchesPage
         selectedItems.ForEach(c =>
         {
             if (c is Switch @switch)
-                _currentApp?.Switches.Remove(@switch);
+                _currentApp.Switches.Remove(@switch);
         });
 
         SwitchesDataGrid.Items.Refresh();

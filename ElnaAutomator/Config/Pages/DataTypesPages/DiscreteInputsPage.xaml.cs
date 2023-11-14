@@ -7,22 +7,22 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class DiscreteInputsPage
 {
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
 
     public DiscreteInputsPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        DiDataGrid.ItemsSource = _currentApp?.DiscreteInputs;
+        _currentApp = (App) Application.Current;
+        DiDataGrid.ItemsSource = _currentApp.DiscreteInputs;
     }
 
     private void AddDi_OnClick(object sender, RoutedEventArgs e)
     {
         var discreteInput = new DiscreteInput
         {
-            Name = $"Di{_currentApp?.DiscreteInputs.Count}",
+            Name = $"Di{_currentApp.DiscreteInputs.Count}",
         };
-        _currentApp?.DiscreteInputs.Add(discreteInput);
+        _currentApp.DiscreteInputs.Add(discreteInput);
         DiDataGrid.Items.Refresh();
     }
 
@@ -44,7 +44,7 @@ public partial class DiscreteInputsPage
         selectedItems.ForEach(c =>
         {
             if (c is DiscreteInput discreteInput)
-                _currentApp?.DiscreteInputs.Remove(discreteInput);
+                _currentApp.DiscreteInputs.Remove(discreteInput);
         });
 
         DiDataGrid.Items.Refresh();

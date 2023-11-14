@@ -7,24 +7,24 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class SingleOutputsPage
 {
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
 
     public SingleOutputsPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        SingleOutputsDataGrid.ItemsSource = _currentApp?.SingleOutputs;
-        DiscreteOutputsCmbBx.ItemsSource = _currentApp?.DiscreteOutputs;
+        _currentApp = (App) Application.Current;
+        SingleOutputsDataGrid.ItemsSource = _currentApp.SingleOutputs;
+        DiscreteOutputsCmbBx.ItemsSource = _currentApp.DiscreteOutputs;
     }
 
     private void AddSingleOutput_OnClick(object sender, RoutedEventArgs e)
     {
         var singleOutput = new SingleOutput()
         {
-            Name = $"SO{_currentApp?.SingleOutputs.Count}",
+            Name = $"So{_currentApp.SingleOutputs.Count}",
         };
 
-        _currentApp?.SingleOutputs.Add(singleOutput);
+        _currentApp.SingleOutputs.Add(singleOutput);
         SingleOutputsDataGrid.Items.Refresh();
     }
 
@@ -46,7 +46,7 @@ public partial class SingleOutputsPage
         selectedItems.ForEach(c =>
         {
             if (c is SingleOutput singleOutput)
-                _currentApp?.SingleOutputs.Remove(singleOutput);
+                _currentApp.SingleOutputs.Remove(singleOutput);
         });
 
         SingleOutputsDataGrid.Items.Refresh();

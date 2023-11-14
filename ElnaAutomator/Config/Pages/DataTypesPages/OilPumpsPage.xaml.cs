@@ -7,27 +7,27 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class OilPumpsPage
 {
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
     public OilPumpsPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        OilPumpsDataGrid.ItemsSource = _currentApp?.OilPumps;
-        OilPumpStatOnDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        OilPumpStatOffDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        OilPumpCmdOffDiscreteInput.ItemsSource = _currentApp?.DiscreteOutputs;
-        OilPumpCmdOnDiscreteInput.ItemsSource = _currentApp?.DiscreteOutputs;
-        OilPumpInSoDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        OilPumpInSzDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
+        _currentApp = (App) Application.Current;
+        OilPumpsDataGrid.ItemsSource = _currentApp.OilPumps;
+        //OilPumpStatOnDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        //OilPumpStatOffDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        //OilPumpCmdOffDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        //OilPumpCmdOnDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        //OilPumpInSoDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        //OilPumpInSzDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
     private void AddOilPump_OnClick(object sender, RoutedEventArgs e)
     {
         var newOilPump = new OilPump()
         {
-            Name = $"OilPump{_currentApp?.OilPumps.Count}"
+            Name = $"OilPump{_currentApp.OilPumps.Count}"
         };
 
-        _currentApp?.OilPumps.Add(newOilPump);
+        _currentApp.OilPumps.Add(newOilPump);
         OilPumpsDataGrid.Items.Refresh();
     }
 
@@ -49,7 +49,7 @@ public partial class OilPumpsPage
         selectedItems.ForEach(c =>
         {
             if (c is OilPump oilPump)
-                _currentApp?.OilPumps.Remove(oilPump);
+                _currentApp.OilPumps.Remove(oilPump);
         });
 
         OilPumpsDataGrid.Items.Refresh();

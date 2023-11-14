@@ -8,24 +8,24 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 public partial class DiscreteSignalsProtectionsPage
 {
 
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
     public DiscreteSignalsProtectionsPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        DiProtectionsDataGrid.ItemsSource = _currentApp?.DiscreteSignalProtections;
-        SingleSignalsCmbBx.ItemsSource = _currentApp?.SingleInputs;
+        _currentApp = (App) Application.Current;
+        DiProtectionsDataGrid.ItemsSource = _currentApp.DiscreteSignalProtections;
+        SingleSignalsCmbBx.ItemsSource = _currentApp.SingleInputs;
     }
 
     private void AddDiProtection_OnClick(object sender, RoutedEventArgs e)
     {
         var newDiscreteSignalProtection = new DiscreteSignalProtection()
         {
-            Name = $"DiP{_currentApp?.DiscreteSignalProtections.Count}",
+            Name = $"DiP{_currentApp.DiscreteSignalProtections.Count}",
             IsOnLimitProtection = false
         };
 
-        _currentApp?.DiscreteSignalProtections.Add(newDiscreteSignalProtection);
+        _currentApp.DiscreteSignalProtections.Add(newDiscreteSignalProtection);
         DiProtectionsDataGrid.Items.Refresh();
     }
 
@@ -47,7 +47,7 @@ public partial class DiscreteSignalsProtectionsPage
         selectedItems.ForEach(c =>
         {
             if (c is DiscreteSignalProtection discreteSignalProtection)
-                _currentApp?.DiscreteSignalProtections.Remove(discreteSignalProtection);
+                _currentApp.DiscreteSignalProtections.Remove(discreteSignalProtection);
         });
 
         DiProtectionsDataGrid.Items.Refresh();

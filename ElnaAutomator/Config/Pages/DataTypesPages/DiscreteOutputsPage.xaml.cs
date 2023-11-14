@@ -7,22 +7,22 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class DiscreteOutputsPage
 {
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
 
     public DiscreteOutputsPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        DoDataGrid.ItemsSource = _currentApp?.DiscreteOutputs;
+        _currentApp = (App) Application.Current;
+        DoDataGrid.ItemsSource = _currentApp.DiscreteOutputs;
     }
 
     private void AddDo_OnClick(object sender, RoutedEventArgs e)
     {
         var discreteOutput = new DiscreteOutput
         {
-            Name = $"Do{_currentApp?.DiscreteOutputs.Count}",
+            Name = $"Do{_currentApp.DiscreteOutputs.Count}",
         };
-        _currentApp?.DiscreteOutputs.Add(discreteOutput);
+        _currentApp.DiscreteOutputs.Add(discreteOutput);
         DoDataGrid.Items.Refresh();
     }
 
@@ -44,7 +44,7 @@ public partial class DiscreteOutputsPage
         selectedItems.ForEach(c =>
         {
             if (c is DiscreteOutput discreteOutput)
-                _currentApp?.DiscreteOutputs.Remove(discreteOutput);
+                _currentApp.DiscreteOutputs.Remove(discreteOutput);
         });
 
         DoDataGrid.Items.Refresh();

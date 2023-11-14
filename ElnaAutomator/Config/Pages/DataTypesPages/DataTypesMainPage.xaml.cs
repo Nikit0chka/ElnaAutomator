@@ -76,7 +76,7 @@ public partial class DataTypesMainPage
         ThisFrame.Navigate(_oilPumpsPage);
     }
 
-    private void SwtichesShowButton_OnClick(object sender, RoutedEventArgs e)
+    private void SwitchesShowButton_OnClick(object sender, RoutedEventArgs e)
     {
         ThisFrame.Navigate(_switchesPage);
     }

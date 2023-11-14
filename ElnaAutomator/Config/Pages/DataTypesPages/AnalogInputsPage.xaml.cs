@@ -7,12 +7,13 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class AnalogInputsPage
 {
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
+
     public AnalogInputsPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        AiDataGrid.ItemsSource = _currentApp?.AnalogInputs;
+        _currentApp = (App)Application.Current;
+        AiDataGrid.ItemsSource = _currentApp.AnalogInputs;
     }
 
     /// <summary>
@@ -24,14 +25,14 @@ public partial class AnalogInputsPage
     {
         var newAnalogInput = new AnalogInput
         {
-            Name = $"Ai{_currentApp?.AnalogInputs.Count}",
+            Name = $"Ai{_currentApp.AnalogInputs.Count}",
             HighLimit = 0,
             LowLimit = 0,
             ModuleName = "A",
             Address = 0,
             ModuleAddress = 0
         };
-        _currentApp?.AnalogInputs.Add(newAnalogInput);
+        _currentApp.AnalogInputs.Add(newAnalogInput);
         AiDataGrid.Items.Refresh();
     }
 
@@ -46,7 +47,7 @@ public partial class AnalogInputsPage
 
         foreach (var item in AiDataGrid.Items)
         {
-            var row = (DataGridRow) AiDataGrid.ItemContainerGenerator.ContainerFromItem(item);
+            var row = (DataGridRow)AiDataGrid.ItemContainerGenerator.ContainerFromItem(item);
             if (row == null || AiDataGrid.Columns[0] is not DataGridCheckBoxColumn checkBox)
                 continue;
 
@@ -58,7 +59,7 @@ public partial class AnalogInputsPage
         selectedItems.ForEach(c =>
         {
             if (c is AnalogInput analogInput)
-                _currentApp?.AnalogInputs.Remove(analogInput);
+                _currentApp.AnalogInputs.Remove(analogInput);
         });
 
         AiDataGrid.Items.Refresh();

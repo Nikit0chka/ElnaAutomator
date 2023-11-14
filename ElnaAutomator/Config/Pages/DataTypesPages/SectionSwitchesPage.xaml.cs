@@ -7,28 +7,28 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class SectionSwitchesPage
 {
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
 
     public SectionSwitchesPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        SectionSwitchesDataGrid.ItemsSource = _currentApp?.Krans;
-        SectionSwitchStatOnDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        SectionSwitchStatOffDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        SectionSwitchCmdOffDiscreteInput.ItemsSource = _currentApp?.DiscreteOutputs;
-        SectionSwitchCmdOnDiscreteInput.ItemsSource = _currentApp?.DiscreteOutputs;
-        SectionSwitchInSoDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
-        SectionSwitchInSzDiscreteInput.ItemsSource = _currentApp?.DiscreteInputs;
+        _currentApp = (App) Application.Current;
+        SectionSwitchesDataGrid.ItemsSource = _currentApp.SectionSwitches;
+        SectionSwitchStatOnDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchStatOffDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchCmdOffDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        SectionSwitchCmdOnDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        SectionSwitchInSoDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchInSzDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
     private void AddSectionsSwitch_OnClick(object sender, RoutedEventArgs e)
     {
         var sectionSwitch = new SectionSwitch()
         {
-            Name = $"SectionSwitch{_currentApp?.SectionSwitches.Count}"
+            Name = $"SectionSwitch{_currentApp.SectionSwitches.Count}"
         };
 
-        _currentApp?.SectionSwitches.Add(sectionSwitch);
+        _currentApp.SectionSwitches.Add(sectionSwitch);
         SectionSwitchesDataGrid.Items.Refresh();
     }
     private void DeleteSectionSwitch_OnClick(object sender, RoutedEventArgs e)
@@ -49,7 +49,7 @@ public partial class SectionSwitchesPage
         selectedItems.ForEach(c =>
         {
             if (c is SectionSwitch sectionSwitch)
-                _currentApp?.SectionSwitches.Remove(sectionSwitch);
+                _currentApp.SectionSwitches.Remove(sectionSwitch);
         });
 
         SectionSwitchesDataGrid.Items.Refresh();

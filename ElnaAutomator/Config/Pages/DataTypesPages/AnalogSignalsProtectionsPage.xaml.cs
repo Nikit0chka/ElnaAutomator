@@ -7,23 +7,31 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class AnalogSignalsProtectionsPage
 {
-    private readonly App? _currentApp;
+    private readonly App _currentApp;
     public AnalogSignalsProtectionsPage()
     {
         InitializeComponent();
-        _currentApp = Application.Current as App;
-        AiProtectionsDataGrid.ItemsSource = _currentApp?.AnalogSignalProtections;
-        AnalogSignalsCmbBx.ItemsSource = _currentApp?.AnalogInputs;
+        _currentApp = (App) Application.Current;
+        AiProtectionsDataGrid.ItemsSource = _currentApp.AnalogSignalProtections;
+        AnalogSignalsCmbBx.ItemsSource = _currentApp.AnalogInputs;
+        this.Loaded += OnLoaded;
+    }
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        MessageBox.Show("SDFSDF");
+        AiProtectionsDataGrid.Items.Refresh();        AiProtectionsDataGrid.ItemsSource = _currentApp.AnalogSignalProtections;
+        
+        AnalogSignalsCmbBx.ItemsSource = _currentApp.AnalogInputs;
     }
 
     private void AddAiProtection_OnClick(object sender, RoutedEventArgs e)
     {
         var newAnalogSignalProtection = new AnalogSignalProtection()
         {
-            Name = $"AiP{_currentApp?.AnalogSignalProtections.Count}",
+            Name = $"AiP{_currentApp.AnalogSignalProtections.Count}",
             IsUpperLimitProtection = false,
         };
-        _currentApp?.AnalogSignalProtections.Add(newAnalogSignalProtection);
+        _currentApp.AnalogSignalProtections.Add(newAnalogSignalProtection);
         AiProtectionsDataGrid.Items.Refresh();
     }
 
@@ -45,7 +53,7 @@ public partial class AnalogSignalsProtectionsPage
         selectedItems.ForEach(c =>
         {
             if (c is AnalogSignalProtection analogSignalProtection)
-                _currentApp?.AnalogSignalProtections.Remove(analogSignalProtection);
+                _currentApp.AnalogSignalProtections.Remove(analogSignalProtection);
         });
 
         AiProtectionsDataGrid.Items.Refresh();
