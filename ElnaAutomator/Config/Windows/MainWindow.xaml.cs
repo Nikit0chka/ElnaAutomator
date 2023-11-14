@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using ElnaAutomator.Config.Pages.ConfigPages;
 using ElnaAutomator.Config.Pages.DataTypesPages;
 using ElnaAutomator.Config.Pages.FunctionBlocksPages;
@@ -24,6 +25,7 @@ public partial class MainWindow
         _functionalBlocksPage = new FunctionalBlocksPage();
         _functionsPage = new FunctionsPage();
         _currentApp = (App) Application.Current;
+        InitializeComponent();
 
         Closing += MainWindow_Closing;
     }
@@ -32,30 +34,34 @@ public partial class MainWindow
     {
         var result = MessageBox.Show("Save config?", "", MessageBoxButton.YesNoCancel);
 
-        if (result == MessageBoxResult.No)
-            e.Cancel = true;
-
-        // if (result == MessageBoxResult.Yes)
-        //     _currentApp.WriteConfigToTxt(_currentApp.PathToProject);
+        switch (result)
+        {
+            case MessageBoxResult.No:
+                e.Cancel = true;
+                break;
+            case MessageBoxResult.Yes:
+                FileWork.WriteConfigToTxt(_currentApp.PathToProject);
+                break;
+            case MessageBoxResult.None:
+                break;
+            case MessageBoxResult.OK:
+                break;
+            case MessageBoxResult.Cancel:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
-    private void ShowConfigButton_OnClick(object sender, RoutedEventArgs e)
-    {
+    private void ShowConfigButton_OnClick(object sender, RoutedEventArgs e) =>
         MainFrame.Navigate(_configMainPage);
-    }
 
-    private void ShowDataTypesButton_OnClick(object sender, RoutedEventArgs e)
-    {
+    private void ShowDataTypesButton_OnClick(object sender, RoutedEventArgs e) =>
         MainFrame.Navigate(_dataTypesPage);
-    }
 
-    private void ShowFunctionsButton_OnClick(object sender, RoutedEventArgs e)
-    {
+    private void ShowFunctionsButton_OnClick(object sender, RoutedEventArgs e) =>
         MainFrame.Navigate(_functionsPage);
-    }
 
-    private void ShowFunctionBlocksButton_OnClick(object sender, RoutedEventArgs e)
-    {
+    private void ShowFunctionBlocksButton_OnClick(object sender, RoutedEventArgs e) =>
         MainFrame.Navigate(_functionalBlocksPage);
-    }
 }
