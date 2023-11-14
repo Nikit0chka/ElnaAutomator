@@ -11,8 +11,8 @@ abstract public class ExecutiveMechanism
     public int? InSoDiscreteInputBit { get; set; }
     public DiscreteInput? InSzDiscreteInput { get; set; }
     public int? InSzDiscreteInputBit { get; set; }
-    public DiscreteOutput? CmdOnDiscreteInput { get; set; }
-    public int? CmdOnDiscreteInputBit { get; set; }
-    public DiscreteOutput? CmdOffDiscreteInput { get; set; }
-    public int? CmdOffDiscreteInputBit { get; set; }
+    public DiscreteOutput? CmdOnDiscreteOutput { get; set; }
+    public int? CmdOnDiscreteOutputBit { get; set; }
+    public DiscreteOutput? CmdOffDiscreteOutput { get; set; }
+    public int? CmdOffDiscreteOutputBit { get; set; }
 }
