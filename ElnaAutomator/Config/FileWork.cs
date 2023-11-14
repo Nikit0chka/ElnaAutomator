@@ -23,12 +23,12 @@ public static class FileWork
 
     public  static void ReadConfig(string path)
     {
-        if (!File.Exists(path + "config.txt"))
+        if (!File.Exists(path + "\\config.txt"))
             return;
 
         try
         {
-            var data = File.ReadAllText(path);
+            var data = File.ReadAllText(path + "\\config.txt");
 
             var json = JsonSerializer.Deserialize<ConfigJson>(data);
 
@@ -42,6 +42,7 @@ public static class FileWork
             CurrentApp.DiscreteSignalProtections = json.DiscreteSignalProtections;
             CurrentApp.Krans = json.Krans;
             CurrentApp.Switches = json.Switches;
+            CurrentApp.SectionSwitches = json.SectionSwitches;
             CurrentApp.OilPumps = json.OilPumps;
             CurrentApp.SingleInputs = json.SingleInputs;
             CurrentApp.SingleOutputs = json.SingleOutputs;
@@ -61,9 +62,10 @@ public static class FileWork
             DiscreteInputs = CurrentApp.DiscreteInputs,
             DiscreteOutputs = CurrentApp.DiscreteOutputs,
             DiscreteSignalProtections = CurrentApp.DiscreteSignalProtections,
-            OilPumps = CurrentApp.OilPumps,
             Krans = CurrentApp.Krans,
             Switches = CurrentApp.Switches,
+            OilPumps = CurrentApp.OilPumps,
+            SectionSwitches = CurrentApp.SectionSwitches,
             SingleInputs = CurrentApp.SingleInputs,
             SingleOutputs = CurrentApp.SingleOutputs
         };
@@ -72,7 +74,7 @@ public static class FileWork
 
         try
         {
-            File.WriteAllText(path, data);
+            File.WriteAllText(path + "\\config.txt", data);
         }
         catch (Exception ex)
         {
