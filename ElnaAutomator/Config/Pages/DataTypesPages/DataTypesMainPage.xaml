@@ -23,7 +23,7 @@
             <Button Name="OilPumpsShowButton" Content="OilPumps" Margin="5" Width="80"
                     Click="OilPumpsShowButton_OnClick" />
             <Button Name="SwtichesShowButton" Content="Switches" Margin="5" Width="80"
-                    Click="SwtichesShowButton_OnClick" />
+                    Click="SwitchesShowButton_OnClick" />
             <Button Name="SingleInputsShowButton" Content="SingleInputs" Margin="5" Width="80"
                     Click="SingleInputsShowButton_OnClick" />
             <Button Name="SingleOutputsShowButton" Content="SingleOutputs" Margin="5" Width="80"
