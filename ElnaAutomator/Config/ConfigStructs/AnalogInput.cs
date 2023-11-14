@@ -2,7 +2,7 @@
 
 public class AnalogInput
 {
-    public required string Name { get; init; }
+    public required string? Name { get; init; }
     public required int HighLimit { get; set; }
     public required int LowLimit { get; set; }
     public required string ModuleName { get; init; }
