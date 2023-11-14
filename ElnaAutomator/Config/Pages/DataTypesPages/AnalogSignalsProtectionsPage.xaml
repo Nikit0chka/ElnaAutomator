@@ -16,8 +16,8 @@
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*" />
-                <DataGridComboBoxColumn x:Name="AnalogSignalsCmbBx" Header="Ai signal" DisplayMemberPath="Name"
-                                        SelectedItemBinding="{Binding AnalogInput}" Width="*"/>
+                <DataGridComboBoxColumn x:Name="AnalogSignalsCmbBx" Header="Ai signal"
+                                        SelectedItemBinding="{Binding AnalogInputName}" Width="*"/>
                 <DataGridCheckBoxColumn Header="Is upper alarm" Binding="{Binding IsUpperLimitProtection}" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
