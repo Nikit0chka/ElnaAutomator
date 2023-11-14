@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 using System.Windows;
 using ElnaAutomator.Config.ConfigStructs;
 using ElnaAutomator.Config.Windows;
-using Microsoft.Win32;
 
 namespace ElnaAutomator.Config;
 
@@ -29,7 +26,9 @@ public partial class App
 
     public App()
     {
-        var ai = new AnalogInput
+        PathToProject = "";
+        
+var ai = new AnalogInput
         {
             Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
             LowAlarm = 10, HighWarning = 80, LowWarning = 20, ModuleName = "A",
@@ -37,7 +36,7 @@ public partial class App
         };
         var ai2 = new AnalogInput
         {
-            Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
+            Name = "A2", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
             LowAlarm = 10, HighWarning = 80, LowWarning = 20, ModuleName = "A",
             Address = 0, ModuleAddress = 0
         };
@@ -45,76 +44,76 @@ public partial class App
         {
             Name = "Di"
         };
-
+        
         var do1 = new DiscreteOutput
         {
             Name = "Do1"
         };
-
+        
         var singleInput = new SingleInput
         {
             Name = "SingleInput", DiscreteInput = di
         };
-
+        
         var singleOutput = new SingleOutput
         {
             Name = "SingleOutput", DigitalOutput = do1
         };
-
+        
         var analogSignalProtection = new AnalogSignalProtection
         {
-            AnalogInput = ai, IsUpperLimitProtection = false, Name = "Ap1"
+            AnalogInput = ai, AnalogInputName = "A1", IsUpperLimitProtection = false, Name = "Ap1"
         };
-
+        
         var discreteSignalProtection = new DiscreteSignalProtection
         {
-            IsOnLimitProtection = true, Name = "Dip1", SingleInput = singleInput
+            IsOnLimitProtection = true, SingleInputName = "SingleInput", Name = "Dip1", SingleInput = singleInput
         };
-
+        
         var kran = new Kran
         {
             Name = "Kran1",
-            CmdOffDiscreteInput = do1,
-            CmdOffDiscreteInputBit = 0,
-            CmdOnDiscreteInput = do1,
-            CmdOnDiscreteInputBit = 1,
+            CmdOffDiscreteOutput = do1,
+            CmdOffDiscreteOutputBit = 0,
+            CmdOnDiscreteOutput = do1,
+            CmdOnDiscreteOutputBit = 1,
             StatOnDiscreteInput = di,
             StatOnDiscreteInputBit = 1,
             StatOffDiscreteInput = di,
             StatOffDiscreteInputBit = 2
         };
-
+        
         var switch1 = new Switch
         {
             Name = "Switch1",
-            CmdOffDiscreteInput = do1,
-            CmdOffDiscreteInputBit = 0,
-            CmdOnDiscreteInput = do1,
-            CmdOnDiscreteInputBit = 1,
+            CmdOffDiscreteOutput = do1,
+            CmdOffDiscreteOutputBit = 0,
+            CmdOnDiscreteOutput = do1,
+            CmdOnDiscreteOutputBit = 1,
             StatOnDiscreteInput = di,
             StatOnDiscreteInputBit = 1,
             StatOffDiscreteInput = di,
             StatOffDiscreteInputBit = 2
         };
-
+        
         var oilPump = new OilPump
         {
             Name = "OilPump1",
-            CmdOffDiscreteInput = do1,
-            CmdOffDiscreteInputBit = 0,
-            CmdOnDiscreteInput = do1,
-            CmdOnDiscreteInputBit = 1,
+            CmdOffDiscreteOutput = do1,
+            CmdOffDiscreteOutputBit = 0,
+            CmdOnDiscreteOutput = do1,
+            CmdOnDiscreteOutputBit = 1,
             StatOnDiscreteInput = di,
             StatOnDiscreteInputBit = 1,
             StatOffDiscreteInput = di,
             StatOffDiscreteInputBit = 2
         };
-
+        
         var sectionSwitch = new SectionSwitch
         {
             Name = "Sw1"
         };
-
+        
         AnalogInputs = new List<AnalogInput>
             {ai, ai2};
         DiscreteInputs = new List<DiscreteInput>
@@ -134,7 +133,6 @@ public partial class App
         OilPumps = new List<OilPump> {oilPump};
         Switches = new List<Switch> {switch1};
         SectionSwitches = new List<SectionSwitch> {sectionSwitch};
-
         try
         {
             PathToProject = FileWork.GetLocalConfigDirectory();
@@ -145,15 +143,14 @@ public partial class App
             Current.Shutdown();
         }
 
-        try
-        {
-            if (PathToProject != null)
-                FileWork.ReadConfig(PathToProject);
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-        }
+        // try
+        // {
+        //     FileWork.ReadConfig(PathToProject);
+        // }
+        // catch (Exception ex)
+        // {
+        //     MessageBox.Show(ex.Message);
+        // }
 
         MainWindow mainWindow = new();
         mainWindow.Show();
