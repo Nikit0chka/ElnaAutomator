@@ -21,6 +21,7 @@ public partial class DiscreteInputsPage
         var discreteInput = new DiscreteInput
         {
             Name = $"Di{_currentApp.DiscreteInputs.Count}",
+            ModuleId = 0
         };
         _currentApp.DiscreteInputs.Add(discreteInput);
         DiDataGrid.Items.Refresh();
