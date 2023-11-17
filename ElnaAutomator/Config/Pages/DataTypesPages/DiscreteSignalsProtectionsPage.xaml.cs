@@ -22,7 +22,8 @@ public partial class DiscreteSignalsProtectionsPage
         var newDiscreteSignalProtection = new DiscreteSignalProtection()
         {
             Name = $"DiP{_currentApp.DiscreteSignalProtections.Count}",
-            IsOnLimitProtection = false
+            Delay = 0,
+            IsRunOnStart = false
         };
 
         _currentApp.DiscreteSignalProtections.Add(newDiscreteSignalProtection);
