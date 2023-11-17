@@ -21,6 +21,7 @@ public partial class DiscreteOutputsPage
         var discreteOutput = new DiscreteOutput
         {
             Name = $"Do{_currentApp.DiscreteOutputs.Count}",
+            ModuleId = 0
         };
         _currentApp.DiscreteOutputs.Add(discreteOutput);
         DoDataGrid.Items.Refresh();
