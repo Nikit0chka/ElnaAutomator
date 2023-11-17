@@ -37,16 +37,18 @@ public partial class MainWindow
         switch (result)
         {
             case MessageBoxResult.No:
-                e.Cancel = true;
                 break;
             case MessageBoxResult.Yes:
                 FileWork.WriteConfigToTxt(_currentApp.PathToProject);
                 break;
             case MessageBoxResult.None:
+                e.Cancel = true;
                 break;
             case MessageBoxResult.OK:
+                e.Cancel = true;
                 break;
             case MessageBoxResult.Cancel:
+                e.Cancel = true;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
