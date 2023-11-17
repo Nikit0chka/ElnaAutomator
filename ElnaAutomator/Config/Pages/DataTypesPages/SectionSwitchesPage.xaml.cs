@@ -13,14 +13,21 @@ public partial class SectionSwitchesPage
     {
         InitializeComponent();
         _currentApp = (App) Application.Current;
+
         SectionSwitchesDataGrid.ItemsSource = _currentApp.SectionSwitches;
         SectionSwitchStatOnDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
         SectionSwitchStatOffDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
         SectionSwitchCmdOffDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        SectionSwitchBasketInDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchBasketOutDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
         SectionSwitchCmdOnDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
-        SectionSwitchInSoDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
-        SectionSwitchInSzDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchStatOffReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchStatOnReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchInBreakCmdOn.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchInBreakCmdOff.ItemsSource = _currentApp.DiscreteInputs;
+        SectionSwitchBasketTestDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
+
     private void AddSectionsSwitch_OnClick(object sender, RoutedEventArgs e)
     {
         var sectionSwitch = new SectionSwitch()
