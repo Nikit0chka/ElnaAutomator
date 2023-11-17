@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Text.Json;
+using Newtonsoft.Json;
 using System.Windows;
 using Microsoft.Win32;
 
@@ -9,6 +9,7 @@ namespace ElnaAutomator.Config;
 public static class FileWork
 {
     private readonly static App CurrentApp = (App) Application.Current;
+    private readonly static JsonSerializerSettings Settings = new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects };
 
     public static string GetLocalConfigDirectory()
     {
@@ -21,19 +22,19 @@ public static class FileWork
         return path ?? "";
     }
 
-    public  static void ReadConfig(string path)
+    public static void ReadConfig(string path)
     {
         if (!File.Exists(path + "\\config.txt"))
-            return;
+            throw new Exception("Exception reading json, config.txt not exist");
 
         try
         {
             var data = File.ReadAllText(path + "\\config.txt");
 
-            var json = JsonSerializer.Deserialize<ConfigJson>(data);
+            var json = JsonConvert.DeserializeObject<ConfigJson>(data);
 
             if (json == null)
-                return;
+                throw new Exception("Exception reading json, json is null");
 
             CurrentApp.AnalogInputs = json.AnalogInputs;
             CurrentApp.AnalogSignalProtections = json.AnalogSignalProtections;
@@ -49,7 +50,7 @@ public static class FileWork
         }
         catch (Exception ex)
         {
-            throw new Exception($"Exception trying create config {ex}");
+            throw new Exception($"Exception reading json, {ex}");
         }
     }
 
@@ -70,7 +71,8 @@ public static class FileWork
             SingleOutputs = CurrentApp.SingleOutputs
         };
 
-        var data = JsonSerializer.Serialize(json);
+        var data = JsonConvert.SerializeObject(json, Formatting.Indented, Settings);
+
 
         try
         {
