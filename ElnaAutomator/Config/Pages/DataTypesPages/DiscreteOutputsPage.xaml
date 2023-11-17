@@ -12,10 +12,12 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="DoDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False"  HorizontalAlignment="Stretch">
+        <DataGrid Grid.Row="0" Name="DoDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False"  HorizontalAlignment="Stretch"
+                  d:DataContext="{d:DesignInstance }">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="ModuleId" Binding="{Binding ModuleId}" Selector.IsSelected="False" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         
