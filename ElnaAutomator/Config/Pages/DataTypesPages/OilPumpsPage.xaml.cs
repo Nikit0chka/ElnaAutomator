@@ -13,13 +13,16 @@ public partial class OilPumpsPage
         InitializeComponent();
         _currentApp = (App) Application.Current;
         OilPumpsDataGrid.ItemsSource = _currentApp.OilPumps;
-        //OilPumpStatOnDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
-        //OilPumpStatOffDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
-        //OilPumpCmdOffDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
-        //OilPumpCmdOnDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
-        //OilPumpInSoDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
-        //OilPumpInSzDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        OilPumpStatOnDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        OilPumpStatOffDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        OilPumpCmdOffDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        OilPumpCmdOnDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
+        OilPumpInBreakCmdOn.ItemsSource = _currentApp.DiscreteInputs;
+        OilPumpInBreakCmdOff.ItemsSource = _currentApp.DiscreteInputs;
+        OilPumpStatOffReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        OilPumpStatOnReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
+    
     private void AddOilPump_OnClick(object sender, RoutedEventArgs e)
     {
         var newOilPump = new OilPump()
