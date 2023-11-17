@@ -11,12 +11,13 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="SingleOutputsDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch">
+        <DataGrid Grid.Row="0" Name="SingleOutputsDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch"
+                  d:DataContext="{d:DesignInstance }">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
                 <DataGridComboBoxColumn x:Name="DiscreteOutputsCmbBx" Header="Do" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding DiscreteInput}" />
+                                        SelectedItemBinding="{Binding DiscreteOutput}" />
                 <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="*" Selector.IsSelected="False"/>
             </DataGrid.Columns>
         </DataGrid>
