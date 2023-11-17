@@ -28,9 +28,8 @@ public partial class AnalogInputsPage
             Name = $"Ai{_currentApp.AnalogInputs.Count}",
             HighLimit = 0,
             LowLimit = 0,
-            ModuleName = "A",
+            ModuleId = 0,
             Address = 0,
-            ModuleAddress = 0
         };
         _currentApp.AnalogInputs.Add(newAnalogInput);
         AiDataGrid.Items.Refresh();
