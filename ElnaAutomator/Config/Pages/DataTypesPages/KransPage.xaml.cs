@@ -19,6 +19,9 @@ public partial class KransPage
         KranCmdOnDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
         KranInSoDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
         KranInSzDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        KranInDpDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        KranStatOffReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        KranStatOnReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
     private void AddKran_OnClick(object sender, RoutedEventArgs e)
     {
