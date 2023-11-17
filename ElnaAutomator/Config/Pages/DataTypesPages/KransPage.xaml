@@ -3,50 +3,222 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      
+
       mc:Ignorable="d"
-      Title="SingleInputsPage" d:DesignWidth="500" d:DesignHeight="500">
+      Title="SingleInputsPage" d:DesignWidth="500" d:DesignHeight="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        
-        <DataGrid Grid.Row="0" Name="KransDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch" CanUserSortColumns="False" CanUserAddRows="False"
+
+        <DataGrid Grid.Row="0" Name="KransDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch"
+                  CanUserSortColumns="False" CanUserAddRows="False"
                   d:DataContext="{d:DesignInstance }">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Select" Width="auto"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
-               
-                <DataGridComboBoxColumn x:Name="KranStatOnDiscreteInput" Header="StatOnDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding StatOnDiscreteInput}" />
-                <DataGridTextColumn Header="StatOnDiBit" Binding="{Binding StatOnDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="KranStatOffDiscreteInput" Header="StatOffDi" Width="*" DisplayMemberPath="Name"
-                                        SelectedItemBinding="{Binding StatOffDiscreteInput}" />
-                <DataGridTextColumn Header="StatOffDiBit" Binding="{Binding StatOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="KranInSoDiscreteInput" Header="InSoDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding InSoDiscreteInput}" />
-                <DataGridTextColumn Header="InSoDiBit" Binding="{Binding InSoDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="KranInSzDiscreteInput" Header="InSzDiscreteInput" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding InSzDiscreteInput}" />
-                <DataGridTextColumn Header="InSzDiBit" Binding="{Binding InSzDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="KranCmdOnDiscreteInput" Header="CmdOnDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding CmdOnDiscreteInput}" />
-                <DataGridTextColumn Header="CmdOnDiBit" Binding="{Binding CmdOnDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
-               
-                <DataGridComboBoxColumn x:Name="KranCmdOffDiscreteInput" Header="CmdOffDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding CmdOffDiscreteInput}" />
-                <DataGridTextColumn Header="CmdOffDiBit" Binding="{Binding CmdOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridCheckBoxColumn Header="Select" Width="auto" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="auto" />
+
+                <DataGridComboBoxColumn x:Name="KranStatOnDiscreteInput" DisplayMemberPath="Name" Width="auto"
+                                        SelectedItemBinding="{Binding StatOnDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            Ondi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding StatOnDiscreteInputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OnBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="KranStatOffDiscreteInput" Width="auto" DisplayMemberPath="Name"
+                                        SelectedItemBinding="{Binding StatOffDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OffDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding StatOffDiscreteInputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OffBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="KranInSoDiscreteInput" DisplayMemberPath="Name"
+                                        Width="auto"
+                                        SelectedItemBinding="{Binding InSoDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            InSo
+                            <LineBreak />
+                            Di
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding InSoDiscreteInputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            InSo
+                            <LineBreak />
+                            Bit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="KranInSzDiscreteInput"
+                                        DisplayMemberPath="Name" Width="auto"
+                                        SelectedItemBinding="{Binding InSzDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            InSz
+                            <LineBreak />
+                            Di
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding InSzDiscreteInputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            InSz
+                            <LineBreak />
+                            Bit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="KranCmdOnDiscreteInput" DisplayMemberPath="Name"
+                                        Width="auto"
+                                        SelectedItemBinding="{Binding CmdOnDiscreteOutput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OnDo
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding CmdOnDiscreteOutputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OnBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="KranCmdOffDiscreteInput" DisplayMemberPath="Name"
+                                        Width="auto"
+                                        SelectedItemBinding="{Binding CmdOffDiscreteOutput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OffDo
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding CmdOffDiscreteOutputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OffBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="KranInDpDiscreteInput" DisplayMemberPath="Name"
+                                        Width="auto"
+                                        SelectedItemBinding="{Binding InDpDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            In
+                            <LineBreak />
+                            DpDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding InDpDiscreteInputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            InDp
+                            <LineBreak />
+                            Bit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="KranStatOnReabDiscreteInput" DisplayMemberPath="Name" Width="auto"
+                                        SelectedItemBinding="{Binding StatOnReabDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOn
+                            <LineBreak />
+                            ReabDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding StatOnReabDiscreteInputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOn
+                            <LineBreak />
+                            ReabBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="KranStatOffReabDiscreteInput"
+                                        DisplayMemberPath="Name" Width="auto"
+                                        SelectedItemBinding="{Binding StatOffReabDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOff
+                            <LineBreak />
+                            ReabDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Binding="{Binding StatOffReabDiscreteInputBit}" Width="auto">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOff
+                            <LineBreak />
+                            ReabBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Name="AddKran" Margin="5" Content="Add" Width="100" Click="AddKran_OnClick"/>
-            <Button Name="DeleteKran" Margin="5" Content="Delete" Width="100" Click="DeleteKran_OnClick"/>
+            <Button Name="AddKran" Margin="5" Content="Add" Width="100" Click="AddKran_OnClick" />
+            <Button Name="DeleteKran" Margin="5" Content="Delete" Width="100" Click="DeleteKran_OnClick" />
         </StackPanel>
     </Grid>
 </Page>
