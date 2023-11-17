@@ -12,13 +12,14 @@
         </Grid.RowDefinitions>
         
         <DataGrid Grid.Row="0" Name="DiProtectionsDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False"
-                  HorizontalAlignment="Stretch">
+                  HorizontalAlignment="Stretch" d:DataContext="{d:DesignInstance }">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto" />
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*" />
                 <DataGridComboBoxColumn x:Name="SingleSignalsCmbBx" Header="Single signal" DisplayMemberPath="Name"
                                         SelectedItemBinding="{Binding SingleInput}" Width="*"/>
-                <DataGridCheckBoxColumn Header="Is on alarm" Binding="{Binding IsOnLimitProtection}" Width="auto" />
+                <DataGridTextColumn Header="Delay" Binding="{Binding Delay}" Selector.IsSelected="False" Width="*" />
+                <DataGridCheckBoxColumn Header="Is run on start" Binding="{Binding IsRunOnStart}" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
