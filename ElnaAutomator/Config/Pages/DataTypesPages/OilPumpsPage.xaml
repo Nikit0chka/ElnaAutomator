@@ -12,7 +12,8 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="OilPumpsDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch"  CanUserSortColumns="False" CanUserAddRows="False">
+        <DataGrid Grid.Row="0" Name="OilPumpsDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch"  CanUserSortColumns="False" CanUserAddRows="False"
+                  d:DataContext="{d:DesignInstance }">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
@@ -25,21 +26,29 @@
                                         SelectedItemBinding="{Binding StatOffDiscreteInput}" />
                 <DataGridTextColumn Header="StatOffDiBit" Binding="{Binding StatOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
                 
-                <DataGridComboBoxColumn x:Name="OilPumpInSoDiscreteInput" Header="InSoDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding InSoDiscreteInput}" />
-                <DataGridTextColumn Header="InSoDiBit" Binding="{Binding InSoDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridComboBoxColumn x:Name="OilPumpInBreakCmdOn" Header="InBreakCmdOnDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding InBreakCmdOn}" />
+                <DataGridTextColumn Header="StatOnReabDiBit" Binding="{Binding InBreakCmdOnBit}" Width="*" Selector.IsSelected="False"/>
                 
-                <DataGridComboBoxColumn x:Name="OilPumpInSzDiscreteInput" Header="InSzDiscreteInput" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding InSzDiscreteInput}" />
-                <DataGridTextColumn Header="InSzDiBit" Binding="{Binding InSzDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridComboBoxColumn x:Name="OilPumpInBreakCmdOff" Header="InBreakCmdOffDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding InBreakCmdOff}" />
+                <DataGridTextColumn Header="InBreakCmdOff" Binding="{Binding InBreakCmdOffBit}" Width="*" Selector.IsSelected="False"/>
                 
                 <DataGridComboBoxColumn x:Name="OilPumpCmdOnDiscreteInput" Header="CmdOnDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding CmdOnDiscreteInput}" />
-                <DataGridTextColumn Header="CmdOnDiBit" Binding="{Binding CmdOnDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                                        SelectedItemBinding="{Binding CmdOnDiscreteOutput}" />
+                <DataGridTextColumn Header="CmdOnDiBit" Binding="{Binding CmdOnDiscreteOutputBit}" Width="*" Selector.IsSelected="False"/>
                
                 <DataGridComboBoxColumn x:Name="OilPumpCmdOffDiscreteInput" Header="CmdOffDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding CmdOffDiscreteInput}" />
-                <DataGridTextColumn Header="CmdOffDiBit" Binding="{Binding CmdOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                                        SelectedItemBinding="{Binding CmdOffDiscreteOutput}" />
+                <DataGridTextColumn Header="CmdOffDiBit" Binding="{Binding CmdOffDiscreteOutputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="OilPumpStatOnReabDiscreteInput" Header="StatOnReabDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding StatOnReabDiscreteInput}" />
+                <DataGridTextColumn Header="StatOnReabDiBit" Binding="{Binding StatOnReabDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="OilPumpStatOffReabDiscreteInput" Header="StatOffReabDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding StatOffReabDiscreteInput}" />
+                <DataGridTextColumn Header="StatOfReabDiBit" Binding="{Binding StatOffReabDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
             </DataGrid.Columns>
         </DataGrid>
         
