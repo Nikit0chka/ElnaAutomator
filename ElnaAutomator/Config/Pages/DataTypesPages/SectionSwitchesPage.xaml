@@ -18,37 +18,116 @@
                 <DataGridCheckBoxColumn Header="Select" Width="auto"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
                
-                <DataGridComboBoxColumn x:Name="SectionSwitchStatOnDiscreteInput" Header="StatOnDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding StatOnDiscreteInput}" />
-                <DataGridTextColumn Header="StatOnDiBit" Binding="{Binding StatOnDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridComboBoxColumn x:Name="SectionSwitchStatOnDiscreteInput" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding StatOnDiscreteInput}" ><DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            Ondi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                                        
+                    </DataGridComboBoxColumn>
+                <DataGridTextColumn Binding="{Binding StatOnDiscreteInputBit}" Width="*" Selector.IsSelected="False">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OnBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
                 
-                <DataGridComboBoxColumn x:Name="SectionSwitchStatOffDiscreteInput" Header="StatOffDi" Width="*" DisplayMemberPath="Name"
-                                        SelectedItemBinding="{Binding StatOffDiscreteInput}" />
-                <DataGridTextColumn Header="StatOffDiBit" Binding="{Binding StatOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridComboBoxColumn x:Name="SectionSwitchStatOffDiscreteInput"  Width="*" DisplayMemberPath="Name"
+                                        SelectedItemBinding="{Binding StatOffDiscreteInput}" >
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OffDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
                 
-                <DataGridComboBoxColumn x:Name="SectionSwitchInSoDiscreteInput" Header="InSoDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding InSoDiscreteInput}" />
-                <DataGridTextColumn Header="InSoDiBit" Binding="{Binding InSoDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridTextColumn  Binding="{Binding StatOffDiscreteInputBit}" Width="*" Selector.IsSelected="False">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OffBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
                 
-                <DataGridComboBoxColumn x:Name="SectionSwitchInSzDiscreteInput" Header="InSzDiscreteInput" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding InSzDiscreteInput}" />
-                <DataGridTextColumn Header="InSzDiBit" Binding="{Binding InSzDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridComboBoxColumn x:Name="SectionSwitchCmdOnDiscreteInput" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding CmdOnDiscreteOutput}" >
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OnDo
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
                 
-                <DataGridComboBoxColumn x:Name="SectionSwitchCmdOnDiscreteInput" Header="CmdOnDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding CmdOnDiscreteInput}" />
-                <DataGridTextColumn Header="CmdOnDiBit" Binding="{Binding CmdOnDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridTextColumn Binding="{Binding CmdOnDiscreteOutputBit}" Width="*" Selector.IsSelected="False">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OnBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
                
-                <DataGridComboBoxColumn x:Name="SectionSwitchCmdOffDiscreteInput" Header="CmdOffDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding CmdOffDiscreteInput}" />
-                <DataGridTextColumn Header="CmdOffDiBit" Binding="{Binding CmdOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridComboBoxColumn x:Name="SectionSwitchCmdOffDiscreteInput" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding CmdOffDiscreteOutput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OffDo
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
                 
-                <DataGridComboBoxColumn x:Name="BasketInDiscreteInput" Header="BasketInDi" DisplayMemberPath="Name" Width="*"
+                <DataGridTextColumn Binding="{Binding CmdOffDiscreteOutputBit}" Width="*" Selector.IsSelected="False">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OffBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                
+                <DataGridComboBoxColumn x:Name="SectionSwitchBasketInDiscreteInput" Header="BasketInDi" DisplayMemberPath="Name" Width="*"
                                         SelectedItemBinding="{Binding BasketInDiscreteInput}" />
                 <DataGridTextColumn Header="BasketInDiBit" Binding="{Binding BasketInDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
                
-                <DataGridComboBoxColumn x:Name="BasketOutDiscreteInput" Header="BasketOutDi" DisplayMemberPath="Name" Width="*"
+                <DataGridComboBoxColumn x:Name="SectionSwitchBasketOutDiscreteInput" Header="BasketOutDi" DisplayMemberPath="Name" Width="*"
                                         SelectedItemBinding="{Binding BasketOutDiscreteInput}" />
                 <DataGridTextColumn Header="BaseketOutDiBit" Binding="{Binding BasketOutDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="SectionSwitchStatOnReabDiscreteInput" Header="StatOnReabDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding StatOnReabDiscreteInput}" />
+                <DataGridTextColumn Header="StatOnReabDiBit" Binding="{Binding StatOnReabDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="SectionSwitchStatOffReabDiscreteInput" Header="StatOffReabDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding StatOffReabDiscreteInput}" />
+                <DataGridTextColumn Header="StatOfReabDiBit" Binding="{Binding StatOffReabDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="SectionSwitchBasketTestDiscreteInput" Header="BasketTestDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding BasketTestDiscreteInput}" />
+                <DataGridTextColumn Header="BaseketTestDiBit" Binding="{Binding BasketTestDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="SectionSwitchInBreakCmdOn" Header="InBreakCmdOnDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding InBreakCmdOn}" />
+                <DataGridTextColumn Header="StatOnReabDiBit" Binding="{Binding InBreakCmdOnBit}" Width="*" Selector.IsSelected="False"/>
+                
+                <DataGridComboBoxColumn x:Name="SectionSwitchInBreakCmdOff" Header="InBreakCmdOffDi" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding InBreakCmdOff}" />
+                <DataGridTextColumn Header="InBreakCmdOff" Binding="{Binding InBreakCmdOffBit}" Width="*" Selector.IsSelected="False"/>
             </DataGrid.Columns>
         </DataGrid>
         
