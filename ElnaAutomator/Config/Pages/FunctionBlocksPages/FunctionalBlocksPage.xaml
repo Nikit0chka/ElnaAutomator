@@ -10,7 +10,23 @@
             <Button Name="ProcAiInit" Content="ProcAiInit" Margin="5" Width="80"
                     Click="ProcAiInit_OnClick" /> 
             <Button Name="ProcAi" Content="ProcAi" Margin="5" Width="80"
-                    Click="ProcAi_OnClick" />
+                    Click="ProcAi_OnClick" /> 
+            <Button Name="ProcDi" Content="ProcDi" Margin="5" Width="80"
+                    Click="ProcDi_OnClick" /> 
+            <Button Name="ProcDiInit" Content="ProcDiInit" Margin="5" Width="80"
+                    Click="ProcDiInit_OnClick" />
+            <Button Name="ProcDo" Content="ProcDo" Margin="5" Width="80"
+                    Click="ProcDo_OnClick" />
+            <Button Name="ProcDoInit" Content="ProcDoInit" Margin="5" Width="80"
+                    Click="ProcDoInit_OnClick" /> 
+            <Button Name="ProcIm" Content="ProcIm" Margin="5" Width="80"
+                    Click="ProcIm_OnClick" />
+            <Button Name="ProcImInit" Content="ProcImInit" Margin="5" Width="80"
+                    Click="ProcImInit_OnClick" />
+            <Button Name="ProcProtections" Content="ProcProtections" Margin="5" Width="80"
+                    Click="ProcProtections_OnClick" />
+            <Button Name="ProcProtectionsInit" Content="ProcProtectionsInit" Margin="5" Width="80"
+                    Click="ProcProtectionsInit_OnClick" />
         </UniformGrid>
     </Grid>
 </Page>
