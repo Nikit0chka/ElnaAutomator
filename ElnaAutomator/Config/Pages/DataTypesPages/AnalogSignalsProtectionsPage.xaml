@@ -12,12 +12,14 @@
         </Grid.RowDefinitions>
 
         <DataGrid Grid.Row="0" Name="AiProtectionsDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False"
-                  HorizontalAlignment="Stretch">
+                  HorizontalAlignment="Stretch" d:DataContext="{d:DesignInstance }">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="auto" />
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
                 <DataGridComboBoxColumn x:Name="AnalogSignalsCmbBx" Header="Ai signal"
-                                        SelectedItemBinding="{Binding AnalogInputName}" Width="*"/>
+                                        SelectedItemBinding="{Binding AnalogInput}" Width="*"/>
+                <DataGridTextColumn Header="Delay" Binding="{Binding Delay}" Width="*" />
+                <DataGridCheckBoxColumn Header="Is run on start" Binding="{Binding IsRunOnStart}" Width="auto" />
                 <DataGridCheckBoxColumn Header="Is upper alarm" Binding="{Binding IsUpperLimitProtection}" Width="auto" />
             </DataGrid.Columns>
         </DataGrid>
