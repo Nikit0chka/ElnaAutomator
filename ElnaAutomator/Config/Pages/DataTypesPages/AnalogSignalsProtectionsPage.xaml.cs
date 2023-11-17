@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using ElnaAutomator.Config.ConfigStructs;
 
 namespace ElnaAutomator.Config.Pages.DataTypesPages;
@@ -14,14 +15,6 @@ public partial class AnalogSignalsProtectionsPage
         _currentApp = (App) Application.Current;
         AiProtectionsDataGrid.ItemsSource = _currentApp.AnalogSignalProtections;
         AnalogSignalsCmbBx.ItemsSource = _currentApp.AnalogInputs;
-        this.Loaded += OnLoaded;
-    }
-    private void OnLoaded(object sender, RoutedEventArgs e)
-    {
-        MessageBox.Show("SDFSDF");
-        AiProtectionsDataGrid.Items.Refresh();        AiProtectionsDataGrid.ItemsSource = _currentApp.AnalogSignalProtections;
-        
-        AnalogSignalsCmbBx.ItemsSource = _currentApp.AnalogInputs;
     }
 
     private void AddAiProtection_OnClick(object sender, RoutedEventArgs e)
@@ -30,6 +23,8 @@ public partial class AnalogSignalsProtectionsPage
         {
             Name = $"AiP{_currentApp.AnalogSignalProtections.Count}",
             IsUpperLimitProtection = false,
+            Delay = 0,
+            IsRunOnStart = false
         };
         _currentApp.AnalogSignalProtections.Add(newAnalogSignalProtection);
         AiProtectionsDataGrid.Items.Refresh();
@@ -58,4 +53,11 @@ public partial class AnalogSignalsProtectionsPage
 
         AiProtectionsDataGrid.Items.Refresh();
     }
+    private void ComboBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+        if (comboBox != null)
+            comboBox.SelectedIndex = -1;
+    }
+
 }
