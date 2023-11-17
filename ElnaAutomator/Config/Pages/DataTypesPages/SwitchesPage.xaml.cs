@@ -17,8 +17,8 @@ public partial class SwitchesPage
         SwitchStatOffDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
         SwitchCmdOffDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
         SwitchCmdOnDiscreteInput.ItemsSource = _currentApp.DiscreteOutputs;
-        SwitchInSoDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
-        SwitchInSzDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
+        SwitchInBreakCmdOff.ItemsSource = _currentApp.DiscreteInputs;
+        SwitchInBreakCmdOn.ItemsSource = _currentApp.DiscreteInputs;
     }
     private void AddSwitch_OnClick(object sender, RoutedEventArgs e)
     {
