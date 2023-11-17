@@ -6,7 +6,7 @@
       mc:Ignorable="d"
       Title="FunctionsPage" d:DesignHeight="700" d:DesignWidth="650">
     <Grid>
-        <UniformGrid  Columns="6" HorizontalAlignment="Center" VerticalAlignment="Top" Height="500">
+        <UniformGrid  Columns="6" HorizontalAlignment="Center" VerticalAlignment="Top" Height="200">
             <Button Name="AnyAnalogNs" Content="AnyAnalogNs" Margin="5" Width="90" Height="50"
                     Click="AnyAnalogNs_OnClick" />
             <Button Name="AnyAnalogPs" Content="AnyAnalogPs" Margin="5" Width="90" Height="50" 
@@ -87,82 +87,6 @@
                 <StackPanel>
                     <TextBlock Text="ResetAll" HorizontalAlignment="Center" />
                     <TextBlock Text="Signalling" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="AskQuestion" Content="AskQuestion" Margin="5" Width="90" Height="50"
-                    Click="AskQuestion_OnClick" />
-            <Button Name="ImpulseSo" Content="ImpulseSo" Margin="5" Width="90" Height="50"
-                    Click="ImpulseSo_OnClick" />
-            <Button Name="ResetAiProtection" Margin="5" Width="90" Height="50"
-                    Click="ResetAiProtection_OnClick">
-                <StackPanel>
-                    <TextBlock Text="ResetAi" HorizontalAlignment="Center" />
-                    <TextBlock Text="Protection" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="ResetAndDisable" Margin="5" Width="90" Height="50"
-                    Click="ResetAndDisable_OnClick">
-                <StackPanel>
-                    <TextBlock Text="ResetAnd" HorizontalAlignment="Center" />
-                    <TextBlock Text="Disable" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="ResetDiProtection" Margin="5" Width="90" Height="50"
-                    Click="ResetDiProtection_OnClick">
-                <StackPanel>
-                    <TextBlock Text="ResetDi" HorizontalAlignment="Center" />
-                    <TextBlock Text="Protection" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="ResetIfRunning" Content="ResetIfRunning" Margin="5" Width="90" Height="50"
-                    Click="ResetIfRunning_OnClick" />
-            <Button Name="ResetIfRunningSo" Margin="5" Width="90" Height="50"
-                    Click="ResetIfRunningSo_OnClick">
-                <StackPanel>
-                    <TextBlock Text="ResetIf" HorizontalAlignment="Center" />
-                    <TextBlock Text="RunningSo" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="ResetPhase" Content="ResetPhase" Margin="5" Width="90" Height="50"
-                    Click="ResetPhase_OnClick" />
-            <Button Name="ResetQuestion" Content="ResetQuestion" Margin="5" Width="90" Height="50"
-                    Click="ResetQuestion_OnClick" />
-            <Button Name="RunAiProtection" Margin="5" Width="90" Height="50"
-                    Click="RunAiProtection_OnClick">
-                <StackPanel>
-                    <TextBlock Text="RunAi" HorizontalAlignment="Center" />
-                    <TextBlock Text="Protection" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="RunDiProtection" Margin="5" Width="90" Height="50"
-                    Click="RunDiProtection_OnClick">
-                <StackPanel>
-                    <TextBlock Text="RunDi" HorizontalAlignment="Center" />
-                    <TextBlock Text="Protection" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="RunIfNotRunning" Margin="5" Width="90" Height="50"
-                    Click="RunIfNotRunning_OnClick">
-                <StackPanel>
-                    <TextBlock Text="RunIfNot" HorizontalAlignment="Center" />
-                    <TextBlock Text="Running" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="RunIfNotRunningSo" Margin="5" Width="90" Height="50"
-                    Click="RunIfNotRunningSo_OnClick">
-                <StackPanel>
-                    <TextBlock Text="RunIfNot" HorizontalAlignment="Center" />
-                    <TextBlock Text="RunningSo" HorizontalAlignment="Center" />
-                </StackPanel>
-            </Button>
-            <Button Name="RunPhase" Content="RunPhase" Margin="5" Width="90" Height="50"
-                    Click="RunPhase_OnClick" />
-            
-            <Button Name="TwoUintToUdint" Margin="5" Width="90" Height="50"
-                    Click="TwoUint_To_UDINT_OnClick">
-                <StackPanel>
-                    <TextBlock Text="TwoUint_To" HorizontalAlignment="Center" />
-                    <TextBlock Text="_UDINT" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
         </UniformGrid>

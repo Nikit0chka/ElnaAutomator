@@ -74,51 +74,6 @@ public partial class FunctionsPage
             _currentApp.AnalogSignalProtections,
             _currentApp.DiscreteSignalProtections);
 
-    private void AskQuestion_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateAskQuestion(_currentApp.PathToProject);
-
-    private void ImpulseSo_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateImpulseSo(_currentApp.PathToProject);
-
-    private void ResetAiProtection_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateResetAiProtection(_currentApp.PathToProject);
-
-    private void ResetAndDisable_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateResetAndDisable(_currentApp.PathToProject);
-
-    private void ResetDiProtection_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateResetDiProtection(_currentApp.PathToProject);
-
-    private void ResetIfRunning_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateResetIfRunning(_currentApp.PathToProject);
-
-    private void ResetIfRunningSo_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateResetIfRunningSo(_currentApp.PathToProject);
-
-    private void ResetPhase_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateResetPhase(_currentApp.PathToProject);
-
-    private void ResetQuestion_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateResetQuestion(_currentApp.PathToProject);
-
-    private void RunAiProtection_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateRunAiProtection(_currentApp.PathToProject);
-
-    private void RunDiProtection_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateRunDiProtection(_currentApp.PathToProject);
-
-    private void RunIfNotRunning_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateRunIfNotRunning(_currentApp.PathToProject);
-
-    private void RunIfNotRunningSo_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateRunIfNotRunningSo(_currentApp.PathToProject);
-
-    private void RunPhase_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateRunPhase(_currentApp.PathToProject);
-
-    private void TwoUint_To_UDINT_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionsGenerator.GenerateTwoUintToUdint(_currentApp.PathToProject);
-
     private void BlockAllIm_OnClick(object sender, RoutedEventArgs e)
     {
         List<ExecutiveMechanism> executiveMechanisms = new();
