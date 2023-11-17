@@ -12,7 +12,8 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         
-        <DataGrid Grid.Row="0" Name="AiDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch">
+        <DataGrid Grid.Row="0" Name="AiDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch"
+                  d:DataContext="{d:DesignData }">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Header="Select" Width="*"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
@@ -22,6 +23,7 @@
                 <DataGridTextColumn Header="HW" Binding="{Binding HighWarning}" Selector.IsSelected="False" Width="*"/>
                 <DataGridTextColumn Header="HA" Binding="{Binding HighAlarm}" Selector.IsSelected="False" Width="*"/>
                 <DataGridTextColumn Header="HL" Binding="{Binding HighLimit}" Selector.IsSelected="False" Width="*"/>
+                <DataGridTextColumn Header="ModuleId" Binding="{Binding ModuleId}" Selector.IsSelected="False" Width="*"/>
                 <DataGridTextColumn Header="Address" Binding="{Binding Address}" Selector.IsSelected="False" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
