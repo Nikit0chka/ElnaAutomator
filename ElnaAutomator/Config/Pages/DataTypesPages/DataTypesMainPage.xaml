@@ -32,6 +32,8 @@
                     Click="AnalogInputsProtectionsShowButton_OnClick" />
             <Button Name="DiscreteSignalsProtectionsShowButton" Content="DiProtections" Margin="5" Width="80"
                     Click="DiscreteSignalsProtectionsShowButton_OnClick" />
+            <Button Name="SectionsSwitchesShowButton" Content="SectionSwitch" Margin="5" Width="80"
+                    Click="SectionsSwitchesShowButton_OnClick" />
         </UniformGrid>
 
         <Frame Grid.Row="1" Name="ThisFrame" Height="auto" />

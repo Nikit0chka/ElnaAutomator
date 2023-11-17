@@ -11,6 +11,7 @@ public partial class DataTypesMainPage
     private readonly SingleOutputsPage _singleOutputsPage;
     private readonly KransPage _kransPage;
     private readonly SwitchesPage _switchesPage;
+    private readonly SectionSwitchesPage _sectionSwitchesPage;
     private readonly OilPumpsPage _oilPumpsPage;
     private readonly AnalogSignalsProtectionsPage _analogSignalsProtectionsPage;
     private readonly DiscreteSignalsProtectionsPage _discreteSignalsProtectionsPage;
@@ -24,6 +25,7 @@ public partial class DataTypesMainPage
         _singleOutputsPage = new SingleOutputsPage();
         _kransPage = new KransPage();
         _switchesPage = new SwitchesPage();
+        _sectionSwitchesPage = new SectionSwitchesPage();
         _oilPumpsPage = new OilPumpsPage();
         _analogSignalsProtectionsPage = new AnalogSignalsProtectionsPage();
         _discreteSignalsProtectionsPage = new DiscreteSignalsProtectionsPage();
@@ -79,5 +81,9 @@ public partial class DataTypesMainPage
     private void SwitchesShowButton_OnClick(object sender, RoutedEventArgs e)
     {
         ThisFrame.Navigate(_switchesPage);
+    }
+    private void SectionsSwitchesShowButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        ThisFrame.Navigate(_sectionSwitchesPage);
     }
 }
