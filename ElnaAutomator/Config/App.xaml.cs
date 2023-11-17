@@ -27,49 +27,50 @@ public partial class App
     public App()
     {
         PathToProject = "";
-        
-var ai = new AnalogInput
+
+        var ai = new AnalogInput
         {
             Name = "A1", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
-            LowAlarm = 10, HighWarning = 80, LowWarning = 20, ModuleName = "A",
-            Address = 0, ModuleAddress = 0
+            LowAlarm = 10, HighWarning = 80, LowWarning = 20,
+            Address = 0, ModuleId = 0
         };
         var ai2 = new AnalogInput
         {
             Name = "A2", HighLimit = 100, LowLimit = 0, HighAlarm = 90,
-            LowAlarm = 10, HighWarning = 80, LowWarning = 20, ModuleName = "A",
-            Address = 0, ModuleAddress = 0
+            LowAlarm = 10, HighWarning = 80, LowWarning = 20,
+            Address = 0, ModuleId = 0
         };
         var di = new DiscreteInput
         {
-            Name = "Di"
+            Name = "Di", ModuleId = 0
         };
-        
+
         var do1 = new DiscreteOutput
         {
-            Name = "Do1"
+            Name = "Do1",
+            ModuleId = 0
         };
-        
+
         var singleInput = new SingleInput
         {
-            Name = "SingleInput", DiscreteInput = di
+            Name = "SingleInput", DiscreteInput = di, Address = 1, IsInversed = false
         };
-        
+
         var singleOutput = new SingleOutput
         {
-            Name = "SingleOutput", DigitalOutput = do1
+            Name = "SingleOutput", DiscreteOutput = do1, Address = 1
         };
-        
+
         var analogSignalProtection = new AnalogSignalProtection
         {
-            AnalogInput = ai, AnalogInputName = "A1", IsUpperLimitProtection = false, Name = "Ap1"
+            AnalogInput = ai, IsUpperLimitProtection = false, Name = "Ap1", Delay = 2, IsRunOnStart = false
         };
-        
+
         var discreteSignalProtection = new DiscreteSignalProtection
         {
-            IsOnLimitProtection = true, SingleInputName = "SingleInput", Name = "Dip1", SingleInput = singleInput
+            Name = "Dip1", SingleInput = singleInput, Delay = 3, IsRunOnStart = false
         };
-        
+
         var kran = new Kran
         {
             Name = "Kran1",
@@ -80,9 +81,19 @@ var ai = new AnalogInput
             StatOnDiscreteInput = di,
             StatOnDiscreteInputBit = 1,
             StatOffDiscreteInput = di,
-            StatOffDiscreteInputBit = 2
+            StatOffDiscreteInputBit = 2,
+            InSoDiscreteInput = di,
+            InSoDiscreteInputBit = 3,
+            InSzDiscreteInput = di,
+            InSzDiscreteInputBit = 2,
+            InDpDiscreteInput = di,
+            InDpDiscreteInputBit = 2,
+            StatOffReabDiscreteInput = di,
+            StatOnReabDiscreteInput = di,
+            StatOffReabDiscreteInputBit = 2,
+            StatOnReabDiscreteInputBit = 3
         };
-        
+
         var switch1 = new Switch
         {
             Name = "Switch1",
@@ -93,9 +104,17 @@ var ai = new AnalogInput
             StatOnDiscreteInput = di,
             StatOnDiscreteInputBit = 1,
             StatOffDiscreteInput = di,
-            StatOffDiscreteInputBit = 2
+            StatOffDiscreteInputBit = 2,
+            StatOffReabDiscreteInput = di,
+            StatOffReabDiscreteInputBit = 1,
+            StatOnReabDiscreteInput = di,
+            StatOnReabDiscreteInputBit = 1,
+            InBreakCmdOff = di,
+            InBreakCmdOn = di,
+            InBreakCmdOffBit = 2,
+            InBreakCmdOnBit = 3,
         };
-        
+
         var oilPump = new OilPump
         {
             Name = "OilPump1",
@@ -106,33 +125,64 @@ var ai = new AnalogInput
             StatOnDiscreteInput = di,
             StatOnDiscreteInputBit = 1,
             StatOffDiscreteInput = di,
-            StatOffDiscreteInputBit = 2
+            StatOffDiscreteInputBit = 2,
+            StatOffReabDiscreteInput = di,
+            StatOffReabDiscreteInputBit = 1,
+            StatOnReabDiscreteInput = di,
+            StatOnReabDiscreteInputBit = 1,
+            InBreakCmdOff = di,
+            InBreakCmdOn = di,
+            InBreakCmdOffBit = 2,
+            InBreakCmdOnBit = 3,
         };
-        
+
         var sectionSwitch = new SectionSwitch
         {
-            Name = "Sw1"
+            Name = "Mv",
+            CmdOffDiscreteOutput = do1,
+            CmdOffDiscreteOutputBit = 0,
+            CmdOnDiscreteOutput = do1,
+            CmdOnDiscreteOutputBit = 1,
+            StatOnDiscreteInput = di,
+            StatOnDiscreteInputBit = 1,
+            StatOffDiscreteInput = di,
+            StatOffDiscreteInputBit = 2,
+            BasketInDiscreteInput = di,
+            BasketOutDiscreteInput = di,
+            BasketInDiscreteInputBit = 2,
+            BasketOutDiscreteInputBit = 3,
+            StatOffReabDiscreteInput = di,
+            StatOffReabDiscreteInputBit = 1,
+            StatOnReabDiscreteInput = di,
+            StatOnReabDiscreteInputBit = 1,
+            InBreakCmdOff = di,
+            InBreakCmdOn = di,
+            InBreakCmdOffBit = 2,
+            InBreakCmdOnBit = 3,
+            BasketTestDiscreteInput = di,
+            BasketTestDiscreteInputBit = 3            
         };
-        
+
         AnalogInputs = new List<AnalogInput>
-            {ai, ai2};
+            { ai, ai2 };
         DiscreteInputs = new List<DiscreteInput>
-            {di};
+            { di };
         DiscreteOutputs = new List<DiscreteOutput>
-            {do1};
+            { do1 };
         SingleInputs = new List<SingleInput>
-            {singleInput};
+            { singleInput };
         SingleOutputs = new List<SingleOutput>
-            {singleOutput};
+            { singleOutput };
         AnalogSignalProtections = new List<AnalogSignalProtection>
-            {analogSignalProtection};
+            { analogSignalProtection };
         DiscreteSignalProtections = new List<DiscreteSignalProtection>
-            {discreteSignalProtection};
+            { discreteSignalProtection };
         Krans = new List<Kran>
-            {kran};
-        OilPumps = new List<OilPump> {oilPump};
-        Switches = new List<Switch> {switch1};
-        SectionSwitches = new List<SectionSwitch> {sectionSwitch};
+            { kran };
+        OilPumps = new List<OilPump> { oilPump };
+        Switches = new List<Switch> { switch1 };
+        SectionSwitches = new List<SectionSwitch> { sectionSwitch };
+
         try
         {
             PathToProject = FileWork.GetLocalConfigDirectory();
