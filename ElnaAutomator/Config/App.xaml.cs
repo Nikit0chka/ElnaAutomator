@@ -191,6 +191,7 @@ public partial class App
         {
             MessageBox.Show(ex.Message);
             Current.Shutdown();
+            return;
         }
 
         // try
@@ -200,6 +201,8 @@ public partial class App
         // catch (Exception ex)
         // {
         //     MessageBox.Show(ex.Message);
+        //Current.Shutdown();
+        //return;
         // }
 
         MainWindow mainWindow = new();
