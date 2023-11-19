@@ -2,30 +2,41 @@
 using System.IO;
 using Newtonsoft.Json;
 using System.Windows;
-using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace ElnaAutomator.Config;
 
 public static class FileWork
 {
+    private const string ConfigFileName = "config.txt";
     private readonly static App CurrentApp = (App) Application.Current;
-    private readonly static JsonSerializerSettings Settings = new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects };
+
+    private readonly static JsonSerializerSettings Settings = new()
+        {PreserveReferencesHandling = PreserveReferencesHandling.Objects};
 
     public static string GetLocalConfigDirectory()
     {
-        OpenFileDialog openFileDialog = new();
+        var folderDialog = new CommonOpenFileDialog()
+        {
+            IsFolderPicker = true,
+            Title = "Choose project directory"
+        };
 
-        if (openFileDialog.ShowDialog() != true) throw new Exception("Exception trying choose project directory. Directory didnt chosen");
+        if (folderDialog.ShowDialog() != CommonFileDialogResult.Ok)
+            throw new Exception("Exception trying choose project directory. Directory didnt chosen");
 
-        var path = Path.GetDirectoryName(openFileDialog.FileName);
+        var path = Path.GetDirectoryName(folderDialog.FileName);
 
-        return path ?? "";
+        if (path == null)
+            throw new Exception("Exception trying choose project directory. Directory is null");
+
+        return path;
     }
 
     public static void ReadConfig(string path)
     {
-        if (!File.Exists(path + "\\config.txt"))
-            throw new Exception("Exception reading json, config.txt not exist");
+        if (!File.Exists(@$"{path}\{ConfigFileName}"))
+            throw new Exception("Exception reading json, \"config.txt\" not exist");
 
         try
         {
@@ -76,7 +87,7 @@ public static class FileWork
 
         try
         {
-            File.WriteAllText(path + "\\config.txt", data);
+            File.WriteAllText(@$"{path}\{ConfigFileName}", data);
         }
         catch (Exception ex)
         {
