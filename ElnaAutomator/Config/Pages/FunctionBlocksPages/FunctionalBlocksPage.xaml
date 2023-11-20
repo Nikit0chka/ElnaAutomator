@@ -6,7 +6,7 @@
       mc:Ignorable="d"
       Title="FunctionalBlocksPage" Height="400" Width="625">
     <Grid>
-         <UniformGrid Grid.Row="0" Columns="5" Rows="3" HorizontalAlignment="Center">
+         <UniformGrid Grid.Row="0" Columns="6" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Button Name="ProcAiInit" Content="ProcAiInit" Margin="5" Width="80"
                     Click="ProcAiInit_OnClick" /> 
             <Button Name="ProcAi" Content="ProcAi" Margin="5" Width="80"
@@ -27,6 +27,20 @@
                     Click="ProcProtections_OnClick" />
             <Button Name="ProcProtectionsInit" Content="ProcProtectionsInit" Margin="5" Width="80"
                     Click="ProcProtectionsInit_OnClick" />
+            <Button Name="OpcAiGet" Content="OpcAiGet" Margin="5" Width="80"
+                    Click="OpcAiGet_OnClick" />
+            <Button Name="OpcAiSet" Content="OpcAiSet" Margin="5" Width="80"
+                    Click="OpcAiSet_OnClick" />
+            <Button Name="OpcAiInit" Content="OpcAiInit" Margin="5" Width="80"
+                    Click="OpcAiInit_OnClick" /> 
+            <Button Name="OpcImGet" Content="OpcImGet" Margin="5" Width="80"
+                    Click="OpcImGet_OnClick" />
+            <Button Name="OpcImSet" Content="OpcImSet" Margin="5" Width="80"
+                    Click="OpcImSet_OnClick" />
+            <Button Name="OpcProtectionsGet" Content="OpcProtectionsGet" Margin="5" Width="80"
+                    Click="OpcProtectionsGet_OnClick" />
+            <Button Name="OpcProtectionsSet" Content="OpcProtectionsGet" Margin="5" Width="80"
+                    Click="OpcProtectionsSet_OnClick" />
         </UniformGrid>
     </Grid>
 </Page>
