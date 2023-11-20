@@ -7,7 +7,7 @@ namespace ElnaAutomator.Config.Generators;
 
 public static class DataTypesGenerator
 {
-    private const string DataTypesFolderName = "DataTypes";
+    public const string DataTypesFolderName = "DataTypes";
 
     public static void GenerateAiConfig(string pathToProjectDirectory, List<AnalogInput> analogInputs)
     {
