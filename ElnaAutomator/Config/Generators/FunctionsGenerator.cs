@@ -7,7 +7,7 @@ namespace ElnaAutomator.Config.Generators;
 
 public static class FunctionsGenerator
 {
-    private const string FunctionsFolderName = "Functions";
+    public const string FunctionsFolderName = "Functions";
 
     public static void GenerateAnyAnalogPs(string pathToProjectDirectory, List<AnalogInput> analogInputs)
     {
