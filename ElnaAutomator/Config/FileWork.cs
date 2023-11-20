@@ -2,6 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using System.Windows;
+using ElnaAutomator.Config.Generators;
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace ElnaAutomator.Config;
@@ -12,7 +13,7 @@ public static class FileWork
     private readonly static App CurrentApp = (App) Application.Current;
 
     private readonly static JsonSerializerSettings Settings = new()
-        {PreserveReferencesHandling = PreserveReferencesHandling.Objects};
+        { PreserveReferencesHandling = PreserveReferencesHandling.Objects };
 
     public static string GetLocalConfigDirectory()
     {
@@ -25,7 +26,10 @@ public static class FileWork
         if (folderDialog.ShowDialog() != CommonFileDialogResult.Ok)
             throw new Exception("Exception trying choose project directory. Directory didnt chosen");
 
-        var path = Path.GetDirectoryName(folderDialog.FileName);
+        if (folderDialog.FileName == null)
+            throw new Exception("Exception trying choose project directory. File name is null");
+
+        var path = Path.GetFullPath(folderDialog.FileName);
 
         if (path == null)
             throw new Exception("Exception trying choose project directory. Directory is null");
@@ -36,11 +40,11 @@ public static class FileWork
     public static void ReadConfig(string path)
     {
         if (!File.Exists(@$"{path}\{ConfigFileName}"))
-            throw new Exception("Exception reading json, \"config.txt\" not exist");
+            return;
 
         try
         {
-            var data = File.ReadAllText(path + "\\config.txt");
+            var data = File.ReadAllText(@$"{path}\{ConfigFileName}");
 
             var json = JsonConvert.DeserializeObject<ConfigJson>(data);
 
@@ -92,6 +96,28 @@ public static class FileWork
         catch (Exception ex)
         {
             throw new Exception($"Exception trying write config to file {ex}");
+        }
+    }
+
+    public static void CreateFoldersIfNotExist(string path)
+    {
+        try
+        {
+            if (!Directory.Exists(@$"{path}\{FunctionsGenerator.FunctionsFolderName}"))
+                Directory.CreateDirectory(@$"{path}\{FunctionsGenerator.FunctionsFolderName}");
+
+            if (!Directory.Exists(@$"{path}\{FunctionBlocksGenerator.FunctionBlocksFolderName}"))
+                Directory.CreateDirectory(@$"{path}\{FunctionBlocksGenerator.FunctionBlocksFolderName}");
+
+            if (!Directory.Exists(@$"{path}\{DataTypesGenerator.DataTypesFolderName}"))
+                Directory.CreateDirectory(@$"{path}\{DataTypesGenerator.DataTypesFolderName}");
+
+            if (!Directory.Exists(@$"{path}\{ExcelWork.ExcelFolderName}"))
+                Directory.CreateDirectory(@$"{path}\{ExcelWork.ExcelFolderName}");
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying create folders, {ex}");
         }
     }
 }
