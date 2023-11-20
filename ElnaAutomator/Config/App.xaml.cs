@@ -186,6 +186,8 @@ public partial class App
         try
         {
             PathToProject = FileWork.GetLocalConfigDirectory();
+            FileWork.ReadConfig(PathToProject);
+            FileWork.CreateFoldersIfNotExist(PathToProject);
         }
         catch (Exception ex)
         {
@@ -193,17 +195,6 @@ public partial class App
             Current.Shutdown();
             return;
         }
-
-        // try
-        // {
-        //     FileWork.ReadConfig(PathToProject);
-        // }
-        // catch (Exception ex)
-        // {
-        //     MessageBox.Show(ex.Message);
-        //Current.Shutdown();
-        //return;
-        // }
 
         MainWindow mainWindow = new();
         mainWindow.Show();
