@@ -4,13 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using ElnaAutomator.Config.ConfigStructs;
-using Microsoft.Extensions.Primitives;
 
 namespace ElnaAutomator.Config.Generators;
 
 public static class FunctionBlocksGenerator
 {
-    private const string FunctionBlocksFolderName = "FunctionBlocks";
+    public const string FunctionBlocksFolderName = "FunctionBlocks";
 
     public static void GenerateProcAiInit(string pathToProjectDirectory, List<AnalogInput> analogInputs)
     {
@@ -482,7 +481,8 @@ public static class FunctionBlocksGenerator
         {
             content.Append(
                 $"stAIp_Ini(data_Ini := TRUE, delay := T#{analogSignalProtection.Delay}S, inTag := ProtectionTags.AOS, isRunOnStart := {analogSignalProtection.IsRunOnStart.ToString().ToUpper()},\n");
-            content.Append($"controlLimit := _StatusAi.{(analogSignalProtection.IsUpperLimitProtection? "HA" : "LA")}, str_AIp := Protections.{analogSignalProtection.Name});\n");
+            content.Append(
+                $"controlLimit := _StatusAi.{(analogSignalProtection.IsUpperLimitProtection? "HA" : "LA")}, str_AIp := Protections.{analogSignalProtection.Name});\n");
             content.Append("inits := inits + BOOL_TO_UINT(stAIp_Ini.Init);\n\n");
         }
 
@@ -497,6 +497,248 @@ public static class FunctionBlocksGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Protections_Init.st", content);
     }
+
+    public static void GenerateOpcAiGet(string pathToProjectDirectory, List<AnalogInput> analogInputs)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION_BLOCK Opc_Ai_get \n\n");
+        content.Append("VAR_EXTERNAL\n\tAi : AiConfig;\n");
+
+        foreach (var analogInput in analogInputs)
+        {
+            if (analogInput.HighWarning != null)
+                content.Append($"\tAI_{analogInput.Name}_newHW : LREAL;\n");
+            if (analogInput.HighAlarm != null)
+                content.Append($"\tAI_{analogInput.Name}_newHA : LREAL;\n");
+            if (analogInput.LowAlarm != null)
+                content.Append($"\tAI_{analogInput.Name}_newLA : LREAL;\n");
+            if (analogInput.LowWarning != null)
+                content.Append($"\tAI_{analogInput.Name}_newLW : LREAL;\n");
+
+            content.Append($"\tAI_{analogInput.Name}_newHL : LREAL;\n");
+            content.Append($"\tAI_{analogInput.Name}_newLL : LREAL;\n");
+            content.Append($"\tAI_{analogInput.Name}_command : UINT;\n");
+        }
+        content.Append("END_VAR\n\n");
+
+        foreach (var analogInput in analogInputs)
+        {
+            if (analogInput.HighWarning != null)
+                content.Append($"Ai.{analogInput.Name}.dHW := AI_{analogInput.Name}_newHW;\n");
+            if (analogInput.HighAlarm != null)
+                content.Append($"Ai.{analogInput.Name}.dHA := AI_{analogInput.Name}_newHA;\n");
+            if (analogInput.LowAlarm != null)
+                content.Append($"Ai.{analogInput.Name}.dLA := AI_{analogInput.Name}_newLA;\n");
+            if (analogInput.LowWarning != null)
+                content.Append($"Ai.{analogInput.Name}.dLW := AI_{analogInput.Name}_newLW;\n");
+
+            content.Append($"Ai.{analogInput.Name}.dHL := AI_{analogInput.Name}_newHL;\n");
+            content.Append($"Ai.{analogInput.Name}.dLL := AI_{analogInput.Name}_newLL;\n");
+            content.Append($"Ai.{analogInput.Name}.inCommand_ARM := UINT_TO_WORD(AI_{analogInput.Name}_command);\n\n");
+        }
+        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Ai_get.st", content);
+    }
+
+    public static void GenerateOpcAiSet(string pathToProjectDirectory, List<AnalogInput> analogInputs)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION_BLOCK Opc_Ai_set \n\n");
+        content.Append("VAR_EXTERNAL\n\tAi : AiConfig;\n");
+
+        foreach (var analogInput in analogInputs)
+        {
+            if (analogInput.HighWarning != null)
+                content.Append($"\tAI_{analogInput.Name}_HW : LREAL;\n");
+            if (analogInput.HighAlarm != null)
+                content.Append($"\tAI_{analogInput.Name}_HA : LREAL;\n");
+            if (analogInput.LowAlarm != null)
+                content.Append($"\tAI_{analogInput.Name}_LA : LREAL;\n");
+            if (analogInput.LowWarning != null)
+                content.Append($"\tAI_{analogInput.Name}_LW : LREAL;\n");
+
+            content.Append($"\tAI_{analogInput.Name}_HL : LREAL;\n");
+            content.Append($"\tAI_{analogInput.Name}_LL : LREAL;\n");
+            content.Append($"\tAI_{analogInput.Name}_value : LREAL;\n");
+            content.Append($"\tAI_{analogInput.Name}_status : UDINT;\n");
+        }
+        content.Append("END_VAR\n\n");
+
+        foreach (var analogInput in analogInputs)
+        {
+            if (analogInput.HighWarning != null)
+                content.Append($"AI_{analogInput.Name}_HW := Ai.{analogInput.Name}.HW;\n");
+            if (analogInput.HighAlarm != null)
+                content.Append($"AI_{analogInput.Name}_HA := Ai.{analogInput.Name}.HA;\n");
+            if (analogInput.LowAlarm != null)
+                content.Append($"AI_{analogInput.Name}_LA := Ai.{analogInput.Name}.LA;\n");
+            if (analogInput.LowWarning != null)
+                content.Append($"AI_{analogInput.Name}_LW := Ai.{analogInput.Name}.LW;\n");
+
+            content.Append($"AI_{analogInput.Name}_LL := Ai.{analogInput.Name}.LL;\n");
+            content.Append($"AI_{analogInput.Name}_HL := Ai.{analogInput.Name}.HL;\n");
+            content.Append($"AI_{analogInput.Name}_value := Ai.{analogInput.Name}.value;\n");
+            content.Append($"AI_{analogInput.Name}_status := DWORD_TO_UDINT(Ai.{analogInput.Name}.status);\n\n");
+        }
+        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Ai_set.st", content);
+    }
+
+    public static void GenerateOpcAiInit(string pathToProjectDirectory, List<AnalogInput> analogInputs)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION_BLOCK Opc_Ai_init \n\n");
+        content.Append("VAR_EXTERNAL\n\tAi : AiConfig;\n");
+
+        foreach (var analogInput in analogInputs)
+        {
+            if (analogInput.HighWarning != null)
+            {
+                content.Append($"\tAI_{analogInput.Name}_HW : LREAL;\n");
+                content.Append($"\tAI_{analogInput.Name}_newHW : LREAL;\n");
+            }
+
+            if (analogInput.HighAlarm != null)
+            {
+                content.Append($"\tAI_{analogInput.Name}_HA : LREAL;\n");
+                content.Append($"\tAI_{analogInput.Name}_newHA : LREAL;\n");
+            }
+
+            if (analogInput.LowAlarm != null)
+            {
+                content.Append($"\tAI_{analogInput.Name}_LA : LREAL;\n");
+                content.Append($"\tAI_{analogInput.Name}_newLA : LREAL;\n");
+            }
+
+            if (analogInput.LowWarning != null)
+            {
+                content.Append($"\tAI_{analogInput.Name}_LW : LREAL;\n");
+                content.Append($"\tAI_{analogInput.Name}_newLW : LREAL;\n");
+            }
+
+            content.Append($"\tAI_{analogInput.Name}_HL : LREAL;\n");
+            content.Append($"\tAI_{analogInput.Name}_newHL : LREAL;\n");
+            content.Append($"\tAI_{analogInput.Name}_LL : LREAL;\n");
+            content.Append($"\tAI_{analogInput.Name}_newLL : LREAL;\n");
+        }
+        content.Append("END_VAR\n\n");
+
+        foreach (var analogInput in analogInputs)
+        {
+            if (analogInput.HighWarning != null)
+            {
+                content.Append($"AI_{analogInput.Name}_HW := Ai.{analogInput.Name}.HW;\n");
+                content.Append($"AI_{analogInput.Name}_newHW := Ai.{analogInput.Name}.dHW;\n");
+            }
+
+            if (analogInput.HighAlarm != null)
+            {
+                content.Append($"AI_{analogInput.Name}_HA := Ai.{analogInput.Name}.HA;\n");
+                content.Append($"AI_{analogInput.Name}_newHA := Ai.{analogInput.Name}.dHA;\n");
+            }
+
+            if (analogInput.LowAlarm != null)
+            {
+                content.Append($"AI_{analogInput.Name}_LA := Ai.{analogInput.Name}.LA;\n");
+                content.Append($"AI_{analogInput.Name}_newLA := Ai.{analogInput.Name}.dLA;\n");
+            }
+
+            if (analogInput.LowWarning != null)
+            {
+                content.Append($"AI_{analogInput.Name}_LW := Ai.{analogInput.Name}.LW;\n");
+                content.Append($"AI_{analogInput.Name}_newLW := Ai.{analogInput.Name}.dLW;\n");
+            }
+
+            content.Append($"AI_{analogInput.Name}_LL := Ai.{analogInput.Name}.LL;\n");
+            content.Append($"AI_{analogInput.Name}_newLL := Ai.{analogInput.Name}.dLL;\n");
+            content.Append($"AI_{analogInput.Name}_HL := Ai.{analogInput.Name}.HL;\n");
+            content.Append($"AI_{analogInput.Name}_newHL := Ai.{analogInput.Name}.dHL;\n\n");
+        }
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Ai_init.st", content);
+    }
+
+    public static void CreateOpcImGet(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION_BLOCK Opc_Im_get \n\n");
+        content.Append("VAR_EXTERNAL\n\tIm : ImConfig;\n");
+
+        foreach (var executiveMechanism in executiveMechanisms)
+            content.Append($"\tIM_{executiveMechanism.Name}_inCommand_ARM : UINT;\n");
+        content.Append("END_VAR\n\n");
+
+        foreach (var executiveMechanism in executiveMechanisms)
+            content.Append($"Im.{executiveMechanism.Name}.inCommand_ARM := UINT_TO_WORD(IM_{executiveMechanism.Name}_inCommand_ARM);\n\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Im_get.st", content);
+    }
+
+    public static void CreateOpcImSet(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms, List<SingleInput> singleInputs)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION_BLOCK Opc_Im_get \n\n");
+        content.Append("VAR_EXTERNAL\n\tIm : ImConfig;\n");
+
+        foreach (var executiveMechanism in executiveMechanisms)
+            content.Append($"\tIM_{executiveMechanism.Name}_status : UDINT;\n");
+        foreach (var singleInput in singleInputs)
+            content.Append($"\tIM_SingleSignals_{singleInput.Name}_status : UDINT;\n");
+        content.Append("END_VAR\n\n");
+
+        foreach (var executiveMechanism in executiveMechanisms)
+            content.Append($"Im_{executiveMechanism.Name}_status := DWORD_TO_UDINT(Im.{executiveMechanism.Name}.status);\n\n");
+        foreach (var singleInput in singleInputs)
+            content.Append($"Im_SingleSignals_{singleInput.Name}_status := DWORD_TO_UDINT(Im.SingleSignals.{singleInput.Name}.status);\n\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Im_set.st", content);
+    }
+    
+    public static void CreateOpcProtectionsGet(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION_BLOCK Opc_Protections_get \n\n");
+        content.Append("VAR_EXTERNAL\n\tProtections : ProtectionsConfig;\n");
+    
+        foreach (var analogSignalProtection in analogSignalProtections)
+            content.Append($"\tProtections_{analogSignalProtection.Name}_inCommand_ARM : UINT;\n");
+        foreach (var discreteSignalProtection in discreteSignalProtections)
+            content.Append($"\tProtections_{discreteSignalProtection.Name}_inCommand_ARM : UINT;\n");
+        content.Append("END_VAR\n\n");
+
+        foreach (var analogSignalProtection in analogSignalProtections)
+            content.Append($"Protections.{analogSignalProtection.Name}.inCommand_ARM := UINT_TO_WORD(Protections_{analogSignalProtection.Name}_inCommand_ARM;\n\n");
+        foreach (var discreteSignalProtection in discreteSignalProtections)
+            content.Append($"Protections.{discreteSignalProtection.Name}.inCommand_ARM := UINT_TO_WORD(Protections_{discreteSignalProtection.Name}_inCommand_ARM;\n\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Protections_get.st", content);
+    }
+    
+    public static void CreateOpcProtectionsSet(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
+    {
+        StringBuilder content = new();
+
+        content.Append("FUNCTION_BLOCK Opc_Protections_set \n\n");
+        content.Append("VAR_EXTERNAL\n\tProtections : ProtectionsConfig;\n");
+    
+        foreach (var analogSignalProtection in analogSignalProtections)
+            content.Append($"\tProtections_{analogSignalProtection.Name}_status : UDINT;\n");
+        foreach (var discreteSignalProtection in discreteSignalProtections)
+            content.Append($"\tProtections_{discreteSignalProtection.Name}_status : UDINT;\n");
+        content.Append("END_VAR\n\n");
+
+        foreach (var analogSignalProtection in analogSignalProtections)
+            content.Append($"Protections_{analogSignalProtection.Name}_status := DWORD_TO_UDINT(Protections.{analogSignalProtection.Name}._status);\n\n");
+        foreach (var discreteSignalProtection in discreteSignalProtections)
+            content.Append($"Protections_{discreteSignalProtection.Name}_status := DWORD_TO_UDINT(Protections.{discreteSignalProtection.Name}._status);\n\n");
+
+        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Protections_set.st", content);
+    }
+
     private static void CreateFile(string path, StringBuilder content)
     {
         try
