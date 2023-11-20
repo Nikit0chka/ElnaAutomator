@@ -21,14 +21,19 @@ public partial class FunctionalBlocksPage
 
     private void ProcAi_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateProcAi(_currentApp.PathToProject, _currentApp.AnalogInputs.ToList());
+
     private void ProcDi_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateProcDi(_currentApp.PathToProject, _currentApp.DiscreteInputs);
+
     private void ProcDiInit_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateProcDiInit(_currentApp.PathToProject, _currentApp.DiscreteInputs);
+
     private void ProcDo_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateProcDo(_currentApp.PathToProject, _currentApp.DiscreteOutputs);
+
     private void ProcDoInit_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateProcDoInit(_currentApp.PathToProject, _currentApp.DiscreteOutputs);
+
     private void ProcIm_OnClick(object sender, RoutedEventArgs e)
     {
         List<ExecutiveMechanism> executiveMechanisms = new();
@@ -39,6 +44,7 @@ public partial class FunctionalBlocksPage
 
         FunctionBlocksGenerator.GenerateProcIm(_currentApp.PathToProject, executiveMechanisms, _currentApp.SingleInputs, _currentApp.SingleOutputs);
     }
+
     private void ProcImInit_OnClick(object sender, RoutedEventArgs e)
     {
         List<ExecutiveMechanism> executiveMechanisms = new();
@@ -49,8 +55,45 @@ public partial class FunctionalBlocksPage
 
         FunctionBlocksGenerator.GenerateProcImInit(_currentApp.PathToProject, executiveMechanisms, _currentApp.SingleInputs, _currentApp.SingleOutputs);
     }
+
     private void ProcProtections_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateProcProtections(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+
     private void ProcProtectionsInit_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateProcProtectionsInit(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+
+    private void OpcAiGet_OnClick(object sender, RoutedEventArgs e) =>
+        FunctionBlocksGenerator.GenerateOpcAiGet(_currentApp.PathToProject, _currentApp.AnalogInputs);
+
+    private void OpcAiSet_OnClick(object sender, RoutedEventArgs e) =>
+        FunctionBlocksGenerator.GenerateOpcAiSet(_currentApp.PathToProject, _currentApp.AnalogInputs);
+
+    private void OpcAiInit_OnClick(object sender, RoutedEventArgs e) =>
+        FunctionBlocksGenerator.GenerateOpcAiInit(_currentApp.PathToProject, _currentApp.AnalogInputs);
+    private void OpcImGet_OnClick(object sender, RoutedEventArgs e)
+    {
+        List<ExecutiveMechanism> executiveMechanisms = new();
+        executiveMechanisms.AddRange(_currentApp.Krans);
+        executiveMechanisms.AddRange(_currentApp.OilPumps);
+        executiveMechanisms.AddRange(_currentApp.Switches);
+        executiveMechanisms.AddRange(_currentApp.SectionSwitches);
+
+        FunctionBlocksGenerator.CreateOpcImGet(_currentApp.PathToProject, executiveMechanisms);
+        ExcelWork.CreateOpcIm(_currentApp.PathToProject, _currentApp.SingleInputs, executiveMechanisms);
+    }
+    private void OpcImSet_OnClick(object sender, RoutedEventArgs e)
+    {
+        List<ExecutiveMechanism> executiveMechanisms = new();
+        executiveMechanisms.AddRange(_currentApp.Krans);
+        executiveMechanisms.AddRange(_currentApp.OilPumps);
+        executiveMechanisms.AddRange(_currentApp.Switches);
+        executiveMechanisms.AddRange(_currentApp.SectionSwitches);
+
+        FunctionBlocksGenerator.CreateOpcImSet(_currentApp.PathToProject, executiveMechanisms, _currentApp.SingleInputs);
+    }
+    private void OpcProtectionsSet_OnClick(object sender, RoutedEventArgs e) =>
+        FunctionBlocksGenerator.CreateOpcProtectionsSet(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+
+    private void OpcProtectionsGet_OnClick(object sender, RoutedEventArgs e) =>
+        FunctionBlocksGenerator.CreateOpcProtectionsGet(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
 }
