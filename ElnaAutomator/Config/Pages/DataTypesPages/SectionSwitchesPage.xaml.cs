@@ -9,10 +9,11 @@ public partial class SectionSwitchesPage
 {
     private readonly App _currentApp;
 
+    //инициализация
     public SectionSwitchesPage()
     {
-        InitializeComponent();
         _currentApp = (App) Application.Current;
+        InitializeComponent();
 
         SectionSwitchesDataGrid.ItemsSource = _currentApp.SectionSwitches;
         SectionSwitchStatOnDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
@@ -28,6 +29,7 @@ public partial class SectionSwitchesPage
         SectionSwitchBasketTestDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
 
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddSectionsSwitch_OnClick(object sender, RoutedEventArgs e)
     {
         var sectionSwitch = new SectionSwitch()

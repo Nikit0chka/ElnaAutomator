@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using ElnaAutomator.Config.ConfigStructs;
+using ElnaAutomator.Config.FileOperations;
 
 namespace ElnaAutomator.Config.Generators;
 
@@ -28,7 +29,14 @@ public static class FunctionsGenerator
         content.Length -= 4;
         content.Append(';');
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyAnalogsPs.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyAnalogsPs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyAnalogsPs', {ex}");
+        }
     }
 
     public static void GenerateAnyAnalogNs(string pathToProjectDirectory, List<AnalogInput> analogInputs)
@@ -47,7 +55,14 @@ public static class FunctionsGenerator
         content.Length -= 4;
         content.Append(';');
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyAnalogsNs.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyAnalogsNs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyAnalogsNs', {ex}");
+        }
     }
 
     public static void GenerateAnyDiscretePs(string pathToProjectDirectory, List<DiscreteInput> discreteInputs)
@@ -65,7 +80,14 @@ public static class FunctionsGenerator
         content.Length -= 4;
         content.Append(';');
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyDiscretPs.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyDiscretPs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyDiscretPs', {ex}");
+        }
     }
 
     public static void GenerateAnyProtectionRemont(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -86,7 +108,14 @@ public static class FunctionsGenerator
         content.Length -= 4;
         content.Append(';');
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyProtectionInRemont.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyProtectionInRemont.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyProtectionInRemont', {ex}");
+        }
     }
 
     public static void GenerateAnyProtectionSignalling(string pathToProjectDirectory,
@@ -108,7 +137,14 @@ public static class FunctionsGenerator
         content.Length -= 4;
         content.Append(';');
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyProtectionSignaling.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyProtectionSignaling.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyProtectionSignaling', {ex}");
+        }
     }
 
     public static void GenerateAutoRunProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -124,7 +160,14 @@ public static class FunctionsGenerator
         foreach (var discreteSignalProtection in discreteSignalProtections)
             content.Append($"RunDiProtection(Protections.{discreteSignalProtection.Name});\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AutoRunProtections.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AutoRunProtections.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AutoRunProtections', {ex}");
+        }
     }
 
     public static void GenerateBlockAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -140,7 +183,14 @@ public static class FunctionsGenerator
         foreach (var discreteSignalProtection in discreteSignalProtections)
             content.Append($"Protections.{discreteSignalProtection.Name}.inOpcCommandDisabled := TRUE;\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\BlockAllProtections.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\BlockAllProtections.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'BlockAllProtections', {ex}");
+        }
     }
 
     public static void GenerateDisableAiLimits(string pathToProjectDirectory, List<AnalogInput> analogInputs)
@@ -156,7 +206,14 @@ public static class FunctionsGenerator
             content.Append($"Ai.{analogInput.Name}.Disabled_LW := TRUE;\n");
         }
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\DisableAiLimits.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\DisableAiLimits.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'DisableAiLimits', {ex}");
+        }
     }
 
     public static void GenerateAnyDiscreteNs(string pathToProjectDirectory, List<DiscreteInput> discreteInputs)
@@ -172,7 +229,15 @@ public static class FunctionsGenerator
 
         content.Length -= 4;
         content.Append(");");
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyDiscretNs.st", content);
+
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\AnyDiscretNs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyDiscretNs', {ex}");
+        }
     }
 
     public static void GenerateEnableAiLimits(string pathToProjectDirectory, List<AnalogInput> analogInputs)
@@ -190,7 +255,14 @@ public static class FunctionsGenerator
             content.Append($"Ai.{analogInput.Name}.Disabled_LW := FALSE;\n");
         }
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\EnableAiLimits.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\EnableAiLimits.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'EnableAiLimits', {ex}");
+        }
     }
 
     public static void GenerateRemontAllProtections(string pathToProjectDirectory,
@@ -208,7 +280,14 @@ public static class FunctionsGenerator
         foreach (var discreteSignalProtection in discreteSignalProtections)
             content.Append($"Protections.{discreteSignalProtection.Name}.inCommand_Alg := cmdRemont;\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RemontAllProtections.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\RemontAllProtections.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'RemontAllProtections', {ex}");
+        }
     }
 
     public static void GenerateResetAllProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -225,7 +304,14 @@ public static class FunctionsGenerator
         foreach (var discreteSignalProtection in discreteSignalProtections)
             content.Append($"ResetDiProtection({discreteSignalProtection.Name});\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAllProtections.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAllProtections.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'ResetAllProtections', {ex}");
+        }
     }
 
     public static void GenerateResetAllSignalling(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -244,7 +330,14 @@ public static class FunctionsGenerator
             content.Append(
                 $"IF {discreteSignalProtection.Name}.Signalling THEN\n\tResetDiProtection(tProtections.{discreteSignalProtection.Name}); END_IF;\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAllSignaling.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\ResetAllSignaling.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'ResetAllSignaling', {ex}");
+        }
     }
 
     public static void GenerateUnBlockAllProtections(string pathToProjectDirectory,
@@ -262,7 +355,14 @@ public static class FunctionsGenerator
         foreach (var discreteSignalProtection in discreteSignalProtections)
             content.Append($"protections.{discreteSignalProtection.Name}.inOpcCommandsDisabled := FALSE;\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\UnBlockAllProtections.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\UnBlockAllProtections.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'UnBlockAllProtections', {ex}");
+        }
     }
 
     public static void GenerateBlockAllIm(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
@@ -276,7 +376,14 @@ public static class FunctionsGenerator
             content.Append(
                 $"IF NOT IM.{executiveMechanism.Name}.inOpcCommandsDisabled THEN IM.{executiveMechanism.Name}.inOpcCommandsDisabled := TRUE; END_IF;\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\BlockAllIm.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\BlockAllIm.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'BlockAllIm', {ex}");
+        }
     }
 
     public static void GenerateUnBlockAllIm(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
@@ -290,7 +397,14 @@ public static class FunctionsGenerator
             content.Append(
                 $"IF IM.{executiveMechanism.Name}.inOpcCommandsDisabled THEN IM.{executiveMechanism.Name}.inOpcCommandsDisabled := FALSE; END_IF;\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\UnBlockAllIm.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\UnBlockAllIm.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'UnBlockAllIm', {ex}");
+        }
     }
 
     public static void GenerateNsCepeiControl(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
@@ -308,7 +422,14 @@ public static class FunctionsGenerator
         content.Length -= 4;
         content.Append(");");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\NsCepeiControl.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\NsCepeiControl.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'NsCepeyControl', {ex}");
+        }
     }
 
     public static void GenerateNsCepeiUpravlenya(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
@@ -333,11 +454,13 @@ public static class FunctionsGenerator
         content.Length -= 4;
         content.Append(");");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\NsCepeiUpravlenya.st", content);
-    }
-
-    private static void CreateFile(string path, StringBuilder content)
-    {
-        File.WriteAllText(path, content.ToString());
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\NsCepeiUpravlenya.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'NsCepeyUpravlenya', {ex}");
+        }
     }
 }

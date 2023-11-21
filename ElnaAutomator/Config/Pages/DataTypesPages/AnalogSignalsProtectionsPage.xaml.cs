@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using ElnaAutomator.Config.ConfigStructs;
 
 namespace ElnaAutomator.Config.Pages.DataTypesPages;
@@ -9,14 +8,18 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 public partial class AnalogSignalsProtectionsPage
 {
     private readonly App _currentApp;
+
+    //инициализация
     public AnalogSignalsProtectionsPage()
     {
-        InitializeComponent();
         _currentApp = (App) Application.Current;
+
+        InitializeComponent();
         AiProtectionsDataGrid.ItemsSource = _currentApp.AnalogSignalProtections;
         AnalogSignalsCmbBx.ItemsSource = _currentApp.AnalogInputs;
     }
 
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddAiProtection_OnClick(object sender, RoutedEventArgs e)
     {
         var newAnalogSignalProtection = new AnalogSignalProtection()
@@ -53,11 +56,4 @@ public partial class AnalogSignalsProtectionsPage
 
         AiProtectionsDataGrid.Items.Refresh();
     }
-    private void ComboBox_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-    {
-        var comboBox = sender as ComboBox;
-        if (comboBox != null)
-            comboBox.SelectedIndex = -1;
-    }
-
 }

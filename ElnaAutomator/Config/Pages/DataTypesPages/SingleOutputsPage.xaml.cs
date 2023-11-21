@@ -9,19 +9,22 @@ public partial class SingleOutputsPage
 {
     private readonly App _currentApp;
 
+    //инициализация
     public SingleOutputsPage()
     {
-        InitializeComponent();
         _currentApp = (App) Application.Current;
+
+        InitializeComponent();
         SingleOutputsDataGrid.ItemsSource = _currentApp.SingleOutputs;
         DiscreteOutputsCmbBx.ItemsSource = _currentApp.DiscreteOutputs;
     }
 
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddSingleOutput_OnClick(object sender, RoutedEventArgs e)
     {
         var singleOutput = new SingleOutput()
         {
-            Name = $"So{_currentApp.SingleOutputs.Count}",
+            Name = $"So{_currentApp.SingleOutputs.Count}"
         };
 
         _currentApp.SingleOutputs.Add(singleOutput);
@@ -34,7 +37,7 @@ public partial class SingleOutputsPage
 
         foreach (var item in SingleOutputsDataGrid.Items)
         {
-            var row = (DataGridRow)SingleOutputsDataGrid.ItemContainerGenerator.ContainerFromItem(item);
+            var row = (DataGridRow) SingleOutputsDataGrid.ItemContainerGenerator.ContainerFromItem(item);
             if (row == null || SingleOutputsDataGrid.Columns[0] is not DataGridCheckBoxColumn checkBox)
                 continue;
 

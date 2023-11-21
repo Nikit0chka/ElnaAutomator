@@ -9,6 +9,7 @@ public partial class DiscreteOutputsPage
 {
     private readonly App _currentApp;
 
+    //инициализация
     public DiscreteOutputsPage()
     {
         InitializeComponent();
@@ -16,6 +17,7 @@ public partial class DiscreteOutputsPage
         DoDataGrid.ItemsSource = _currentApp.DiscreteOutputs;
     }
 
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddDo_OnClick(object sender, RoutedEventArgs e)
     {
         var discreteOutput = new DiscreteOutput

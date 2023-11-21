@@ -9,6 +9,7 @@ public partial class SingleInputsPage
 {
     private readonly App _currentApp;
 
+    //инициализация
     public SingleInputsPage()
     {
         InitializeComponent();
@@ -17,6 +18,7 @@ public partial class SingleInputsPage
         DiscreteInputsCmbBx.ItemsSource = _currentApp.DiscreteInputs;
     }
 
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddSingleInput_OnClick(object sender, RoutedEventArgs e)
     {
         var singleInput = new SingleInput

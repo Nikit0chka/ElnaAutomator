@@ -1,20 +1,24 @@
 ﻿using System;
 using System.IO;
-using Newtonsoft.Json;
+using System.Text;
 using System.Windows;
 using ElnaAutomator.Config.Generators;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using Newtonsoft.Json;
 
-namespace ElnaAutomator.Config;
+namespace ElnaAutomator.Config.FileOperations;
 
+//Логика работы с файлами
 public static class FileWork
 {
     private const string ConfigFileName = "config.txt";
     private readonly static App CurrentApp = (App) Application.Current;
 
+    //Настройки записи json
     private readonly static JsonSerializerSettings Settings = new()
         { PreserveReferencesHandling = PreserveReferencesHandling.Objects };
 
+    //Метод выбора рабочей директории проекта
     public static string GetLocalConfigDirectory()
     {
         var folderDialog = new CommonOpenFileDialog()
@@ -37,6 +41,7 @@ public static class FileWork
         return path;
     }
 
+    //Метода чтения конфига из рабочей директории проекта
     public static void ReadConfig(string path)
     {
         if (!File.Exists(@$"{path}\{ConfigFileName}"))
@@ -69,6 +74,7 @@ public static class FileWork
         }
     }
 
+    //Метод записи конфига в рабочу директорию проекта
     public static void WriteConfigToTxt(string path)
     {
         var json = new ConfigJson
@@ -88,7 +94,6 @@ public static class FileWork
 
         var data = JsonConvert.SerializeObject(json, Formatting.Indented, Settings);
 
-
         try
         {
             File.WriteAllText(@$"{path}\{ConfigFileName}", data);
@@ -99,6 +104,7 @@ public static class FileWork
         }
     }
 
+    //Метод создания необходимых директорий
     public static void CreateFoldersIfNotExist(string path)
     {
         try
@@ -118,6 +124,19 @@ public static class FileWork
         catch (Exception ex)
         {
             throw new Exception($"Exception trying create folders, {ex}");
+        }
+    }
+
+    //Метод создания файла по пути
+    public static void CreateFile(string path, StringBuilder content)
+    {
+        try
+        {
+            File.WriteAllText(path, content.ToString());
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception by creating file, {ex}");
         }
     }
 }

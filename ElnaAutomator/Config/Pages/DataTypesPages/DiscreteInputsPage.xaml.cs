@@ -9,6 +9,8 @@ public partial class DiscreteInputsPage
 {
     private readonly App _currentApp;
 
+
+    //инициализация
     public DiscreteInputsPage()
     {
         InitializeComponent();
@@ -16,6 +18,7 @@ public partial class DiscreteInputsPage
         DiDataGrid.ItemsSource = _currentApp.DiscreteInputs;
     }
 
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddDi_OnClick(object sender, RoutedEventArgs e)
     {
         var discreteInput = new DiscreteInput

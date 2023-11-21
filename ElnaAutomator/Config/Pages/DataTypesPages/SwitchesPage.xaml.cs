@@ -8,10 +8,13 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 public partial class SwitchesPage
 {
     private readonly App _currentApp;
+
+    //инитиализация
     public SwitchesPage()
     {
-        InitializeComponent();
         _currentApp = (App) Application.Current;
+
+        InitializeComponent();
         SwitchesDataGrid.ItemsSource = _currentApp.Switches;
         SwitchStatOnDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
         SwitchStatOffDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
@@ -20,6 +23,8 @@ public partial class SwitchesPage
         SwitchInBreakCmdOff.ItemsSource = _currentApp.DiscreteInputs;
         SwitchInBreakCmdOn.ItemsSource = _currentApp.DiscreteInputs;
     }
+
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddSwitch_OnClick(object sender, RoutedEventArgs e)
     {
         var newSwitch = new Switch()
@@ -30,6 +35,7 @@ public partial class SwitchesPage
         _currentApp.Switches.Add(newSwitch);
         SwitchesDataGrid.Items.Refresh();
     }
+
     private void DeleteSwitch_OnClick(object sender, RoutedEventArgs e)
     {
         List<object> selectedItems = new();

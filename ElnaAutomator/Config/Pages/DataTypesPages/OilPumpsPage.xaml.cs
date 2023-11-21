@@ -8,6 +8,8 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 public partial class OilPumpsPage
 {
     private readonly App _currentApp;
+
+    //инициализация
     public OilPumpsPage()
     {
         InitializeComponent();
@@ -23,6 +25,7 @@ public partial class OilPumpsPage
         OilPumpStatOnReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
 
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddOilPump_OnClick(object sender, RoutedEventArgs e)
     {
         var newOilPump = new OilPump()

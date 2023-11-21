@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using ElnaAutomator.Config.ConfigStructs;
+using ElnaAutomator.Config.FileOperations;
 
 namespace ElnaAutomator.Config.Generators;
 
@@ -41,7 +41,14 @@ public static class FunctionBlocksGenerator
 
         content.Append("\ninitiales := 0;\nIF init THEN initiales := inits; END_IF;");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Ai_Init.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Ai_Init.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Proc_Ai_Init', {ex}");
+        }
     }
 
     public static void GenerateProcAi(string pathToProjectDirectory, List<AnalogInput> analogInputs)
@@ -76,7 +83,14 @@ public static class FunctionBlocksGenerator
                 $"AI_{i}_dblValue := arAIN{i}.dblValue;\n\n");
         }
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Ai.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Ai.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Proc_Ai', {ex}");
+        }
     }
 
     public static void GenerateProcDiInit(string pathToProjectDirectory, List<DiscreteInput> discreteInputs)
@@ -99,7 +113,14 @@ public static class FunctionBlocksGenerator
 
         content.Append("\ninitiales := 0;\nIF init THEN initiales := inits; END_IF;");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Di_Init.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Di_Init.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Proc_Di_Init', {ex}");
+        }
     }
 
 
@@ -141,7 +162,14 @@ public static class FunctionBlocksGenerator
                 $"DI_{i}_{i + 1}_wValue := TwoUint_To_UDINT(arDIN_{i}.wValue, arDIN_{i + 1}.wValue;\n\n");
         }
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Di.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Di.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Proc_Di', {ex}");
+        }
     }
     public static void GenerateProcDoInit(string pathToProjectDirectory, List<DiscreteOutput> discreteOutputs)
     {
@@ -163,7 +191,14 @@ public static class FunctionBlocksGenerator
 
         content.Append("\ninitiales := 0;\nIF init THEN initiales := inits; END_IF;");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Do_Init.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\AnyAnalogsPs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyAnalogsPs', {ex}");
+        }
     }
 
 
@@ -199,7 +234,15 @@ public static class FunctionBlocksGenerator
                 $"DO_{i}_wValue := arDOUT_{i}.wValue;\n\n");
         }
         content.Append("(*gpio_out not initialized*)");
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Do.st", content);
+
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\AnyAnalogsPs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyAnalogsPs', {ex}");
+        }
     }
 
 
@@ -329,7 +372,14 @@ public static class FunctionBlocksGenerator
             content.Append(
                 $"fb_{singleOutput.Name}(signal := od.{singleOutput.DiscreteOutput?.Name}.bits[{singleOutput.Address}, str_SO := Im.SingleOutputs{singleOutput.Name}]);\n\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Im.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\AnyAnalogsPs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyAnalogsPs', {ex}");
+        }
     }
 
     public static void GenerateProcImInit(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms,
@@ -433,7 +483,14 @@ public static class FunctionBlocksGenerator
 
         content.Append("initiales := 0;\nIF init THEN initiales := inits; END_IF;");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Im_Init.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Im_Init.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Proc_Im_Init', {ex}");
+        }
     }
 
     public static void GenerateProcProtections(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -460,7 +517,14 @@ public static class FunctionBlocksGenerator
             content.Append(
                 $"fb_{discreteSignalProtection.Name}(di := Im.SingleSignals.{discreteSignalProtection.SingleInput?.Name}, StrDIp := Protections.{discreteSignalProtection.Name});\n\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Protection.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Protection.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Proc_Protection', {ex}");
+        }
     }
 
     public static void GenerateProcProtectionsInit(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -495,7 +559,14 @@ public static class FunctionBlocksGenerator
 
         content.Append("IF init THEN initiales := inits; END_IF;");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Protections_Init.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Proc_Protections_Init.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Proc_Protections_Init', {ex}");
+        }
     }
 
     public static void GenerateOpcAiGet(string pathToProjectDirectory, List<AnalogInput> analogInputs)
@@ -537,7 +608,15 @@ public static class FunctionBlocksGenerator
             content.Append($"Ai.{analogInput.Name}.dLL := AI_{analogInput.Name}_newLL;\n");
             content.Append($"Ai.{analogInput.Name}.inCommand_ARM := UINT_TO_WORD(AI_{analogInput.Name}_command);\n\n");
         }
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Ai_get.st", content);
+
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\AnyAnalogsPs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyAnalogsPs', {ex}");
+        }
     }
 
     public static void GenerateOpcAiSet(string pathToProjectDirectory, List<AnalogInput> analogInputs)
@@ -581,7 +660,15 @@ public static class FunctionBlocksGenerator
             content.Append($"AI_{analogInput.Name}_value := Ai.{analogInput.Name}.value;\n");
             content.Append($"AI_{analogInput.Name}_status := DWORD_TO_UDINT(Ai.{analogInput.Name}.status);\n\n");
         }
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Ai_set.st", content);
+
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\AnyAnalogsPs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyAnalogsPs', {ex}");
+        }
     }
 
     public static void GenerateOpcAiInit(string pathToProjectDirectory, List<AnalogInput> analogInputs)
@@ -656,7 +743,14 @@ public static class FunctionBlocksGenerator
             content.Append($"AI_{analogInput.Name}_newHL := Ai.{analogInput.Name}.dHL;\n\n");
         }
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Ai_init.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\AnyAnalogsPs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AnyAnalogsPs', {ex}");
+        }
     }
 
     public static void CreateOpcImGet(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms)
@@ -673,14 +767,21 @@ public static class FunctionBlocksGenerator
         foreach (var executiveMechanism in executiveMechanisms)
             content.Append($"Im.{executiveMechanism.Name}.inCommand_ARM := UINT_TO_WORD(Im_{executiveMechanism.Name}_inCommand_ARM);\n\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Im_get.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Im_get.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Opc_Im_get', {ex}");
+        }
     }
 
     public static void CreateOpcImSet(string pathToProjectDirectory, List<ExecutiveMechanism> executiveMechanisms, List<SingleInput> singleInputs)
     {
         StringBuilder content = new();
 
-        content.Append("FUNCTION_BLOCK Opc_Im_get \n\n");
+        content.Append("FUNCTION_BLOCK Opc_Im_set \n\n");
         content.Append("VAR_EXTERNAL\n\tIm : ImConfig;\n");
 
         foreach (var executiveMechanism in executiveMechanisms)
@@ -694,10 +795,18 @@ public static class FunctionBlocksGenerator
         foreach (var singleInput in singleInputs)
             content.Append($"Im_SingleSignals_{singleInput.Name}_status := DWORD_TO_UDINT(Im.SingleSignals.{singleInput.Name}.status);\n\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Im_set.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Im_set.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Opc_Im_set', {ex}");
+        }
     }
 
-    public static void CreateOpcProtectionsGet(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
+    public static void CreateOpcProtectionsGet(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
+        List<DiscreteSignalProtection> discreteSignalProtections)
     {
         StringBuilder content = new();
 
@@ -711,14 +820,24 @@ public static class FunctionBlocksGenerator
         content.Append("END_VAR\n\n");
 
         foreach (var analogSignalProtection in analogSignalProtections)
-            content.Append($"Protections.{analogSignalProtection.Name}.inCommand_ARM := UINT_TO_WORD(Protections_{analogSignalProtection.Name}_inCommand_ARM;\n\n");
+            content.Append(
+                $"Protections.{analogSignalProtection.Name}.inCommand_ARM := UINT_TO_WORD(Protections_{analogSignalProtection.Name}_inCommand_ARM;\n\n");
         foreach (var discreteSignalProtection in discreteSignalProtections)
-            content.Append($"Protections.{discreteSignalProtection.Name}.inCommand_ARM := UINT_TO_WORD(Protections_{discreteSignalProtection.Name}_inCommand_ARM;\n\n");
+            content.Append(
+                $"Protections.{discreteSignalProtection.Name}.inCommand_ARM := UINT_TO_WORD(Protections_{discreteSignalProtection.Name}_inCommand_ARM;\n\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Protections_get.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Protections_get.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Opc_Protections_get', {ex}");
+        }
     }
 
-    public static void CreateOpcProtectionsSet(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
+    public static void CreateOpcProtectionsSet(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
+        List<DiscreteSignalProtection> discreteSignalProtections)
     {
         StringBuilder content = new();
 
@@ -736,19 +855,13 @@ public static class FunctionBlocksGenerator
         foreach (var discreteSignalProtection in discreteSignalProtections)
             content.Append($"Protections_{discreteSignalProtection.Name}_status := DWORD_TO_UDINT(Protections.{discreteSignalProtection.Name}._status);\n\n");
 
-        CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Protections_set.st", content);
-    }
-
-    private static void CreateFile(string path, StringBuilder content)
-    {
         try
         {
-            File.WriteAllText(path, content.ToString());
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Protections_set.st", content);
         }
         catch (Exception ex)
         {
-            throw new Exception($"Exception trying write to file, {ex}");
+            throw new Exception($"Exception trying generate 'Opc_Protections_set', {ex}");
         }
     }
-
 }

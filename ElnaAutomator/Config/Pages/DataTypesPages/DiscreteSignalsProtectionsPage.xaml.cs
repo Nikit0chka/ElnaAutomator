@@ -7,8 +7,9 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 
 public partial class DiscreteSignalsProtectionsPage
 {
-
     private readonly App _currentApp;
+
+    //инициализация
     public DiscreteSignalsProtectionsPage()
     {
         InitializeComponent();
@@ -17,6 +18,7 @@ public partial class DiscreteSignalsProtectionsPage
         SingleSignalsCmbBx.ItemsSource = _currentApp.SingleInputs;
     }
 
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddDiProtection_OnClick(object sender, RoutedEventArgs e)
     {
         var newDiscreteSignalProtection = new DiscreteSignalProtection()

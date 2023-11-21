@@ -8,6 +8,8 @@ namespace ElnaAutomator.Config.Pages.DataTypesPages;
 public partial class KransPage
 {
     private readonly App _currentApp;
+
+    //инициализация
     public KransPage()
     {
         InitializeComponent();
@@ -23,6 +25,8 @@ public partial class KransPage
         KranStatOffReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
         KranStatOnReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
+
+    //обработка добавления/удаления сигнала по нажатию кнопки
     private void AddKran_OnClick(object sender, RoutedEventArgs e)
     {
         var newKran = new Kran()
@@ -33,6 +37,7 @@ public partial class KransPage
         _currentApp.Krans.Add(newKran);
         KransDataGrid.Items.Refresh();
     }
+
     private void DeleteKran_OnClick(object sender, RoutedEventArgs e)
     {
         List<object> selectedItems = new();

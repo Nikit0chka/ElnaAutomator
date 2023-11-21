@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
-using ElnaAutomator.Config.ConfigStructs;
 using CsvHelper;
+using ElnaAutomator.Config.ConfigStructs;
 
-namespace ElnaAutomator.Config;
+namespace ElnaAutomator.Config.FileOperations;
 
+//Логика создания excel файлов с тегами
 public static class ExcelWork
 {
     public const string ExcelFolderName = "OpcTags";
@@ -173,8 +173,9 @@ public static class ExcelWork
             throw new Exception($"Exception trying create OpcImTags.csv, {ex}");
         }
     }
-    
-    public static void CreateOpcProtectionsTags(string pathToProject, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
+
+    public static void CreateOpcProtectionsTags(string pathToProject, List<AnalogSignalProtection> analogSignalProtections,
+        List<DiscreteSignalProtection> discreteSignalProtections)
     {
         try
         {
@@ -184,13 +185,15 @@ public static class ExcelWork
             {
                 records.Add(new
                 {
-                    Node = "Protections", Name = $"Protections_{discreteSignalProtection.Name}_inCommand_ARM", data_type = "UINT", @class = "inout", archiving = "false",
+                    Node = "Protections", Name = $"Protections_{discreteSignalProtection.Name}_inCommand_ARM", data_type = "UINT", @class = "inout",
+                    archiving = "false",
                     strategy = "VALUESET",
                     initStore = "1", responseSize = "1", pollInterval = "1", Description = ""
                 });
                 records.Add(new
                 {
-                    Node = "Protections", Name = $"Protections_{discreteSignalProtection.Name}_status", data_type = "UDINT", @class = "inout", archiving = "false", strategy = "VALUESET",
+                    Node = "Protections", Name = $"Protections_{discreteSignalProtection.Name}_status", data_type = "UDINT", @class = "inout", archiving = "false",
+                    strategy = "VALUESET",
                     initStore = "1", responseSize = "1", pollInterval = "1", Description = ""
                 });
             }
@@ -199,13 +202,15 @@ public static class ExcelWork
             {
                 records.Add(new
                 {
-                    Node = "Protections", Name = $"Protections_{analogSignalProtection.Name}_inCommand_ARM", data_type = "UINT", @class = "inout", archiving = "false",
+                    Node = "Protections", Name = $"Protections_{analogSignalProtection.Name}_inCommand_ARM", data_type = "UINT", @class = "inout",
+                    archiving = "false",
                     strategy = "VALUESET",
                     initStore = "1", responseSize = "1", pollInterval = "1", Description = ""
                 });
                 records.Add(new
                 {
-                    Node = "Protections", Name = $"Protections_{analogSignalProtection.Name}_status", data_type = "UDINT", @class = "inout", archiving = "false", strategy = "VALUESET",
+                    Node = "Protections", Name = $"Protections_{analogSignalProtection.Name}_status", data_type = "UDINT", @class = "inout", archiving = "false",
+                    strategy = "VALUESET",
                     initStore = "1", responseSize = "1", pollInterval = "1", Description = ""
                 });
             }

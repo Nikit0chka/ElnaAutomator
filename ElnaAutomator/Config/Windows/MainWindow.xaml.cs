@@ -1,5 +1,5 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
+using ElnaAutomator.Config.FileOperations;
 using ElnaAutomator.Config.Pages.ConfigPages;
 using ElnaAutomator.Config.Pages.DataTypesPages;
 using ElnaAutomator.Config.Pages.FunctionBlocksPages;
@@ -7,11 +7,9 @@ using ElnaAutomator.Config.Pages.FunctionsPage;
 
 namespace ElnaAutomator.Config.Windows;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class MainWindow
 {
+    //страницы для отоброжения во фрейме
     private readonly DataTypesMainPage _configMainPage;
     private readonly ConfigsPage _dataTypesPage;
     private readonly FunctionalBlocksPage _functionalBlocksPage;
@@ -30,6 +28,7 @@ public partial class MainWindow
         Closing += MainWindow_Closing;
     }
 
+    //логика обработки ответа пользователя на предложение сохарнения конфига
     private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
     {
         var result = MessageBox.Show("Save config?", "", MessageBoxButton.YesNoCancel);
@@ -51,10 +50,12 @@ public partial class MainWindow
                 e.Cancel = true;
                 break;
             default:
-                throw new ArgumentOutOfRangeException();
+                e.Cancel = true;
+                break;
         }
     }
 
+    //навигация по нажатию кнопок
     private void ShowConfigButton_OnClick(object sender, RoutedEventArgs e) =>
         MainFrame.Navigate(_configMainPage);
 
