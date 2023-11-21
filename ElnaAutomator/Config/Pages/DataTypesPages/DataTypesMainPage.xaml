@@ -7,23 +7,17 @@
       Title="SignalsPage" d:DesignHeight="500" d:DesignWidth="500">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <UniformGrid Grid.Row="0" Rows="2" HorizontalAlignment="Center">
+        <UniformGrid Grid.Row="0" Rows="1" HorizontalAlignment="Center">
             <Button Name="AnalogSignalsShowButton" Content="Ai" Margin="5" Width="80"
                     Click="AnalogSignalsShowButton_OnClick" />
             <Button Name="DiscreteInputsShowButton" Content="Di" Margin="5" Width="80"
                     Click="DiscreteInputsShowButton_OnClick" />
             <Button Name="DiscreteOutputsShowButton" Content="Do" Margin="5" Width="80"
                     Click="DiscreteOutputsShowButton_OnClick" />
-            <Button Name="KransShowButton" Content="Krans" Margin="5" Width="80"
-                    Click="KransShowButton_OnClick" /> 
-            <Button Name="OilPumpsShowButton" Content="OilPumps" Margin="5" Width="80"
-                    Click="OilPumpsShowButton_OnClick" />
-            <Button Name="SwtichesShowButton" Content="Switches" Margin="5" Width="80"
-                    Click="SwitchesShowButton_OnClick" />
             <Button Name="SingleInputsShowButton" Content="SingleInputs" Margin="5" Width="80"
                     Click="SingleInputsShowButton_OnClick" />
             <Button Name="SingleOutputsShowButton" Content="SingleOutputs" Margin="5" Width="80"
@@ -32,6 +26,12 @@
                     Click="AnalogInputsProtectionsShowButton_OnClick" />
             <Button Name="DiscreteSignalsProtectionsShowButton" Content="DiProtections" Margin="5" Width="80"
                     Click="DiscreteSignalsProtectionsShowButton_OnClick" />
+            <Button Name="KransShowButton" Content="Krans" Margin="5" Width="80"
+                    Click="KransShowButton_OnClick" /> 
+            <Button Name="OilPumpsShowButton" Content="OilPumps" Margin="5" Width="80"
+                    Click="OilPumpsShowButton_OnClick" />
+            <Button Name="SwitchesShowButton" Content="Switches" Margin="5" Width="80"
+                    Click="SwitchesShowButton_OnClick" />
             <Button Name="SectionsSwitchesShowButton" Content="SectionSwitch" Margin="5" Width="80"
                     Click="SectionsSwitchesShowButton_OnClick" />
         </UniformGrid>

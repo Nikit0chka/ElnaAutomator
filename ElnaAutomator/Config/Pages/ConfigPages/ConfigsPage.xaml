@@ -6,21 +6,20 @@
       mc:Ignorable="d"
       Title="DataTypesPage" d:DesignWidth="500" d:DesignHeight="500">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <UniformGrid Grid.Row="0" Rows="1" HorizontalAlignment="Center">
-            <Button Name="AnalogSignalsConfig" Content="AiConfig" Margin="5" Width="80"
+        <UniformGrid Grid.Row="0" Rows="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button Name="AnalogSignalsConfig" Content="AiConfig" Margin="5" Width="90" Height="50"
                     Click="AnalogSignalsConfig_OnClick" />
-            <Button Name="DiscreteInputsConfig" Content="DiConfig" Margin="5" Width="80" Click="DiscreteInputsConfig_OnClick"/>
-            <Button Name="DiscreteOutputsConfig" Content="DoConfig" Margin="5" Width="80" Click="DiscreteOutputsConfig_OnClick"/>
-            <Button Name="ImConfig" Content="ImConfig" Margin="5" Width="80" Click="ImConfig_OnClick"/>
-            <Button Name="ProtectionsConfig" Margin="5" Width="80" Click="ProtectionsConfig_OnClick">
+            <Button Name="DiscreteInputsConfig" Content="DiConfig" Margin="5" Width="90" Height="50"
+                    Click="DiscreteInputsConfig_OnClick" />
+            <Button Name="DiscreteOutputsConfig" Content="DoConfig" Margin="5" Width="90" Height="50"
+                    Click="DiscreteOutputsConfig_OnClick" />
+            <Button Name="ImConfig" Content="ImConfig" Margin="5" Width="90" Height="50" Click="ImConfig_OnClick" />
+            <Button Name="SingleOutput" Content="SingleOutput" Margin="5" Width="90" Height="50" Click="SingleOutput_OnClick" />
+            <Button Name="SingleInput" Content="SingleInput" Margin="5" Width="90" Height="50" Click="SingleInput_OnClick" />
+            <Button Name="ProtectionsConfig" Margin="5" Width="90" Height="50" Click="ProtectionsConfig_OnClick">
                 <StackPanel>
                     <TextBlock Text="Protections" HorizontalAlignment="Center" />
-                    <TextBlock Text="Config" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Config" HorizontalAlignment="Center" />
                 </StackPanel>
             </Button>
         </UniformGrid>
