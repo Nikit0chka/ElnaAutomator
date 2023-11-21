@@ -667,11 +667,11 @@ public static class FunctionBlocksGenerator
         content.Append("VAR_EXTERNAL\n\tIm : ImConfig;\n");
 
         foreach (var executiveMechanism in executiveMechanisms)
-            content.Append($"\tIM_{executiveMechanism.Name}_inCommand_ARM : UINT;\n");
+            content.Append($"\tIm_{executiveMechanism.Name}_inCommand_ARM : UINT;\n");
         content.Append("END_VAR\n\n");
 
         foreach (var executiveMechanism in executiveMechanisms)
-            content.Append($"Im.{executiveMechanism.Name}.inCommand_ARM := UINT_TO_WORD(IM_{executiveMechanism.Name}_inCommand_ARM);\n\n");
+            content.Append($"Im.{executiveMechanism.Name}.inCommand_ARM := UINT_TO_WORD(Im_{executiveMechanism.Name}_inCommand_ARM);\n\n");
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Im_get.st", content);
     }
@@ -684,9 +684,9 @@ public static class FunctionBlocksGenerator
         content.Append("VAR_EXTERNAL\n\tIm : ImConfig;\n");
 
         foreach (var executiveMechanism in executiveMechanisms)
-            content.Append($"\tIM_{executiveMechanism.Name}_status : UDINT;\n");
+            content.Append($"\tIm_{executiveMechanism.Name}_status : UDINT;\n");
         foreach (var singleInput in singleInputs)
-            content.Append($"\tIM_SingleSignals_{singleInput.Name}_status : UDINT;\n");
+            content.Append($"\tIm_SingleSignals_{singleInput.Name}_status : UDINT;\n");
         content.Append("END_VAR\n\n");
 
         foreach (var executiveMechanism in executiveMechanisms)
@@ -696,14 +696,14 @@ public static class FunctionBlocksGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Im_set.st", content);
     }
-    
+
     public static void CreateOpcProtectionsGet(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
     {
         StringBuilder content = new();
 
         content.Append("FUNCTION_BLOCK Opc_Protections_get \n\n");
         content.Append("VAR_EXTERNAL\n\tProtections : ProtectionsConfig;\n");
-    
+
         foreach (var analogSignalProtection in analogSignalProtections)
             content.Append($"\tProtections_{analogSignalProtection.Name}_inCommand_ARM : UINT;\n");
         foreach (var discreteSignalProtection in discreteSignalProtections)
@@ -717,14 +717,14 @@ public static class FunctionBlocksGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionBlocksFolderName}\Opc_Protections_get.st", content);
     }
-    
+
     public static void CreateOpcProtectionsSet(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections, List<DiscreteSignalProtection> discreteSignalProtections)
     {
         StringBuilder content = new();
 
         content.Append("FUNCTION_BLOCK Opc_Protections_set \n\n");
         content.Append("VAR_EXTERNAL\n\tProtections : ProtectionsConfig;\n");
-    
+
         foreach (var analogSignalProtection in analogSignalProtections)
             content.Append($"\tProtections_{analogSignalProtection.Name}_status : UDINT;\n");
         foreach (var discreteSignalProtection in discreteSignalProtections)
