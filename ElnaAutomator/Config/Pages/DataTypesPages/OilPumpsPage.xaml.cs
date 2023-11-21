@@ -22,7 +22,7 @@ public partial class OilPumpsPage
         OilPumpStatOffReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
         OilPumpStatOnReabDiscreteInput.ItemsSource = _currentApp.DiscreteInputs;
     }
-    
+
     private void AddOilPump_OnClick(object sender, RoutedEventArgs e)
     {
         var newOilPump = new OilPump()
