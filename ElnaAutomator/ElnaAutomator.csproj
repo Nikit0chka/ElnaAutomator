@@ -75,7 +75,7 @@
 
 
     <ItemGroup>
-      <PackageReference Include="IronXL.Excel" Version="2023.10.8" />
+      <PackageReference Include="CsvHelper" Version="30.0.1" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
     </ItemGroup>
