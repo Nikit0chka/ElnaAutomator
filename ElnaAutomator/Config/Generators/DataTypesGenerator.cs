@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using ElnaAutomator.Config.ConfigStructs;
+using ElnaAutomator.Config.FileOperations;
 
 namespace ElnaAutomator.Config.Generators;
 
@@ -19,7 +20,14 @@ public static class DataTypesGenerator
 
         content.Append("END_STRUCT;\nEND_TYPE");
 
-        CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\AiConfig.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\AiConfig.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'AiConfig', {ex}");
+        }
     }
 
     public static void GenerateDiConfig(string pathToProjectDirectory, List<DiscreteInput> discreteInputs)
@@ -32,7 +40,14 @@ public static class DataTypesGenerator
 
         content.Append("END_STRUCT;\nEND_TYPE");
 
-        CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\DiConfig.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\DiConfig.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'DiConfig', {ex}");
+        }
     }
 
     public static void GenerateDoConfig(string pathToProjectDirectory, List<DiscreteOutput> discreteOutputs)
@@ -45,7 +60,14 @@ public static class DataTypesGenerator
 
         content.Append("END_STRUCT;\nEND_TYPE");
 
-        CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\DoConfig.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\DoConfig.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'DoConfig', {ex}");
+        }
     }
 
     public static void GenerateProtectionsConfig(string pathToProjectDirectory, List<AnalogSignalProtection> analogSignalProtections,
@@ -61,7 +83,14 @@ public static class DataTypesGenerator
 
         content.Append("END_STRUCT;\nEND_TYPE");
 
-        CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\ProtectionsConfig.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\ProtectionsConfig.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'ProtectionsConfig', {ex}");
+        }
     }
 
     public static void GenerateImConfig(string pathToProjectDirectory, List<Kran> krans, List<OilPump> oilPumps, List<Switch> switches,
@@ -79,12 +108,56 @@ public static class DataTypesGenerator
         foreach (var sectionSwitch in sectionSwitches)
             content.Append($"\t{sectionSwitch.Name} : struct_SectionSwitch;\n");
 
+        content.Append("SingleSignals : IM_singleSignals;\n\tSingleOutputs : IM_singleOutputs;\n");
         content.Append("END_STRUCT;\nEND_TYPE");
 
-        CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\ImConfig.st", content);
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\ImConfig.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'ImConfig', {ex}");
+        }
     }
-    private static void CreateFile(string path, StringBuilder content)
+
+    public static void GenerateImSingleSignals(string pathToProjectDirectory, List<SingleInput> singleInputs)
     {
-        File.WriteAllText(path, content.ToString());
+        StringBuilder content = new();
+        content.Append("TYPE\nIm_singleSignals : STRUCT\n");
+
+        foreach (var singleInput in singleInputs)
+            content.Append($"\t{singleInput.Name} : struct_singleSignal;\n");
+
+        content.Append("END_STRUCT;\nEND_TYPE");
+
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\Im_singleSignals.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Im_singleSignals', {ex}");
+        }
+    }
+
+    public static void GenerateImSingleOutputs(string pathToProjectDirectory, List<SingleOutput> singleOutputs)
+    {
+        StringBuilder content = new();
+        content.Append("TYPE\nIm_singleOutputs : STRUCT\n");
+
+        foreach (var singleOutput in singleOutputs)
+            content.Append($"\t{singleOutput.Name} : struct_singleOutput;\n");
+
+        content.Append("END_STRUCT;\nEND_TYPE");
+
+        try
+        {
+            FileWork.CreateFile($@"{pathToProjectDirectory}\{DataTypesFolderName}\Im_singleOutputs.st", content);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Exception trying generate 'Im_singleOutputs', {ex}");
+        }
     }
 }
