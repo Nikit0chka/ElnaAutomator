@@ -335,7 +335,7 @@ public static class FunctionsGenerator
 
         CreateFile($@"{pathToProjectDirectory}\{FunctionsFolderName}\NsCepeiUpravlenya.st", content);
     }
-    
+
     private static void CreateFile(string path, StringBuilder content)
     {
         File.WriteAllText(path, content.ToString());
