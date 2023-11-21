@@ -3,9 +3,9 @@
 public class AnalogSignalProtection
 {
     public required string Name { get; init; }
-    public AnalogInput? AnalogInput { get; set; }
-    public required int Delay { get; set; }
-    public required bool IsRunOnStart { get; set; }
+    public AnalogInput? AnalogInput { get; init; }
+    public required int Delay { get; init; }
+    public required bool IsRunOnStart { get; init; }
 
-    public required bool IsUpperLimitProtection { get; set; }
+    public required bool IsUpperLimitProtection { get; init; }
 }

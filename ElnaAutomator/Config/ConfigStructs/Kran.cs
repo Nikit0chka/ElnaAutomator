@@ -2,11 +2,11 @@ namespace ElnaAutomator.Config.ConfigStructs;
 
 public class Kran:ExecutiveMechanism
 {
-    public DiscreteInput? InDpDiscreteInput { get; set; }
-    public int? InDpDiscreteInputBit { get; set; }
-    public DiscreteInput? InSoDiscreteInput { get; set; }
-    public int? InSoDiscreteInputBit { get; set; }
-    public DiscreteInput? InSzDiscreteInput { get; set; }
-    public int? InSzDiscreteInputBit { get; set; }
+    public DiscreteInput? InDpDiscreteInput { get; init; }
+    public int? InDpDiscreteInputBit { get; init; }
+    public DiscreteInput? InSoDiscreteInput { get; init; }
+    public int? InSoDiscreteInputBit { get; init; }
+    public DiscreteInput? InSzDiscreteInput { get; init; }
+    public int? InSzDiscreteInputBit { get; init; }
 
 }

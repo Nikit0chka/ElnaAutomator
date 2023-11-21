@@ -2,14 +2,14 @@
 
 public class SectionSwitch:ExecutiveMechanism
 {
-    public DiscreteInput? BasketInDiscreteInput { get; set; }
-    public int? BasketInDiscreteInputBit { get; set; }
-    public DiscreteInput? BasketOutDiscreteInput { get; set; }
-    public int? BasketOutDiscreteInputBit { get; set; }
-    public DiscreteInput? BasketTestDiscreteInput { get; set; }
-    public int? BasketTestDiscreteInputBit { get; set; }
-    public DiscreteInput? InBreakCmdOn { get; set; }
-    public int? InBreakCmdOnBit { get; set; }
-    public DiscreteInput? InBreakCmdOff { get; set; }
-    public int? InBreakCmdOffBit { get; set; }
+    public DiscreteInput? BasketInDiscreteInput { get; init; }
+    public int? BasketInDiscreteInputBit { get; init; }
+    public DiscreteInput? BasketOutDiscreteInput { get; init; }
+    public int? BasketOutDiscreteInputBit { get; init; }
+    public DiscreteInput? BasketTestDiscreteInput { get; init; }
+    public int? BasketTestDiscreteInputBit { get; init; }
+    public DiscreteInput? InBreakCmdOn { get; init; }
+    public int? InBreakCmdOnBit { get; init; }
+    public DiscreteInput? InBreakCmdOff { get; init; }
+    public int? InBreakCmdOffBit { get; init; }
 }

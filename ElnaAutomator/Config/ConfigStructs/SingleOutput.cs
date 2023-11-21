@@ -2,7 +2,7 @@
 
 public class SingleOutput
 {
-    public required string Name { get; set; }
-    public DiscreteOutput? DiscreteOutput { get; set; }
-    public int? Address { get; set; }
+    public required string Name { get; init; }
+    public DiscreteOutput? DiscreteOutput { get; init; }
+    public int? Address { get; init; }
 }
