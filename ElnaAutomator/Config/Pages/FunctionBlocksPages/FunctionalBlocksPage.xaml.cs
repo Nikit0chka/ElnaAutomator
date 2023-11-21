@@ -12,8 +12,9 @@ public partial class FunctionalBlocksPage
 
     public FunctionalBlocksPage()
     {
-        InitializeComponent();
         _currentApp = (App) Application.Current;
+
+        InitializeComponent();
     }
 
     private void ProcAiInit_OnClick(object sender, RoutedEventArgs e) =>
@@ -62,14 +63,15 @@ public partial class FunctionalBlocksPage
     private void ProcProtectionsInit_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateProcProtectionsInit(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
 
-    private void OpcAiGet_OnClick(object sender, RoutedEventArgs e) =>
+    private void OpcAiGet_OnClick(object sender, RoutedEventArgs e)
+    {
         FunctionBlocksGenerator.GenerateOpcAiGet(_currentApp.PathToProject, _currentApp.AnalogInputs);
-
-    private void OpcAiSet_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateOpcAiSet(_currentApp.PathToProject, _currentApp.AnalogInputs);
-
-    private void OpcAiInit_OnClick(object sender, RoutedEventArgs e) =>
         FunctionBlocksGenerator.GenerateOpcAiInit(_currentApp.PathToProject, _currentApp.AnalogInputs);
+
+        ExcelWork.CreateOpcAiTags(_currentApp.PathToProject, _currentApp.AnalogInputs);
+    }
+
     private void OpcImGet_OnClick(object sender, RoutedEventArgs e)
     {
         List<ExecutiveMechanism> executiveMechanisms = new();
@@ -79,21 +81,16 @@ public partial class FunctionalBlocksPage
         executiveMechanisms.AddRange(_currentApp.SectionSwitches);
 
         FunctionBlocksGenerator.CreateOpcImGet(_currentApp.PathToProject, executiveMechanisms);
-        ExcelWork.CreateOpcIm(_currentApp.PathToProject, _currentApp.SingleInputs, executiveMechanisms);
-    }
-    private void OpcImSet_OnClick(object sender, RoutedEventArgs e)
-    {
-        List<ExecutiveMechanism> executiveMechanisms = new();
-        executiveMechanisms.AddRange(_currentApp.Krans);
-        executiveMechanisms.AddRange(_currentApp.OilPumps);
-        executiveMechanisms.AddRange(_currentApp.Switches);
-        executiveMechanisms.AddRange(_currentApp.SectionSwitches);
-
         FunctionBlocksGenerator.CreateOpcImSet(_currentApp.PathToProject, executiveMechanisms, _currentApp.SingleInputs);
-    }
-    private void OpcProtectionsSet_OnClick(object sender, RoutedEventArgs e) =>
-        FunctionBlocksGenerator.CreateOpcProtectionsSet(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
 
-    private void OpcProtectionsGet_OnClick(object sender, RoutedEventArgs e) =>
+        ExcelWork.CreateOpcImTags(_currentApp.PathToProject, _currentApp.SingleInputs, executiveMechanisms);
+    }
+
+    private void OpcProtectionsGet_OnClick(object sender, RoutedEventArgs e)
+    {
+        FunctionBlocksGenerator.CreateOpcProtectionsSet(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
         FunctionBlocksGenerator.CreateOpcProtectionsGet(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+        
+        ExcelWork.CreateOpcProtectionsTags(_currentApp.PathToProject, _currentApp.AnalogSignalProtections, _currentApp.DiscreteSignalProtections);
+    }
 }
