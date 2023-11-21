@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      
+      xmlns:conv="clr-namespace:ElnaAutomator.Config"
+
       mc:Ignorable="d"
       Title="SingleInputsPage" d:DesignWidth="500" d:DesignHeight="500">
     <Grid>
@@ -11,50 +12,251 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        
-        <DataGrid Grid.Row="0" Name="OilPumpsDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch"  CanUserSortColumns="False" CanUserAddRows="False"
+
+        <DataGrid Grid.Row="0" Name="OilPumpsDataGrid" AutoGenerateColumns="False" HorizontalAlignment="Stretch"
+                  CanUserSortColumns="False" CanUserAddRows="False"
                   d:DataContext="{d:DesignInstance }">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Select" Width="auto"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
-               
-                <DataGridComboBoxColumn x:Name="OilPumpStatOnDiscreteInput" Header="StatOnDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding StatOnDiscreteInput}" />
-                <DataGridTextColumn Header="StatOnDiBit" Binding="{Binding StatOnDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="OilPumpStatOffDiscreteInput" Header="StatOffDi" Width="*" DisplayMemberPath="Name"
-                                        SelectedItemBinding="{Binding StatOffDiscreteInput}" />
-                <DataGridTextColumn Header="StatOffDiBit" Binding="{Binding StatOffDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="OilPumpInBreakCmdOn" Header="InBreakCmdOnDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding InBreakCmdOn}" />
-                <DataGridTextColumn Header="StatOnReabDiBit" Binding="{Binding InBreakCmdOnBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="OilPumpInBreakCmdOff" Header="InBreakCmdOffDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding InBreakCmdOff}" />
-                <DataGridTextColumn Header="InBreakCmdOff" Binding="{Binding InBreakCmdOffBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="OilPumpCmdOnDiscreteInput" Header="CmdOnDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding CmdOnDiscreteOutput}" />
-                <DataGridTextColumn Header="CmdOnDiBit" Binding="{Binding CmdOnDiscreteOutputBit}" Width="*" Selector.IsSelected="False"/>
-               
-                <DataGridComboBoxColumn x:Name="OilPumpCmdOffDiscreteInput" Header="CmdOffDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding CmdOffDiscreteOutput}" />
-                <DataGridTextColumn Header="CmdOffDiBit" Binding="{Binding CmdOffDiscreteOutputBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="OilPumpStatOnReabDiscreteInput" Header="StatOnReabDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding StatOnReabDiscreteInput}" />
-                <DataGridTextColumn Header="StatOnReabDiBit" Binding="{Binding StatOnReabDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
-                
-                <DataGridComboBoxColumn x:Name="OilPumpStatOffReabDiscreteInput" Header="StatOffReabDi" DisplayMemberPath="Name" Width="*"
-                                        SelectedItemBinding="{Binding StatOffReabDiscreteInput}" />
-                <DataGridTextColumn Header="StatOfReabDiBit" Binding="{Binding StatOffReabDiscreteInputBit}" Width="*" Selector.IsSelected="False"/>
+                <DataGridCheckBoxColumn Header="Select" Width="*" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+
+                <DataGridComboBoxColumn x:Name="OilPumpStatOnDiscreteInput" DisplayMemberPath="Name"
+                                        Width="*"
+                                        SelectedItemBinding="{Binding StatOnDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OnDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OnBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="StatOnDiscreteInputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="OilPumpStatOffDiscreteInput" Width="*"
+                                        DisplayMemberPath="Name"
+                                        SelectedItemBinding="{Binding StatOffDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OffDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Stat
+                            <LineBreak />
+                            OffBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="StatOffDiscreteInputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="OilPumpInBreakCmdOn" DisplayMemberPath="Name"
+                                        Width="*"
+                                        SelectedItemBinding="{Binding InBreakCmdOn}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            InBrkCmd
+                            <LineBreak />
+                            OnDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOn
+                            <LineBreak />
+                            ReabBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="InBreakCmdOnBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="OilPumpInBreakCmdOff" DisplayMemberPath="Name"
+                                        Width="*"
+                                        SelectedItemBinding="{Binding InBreakCmdOff}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            InBrkCmd
+                            <LineBreak />
+                            OffDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            InBreak
+                            <LineBreak />
+                            CmdOff
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="InBreakCmdOffBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="OilPumpCmdOnDiscreteInput" DisplayMemberPath="Name"
+                                        Width="*"
+                                        SelectedItemBinding="{Binding CmdOnDiscreteOutput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OnDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            CmdOn
+                            <LineBreak />
+                            Bit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="CmdOnDiscreteOutputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="OilPumpCmdOffDiscreteInput" DisplayMemberPath="Name"
+                                        Width="*"
+                                        SelectedItemBinding="{Binding CmdOffDiscreteOutput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            Cmd
+                            <LineBreak />
+                            OffDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            CmdOff
+                            <LineBreak />
+                            Bit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="CmdOffDiscreteOutputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+
+                <DataGridComboBoxColumn x:Name="OilPumpStatOnReabDiscreteInput" DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding StatOnReabDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOn
+                            <LineBreak />
+                            ReabDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOn
+                            <LineBreak />
+                            ReabBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="StatOnReabDiscreteInputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridComboBoxColumn x:Name="OilPumpStatOffReabDiscreteInput"
+                                        DisplayMemberPath="Name" Width="*"
+                                        SelectedItemBinding="{Binding StatOffReabDiscreteInput}">
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOff
+                            <LineBreak />
+                            ReabDi
+                        </TextBlock>
+                    </DataGridComboBoxColumn.Header>
+                </DataGridComboBoxColumn>
+
+                <DataGridTextColumn Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock TextAlignment="Center">
+                            StatOff
+                            <LineBreak />
+                            ReabBit
+                        </TextBlock>
+                    </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="StatOffReabDiscreteInputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Name="AddOilPump" Margin="5" Content="Add" Width="100" Click="AddOilPump_OnClick"/>
-            <Button Name="DeleteOilPump" Margin="5" Content="Delete" Width="100" Click="DeleteOilPump_OnClick"/>
+            <Button Name="AddOilPump" Margin="5" Content="Add" Width="100" Click="AddOilPump_OnClick" />
+            <Button Name="DeleteOilPump" Margin="5" Content="Delete" Width="100" Click="DeleteOilPump_OnClick" />
         </StackPanel>
     </Grid>
 </Page>

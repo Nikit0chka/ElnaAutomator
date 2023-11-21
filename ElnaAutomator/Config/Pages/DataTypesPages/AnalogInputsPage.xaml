@@ -3,34 +3,71 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:conv="clr-namespace:ElnaAutomator.Config"
       mc:Ignorable="d"
       Title="AnalogInputsPage" d:DesignWidth="500" d:DesignHeight="500">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
-        
-        <DataGrid Grid.Row="0" Name="AiDataGrid" AutoGenerateColumns="False"  CanUserSortColumns="False" CanUserAddRows="False" HorizontalAlignment="Stretch"
+
+        <DataGrid Grid.Row="0" Name="AiDataGrid" AutoGenerateColumns="False" CanUserSortColumns="False"
+                  CanUserAddRows="False" HorizontalAlignment="Stretch"
                   d:DataContext="{d:DesignData }">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Select" Width="*"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="LL" Binding="{Binding LowLimit}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="LA" Binding="{Binding LowAlarm}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="LW" Binding="{Binding LowWarning}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="HW" Binding="{Binding HighWarning}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="HA" Binding="{Binding HighAlarm}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="HL" Binding="{Binding HighLimit}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="ModuleId" Binding="{Binding ModuleId}" Selector.IsSelected="False" Width="*"/>
-                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Selector.IsSelected="False" Width="*"/>
+                <DataGridCheckBoxColumn Header="Select" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="LL" Binding="{Binding LowLimit}" Width="*" />
+                <DataGridTextColumn Header="LA" Width="*">
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="LowAlarm" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Header="LW" Width="*">
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="LowWarning" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="HW" Width="*">
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="HighWarning" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn Header="HA" Width="*">
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="HighAlarm" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="HL" Binding="{Binding HighLimit}" Width="*" />
+                <DataGridTextColumn Header="ModuleId" Binding="{Binding ModuleId}" Width="*" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        
+
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Name="AddAi" Margin="5" Content="Add" Width="100" Click="AddAi_OnClick"/>
-            <Button Name="DeleteAi" Margin="5" Content="Delete" Width="100" Click="DeleteAi_OnClick"/>
+            <Button Name="AddAi" Margin="5" Content="Add" Width="100" Click="AddAi_OnClick" />
+            <Button Name="DeleteAi" Margin="5" Content="Delete" Width="100" Click="DeleteAi_OnClick" />
         </StackPanel>
     </Grid>
 </Page>

@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:conv="clr-namespace:ElnaAutomator.Config"
 
       mc:Ignorable="d"
       Title="SingleInputsPage" d:DesignWidth="600" d:DesignHeight="500">
@@ -12,14 +13,15 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="0" Name="SwitchesDataGrid" CanUserSortColumns="False" CanUserAddRows="False" CanUserResizeColumns="False"
+        <DataGrid Grid.Row="0" Name="SwitchesDataGrid" CanUserSortColumns="False" CanUserAddRows="False"
+                  CanUserResizeColumns="False"
                   AutoGenerateColumns="False" HorizontalAlignment="Stretch"
                   d:DataContext="{d:DesignInstance }">
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Header="Select" Width="auto" />
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="auto" />
+                <DataGridCheckBoxColumn Header="Select" Width="*" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
 
-                <DataGridComboBoxColumn x:Name="SwitchStatOnDiscreteInput" DisplayMemberPath="Name" Width="auto"
+                <DataGridComboBoxColumn x:Name="SwitchStatOnDiscreteInput" DisplayMemberPath="Name" Width="*"
                                         SelectedItemBinding="{Binding StatOnDiscreteInput}">
                     <DataGridComboBoxColumn.Header>
                         <TextBlock TextAlignment="Center">
@@ -30,7 +32,7 @@
                     </DataGridComboBoxColumn.Header>
                 </DataGridComboBoxColumn>
 
-                <DataGridTextColumn Binding="{Binding StatOnDiscreteInputBit}" Width="auto">
+                <DataGridTextColumn Width="*">
                     <DataGridTextColumn.Header>
                         <TextBlock TextAlignment="Center">
                             Stat
@@ -38,9 +40,16 @@
                             OnBit
                         </TextBlock>
                     </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="StatOnDiscreteInputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
 
-                <DataGridComboBoxColumn x:Name="SwitchStatOffDiscreteInput" Width="auto"
+                <DataGridComboBoxColumn x:Name="SwitchStatOffDiscreteInput" Width="*"
                                         DisplayMemberPath="Name"
                                         SelectedItemBinding="{Binding StatOffDiscreteInput}">
                     <DataGridComboBoxColumn.Header>
@@ -52,7 +61,7 @@
                     </DataGridComboBoxColumn.Header>
                 </DataGridComboBoxColumn>
 
-                <DataGridTextColumn Binding="{Binding StatOffDiscreteInputBit}" Width="auto">
+                <DataGridTextColumn Width="*">
                     <DataGridTextColumn.Header>
                         <TextBlock TextAlignment="Center">
                             Stat
@@ -60,10 +69,17 @@
                             OffBit
                         </TextBlock>
                     </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="StatOffDiscreteInputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
 
                 <DataGridComboBoxColumn x:Name="SwitchInBreakCmdOn" DisplayMemberPath="Name"
-                                        Width="auto"
+                                        Width="*"
                                         SelectedItemBinding="{Binding InBreakCmdOn}">
                     <DataGridComboBoxColumn.Header>
                         <TextBlock TextAlignment="Center">
@@ -74,7 +90,7 @@
                     </DataGridComboBoxColumn.Header>
                 </DataGridComboBoxColumn>
 
-                <DataGridTextColumn Binding="{Binding InBreakCmdOnBit}" Width="auto">
+                <DataGridTextColumn Width="*">
                     <DataGridTextColumn.Header>
                         <TextBlock TextAlignment="Center">
                             BrkCmd
@@ -82,10 +98,17 @@
                             OnBit
                         </TextBlock>
                     </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="InBreakCmdOnBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
 
                 <DataGridComboBoxColumn x:Name="SwitchInBreakCmdOff" DisplayMemberPath="Name"
-                                        Width="auto"
+                                        Width="*"
                                         SelectedItemBinding="{Binding InBreakCmdOff}">
                     <DataGridComboBoxColumn.Header>
                         <TextBlock TextAlignment="Center">
@@ -96,7 +119,7 @@
                     </DataGridComboBoxColumn.Header>
                 </DataGridComboBoxColumn>
 
-                <DataGridTextColumn Binding="{Binding InBreakCmdOffBit}" Width="auto">
+                <DataGridTextColumn Width="*">
                     <DataGridTextColumn.Header>
                         <TextBlock TextAlignment="Center">
                             BrkCmd
@@ -104,10 +127,17 @@
                             OffBit
                         </TextBlock>
                     </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="InBreakCmdOffBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
 
                 <DataGridComboBoxColumn x:Name="SwitchCmdOnDiscreteInput" DisplayMemberPath="Name"
-                                        Width="auto"
+                                        Width="*"
                                         SelectedItemBinding="{Binding CmdOnDiscreteOutput}">
                     <DataGridComboBoxColumn.Header>
                         <TextBlock TextAlignment="Center">
@@ -118,7 +148,7 @@
                     </DataGridComboBoxColumn.Header>
                 </DataGridComboBoxColumn>
 
-                <DataGridTextColumn Binding="{Binding CmdOnDiscreteOutputBit}" Width="auto">
+                <DataGridTextColumn Width="*">
                     <DataGridTextColumn.Header>
                         <TextBlock TextAlignment="Center">
                             Cmd
@@ -126,10 +156,17 @@
                             OnBit
                         </TextBlock>
                     </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="CmdOnDiscreteOutputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
 
                 <DataGridComboBoxColumn x:Name="SwitchCmdOffDiscreteInput" DisplayMemberPath="Name"
-                                        Width="auto"
+                                        Width="*"
                                         SelectedItemBinding="{Binding CmdOffDiscreteOutput}">
                     <DataGridComboBoxColumn.Header>
                         <TextBlock TextAlignment="Center">
@@ -140,7 +177,7 @@
                     </DataGridComboBoxColumn.Header>
                 </DataGridComboBoxColumn>
 
-                <DataGridTextColumn Binding="{Binding CmdOffDiscreteOutputBit}" Width="auto">
+                <DataGridTextColumn Width="*">
                     <DataGridTextColumn.Header>
                         <TextBlock TextAlignment="Center">
                             Cmd
@@ -148,6 +185,13 @@
                             OffBit
                         </TextBlock>
                     </DataGridTextColumn.Header>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="CmdOffDiscreteOutputBit" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <conv:StringToNullableIntConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
