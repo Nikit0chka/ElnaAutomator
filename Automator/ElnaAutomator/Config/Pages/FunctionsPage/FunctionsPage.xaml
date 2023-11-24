@@ -1,0 +1,93 @@
+﻿<Page x:Class="ElnaAutomator.Config.Pages.FunctionsPage.FunctionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      Title="FunctionsPage" d:DesignHeight="700" d:DesignWidth="650">
+    <Grid>
+        <UniformGrid  Columns="6" HorizontalAlignment="Center" VerticalAlignment="Top" Height="200">
+            <Button Name="AnyAnalogNs" Content="AnyAnalogNs" Margin="5" Width="90" Height="50"
+                    Click="AnyAnalogNs_OnClick" />
+            <Button Name="AnyAnalogPs" Content="AnyAnalogPs" Margin="5" Width="90" Height="50" 
+                    Click="AnyAnalogPs_OnClick" />
+            <Button Name="DisableAiLimits" Content="DisableAiLimits" Margin="5" Width="90" Height="50"
+                    Click="DisableAiLimits_OnClick" />
+            <Button Name="EnableAiLimits" Content="EnableAiLimits" Margin="5" Width="90" Height="50"
+                    Click="EnableAiLimits_OnClick" />
+            <Button Name="AnyDiscretePs" Content="AnyDiscretePs" Margin="5" Width="90" Height="50"
+                    Click="AnyDiscretePs_OnClick" />
+            <Button Name="AnyDiscreteNs" Content="AnyDiscretNs" Margin="5" Width="90" Height="50"
+                    Click="AnyDiscreteNs_OnClick" />
+            <Button Name="RemontAllProtections" Margin="5" Width="90" Height="50"
+                    Click="RemontAllProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="RemontAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+                        <Button Name="AnyProtectionInRemont" Margin="5" Width="90" Height="50"
+                    Click="AnyProtectionInRemont_OnClick">
+                <StackPanel>
+                    <TextBlock Text="AnyProtection" HorizontalAlignment="Center" />
+                    <TextBlock Text="InRemont" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="AnyProtectionSignaling" Margin="5" Width="90" Height="50" 
+                    Click="AnyProtectionSignaling_OnClick">
+                <StackPanel>
+                    <TextBlock Text="AnyProtection" HorizontalAlignment="Center" />
+                    <TextBlock Text="Signalling" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="AutoRunProtections" Margin="5" Width="90" Height="50"
+                    Click="AutoRunProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="AutoRun" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="UnBlockAllProtections" Margin="5" Width="90" Height="50"
+                    Click="UnBlockAllProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="UnblockAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="BlockAllProtections" Margin="5" Width="90" Height="50"
+                    Click="BlockAllProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="BlockAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="ResetAllProtections" Margin="5" Width="90" Height="50"
+                    Click="ResetAllProtections_OnClick">
+                <StackPanel>
+                    <TextBlock Text="ResetAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Protections" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="ResetAllSignalling" Margin="5" Width="90" Height="50"
+                    Click="ResetAllSignalling_OnClick">
+                <StackPanel>
+                    <TextBlock Text="ResetAll" HorizontalAlignment="Center" />
+                    <TextBlock Text="Signalling" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Name="BlockAllIm" Content="BlockAllIm" Margin="5" Width="90" Height="50"
+                    Click="BlockAllIm_OnClick" />
+            <Button Name="UnBlockAllIm" Content="UnBlockAllIm" Margin="5" Width="90" Height="50"
+                    Click="UnBlockAllIm_OnClick" />
+            <Button Name="NsCepeiControl" Content="NsCepeiControl" Margin="5" Width="90" Height="50"
+                    Click="NsCepeiControl_OnClick" />
+            <Button Name="NsCepeiUpravlenya" Margin="5" Width="90" Height="50"
+                    Click="NsCepeiUpravlenya_OnClick" >
+                <StackPanel>
+                    <TextBlock Text="NsCepei" HorizontalAlignment="Center" />
+                    <TextBlock Text="Upravlenya" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </UniformGrid>
+    </Grid>
+</Page>

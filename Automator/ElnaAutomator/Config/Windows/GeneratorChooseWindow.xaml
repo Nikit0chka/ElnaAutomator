@@ -1,0 +1,66 @@
+﻿<Window x:Class="ElnaAutomator.Config.Windows.GeneratorChooseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d"
+        Title="GeneratorChooseWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <TreeView Grid.Row="0">
+            <TreeViewItem Header="DataTypes">
+                <CheckBox Name="AiConfigCheckBox" Content="AiConfig" />
+                <CheckBox Name="DiConfigCheckBox" Content="DiConfig" />
+                <CheckBox Name="DoConfigCheckBox" Content="DoConfig" />
+                <CheckBox Name="ImConfigCheckBox" Content="ImConfig" />
+                <CheckBox Name="SingleOutputCheckBox" Content="SingleOutput" />
+                <CheckBox Name="SingleInputCheckBox" Content="SingleInput" />
+                <CheckBox Name="ProtectionsConfigCheckBox" Content="ProtectionsConfig" />
+            </TreeViewItem>
+            <TreeViewItem Header="Functions">
+                <CheckBox Name="AnyAnalogNsCheckBox" Content="AnyAnalogNs" />
+                <CheckBox Name="AnyAnalogPsCheckBox" Content="AnyAnalogPs" />
+                <CheckBox Name="DisableAiLimitsCheckBox" Content="DisableAiLimits" />
+                <CheckBox Name="EnableAiLimitsCheckBox" Content="EnableAiLimits" />
+                <CheckBox Name="AnyDiscretePsCheckBox" Content="AnyDiscretePs" />
+                <CheckBox Name="AnyDiscretNsCheckBox" Content="AnyDiscretNs" />
+                <CheckBox Name="RemontAllProtectionsCheckBox" Content="RemontAllProtections" />
+                <CheckBox Name="AnyProtectionInRemontCheckBox" Content="AnyProtectionInRemont" />
+                <CheckBox Name="AnyProtectionSignallingCheckBox" Content="AnyProtectionSignalling" />
+                <CheckBox Name="AutoRunProtectionsCheckBox" Content="AutoRunProtections" />
+                <CheckBox Name="UnblockAllProtectionsCheckBox" Content="UnblockAllProtections" />
+                <CheckBox Name="BlockAllProtectionsCheckBox" Content="BlockAllProtections" />
+                <CheckBox Name="ResetAllProtectionsCheckBox" Content="ResetAllProtections" />
+                <CheckBox Name="BlockAllImCheckBox" Content="BlockAllIm" />
+                <CheckBox Name="UnBlockAllImCheckBox" Content="UnBlockAllIm" />
+                <CheckBox Name="NsCepeiControlCheckBox" Content="NsCepeiControl" />
+                <CheckBox Name="NsCepeiUpravlenyaCheckBox" Content="NsCepeiUpravlenya" />
+                <CheckBox Name="ResetAllSignallingCheckBox" Content="ResetAllSignalling" />
+                <!-- TeamLeadLoh -->
+            </TreeViewItem>
+            <TreeViewItem Header="Function blocks">
+                <CheckBox Name="ProcAiInitCheckBox" Content="ProcAiInit" />
+                <CheckBox Name="ProcAiCheckBox" Content="ProcAi" />
+                <CheckBox Name="ProcDiInitCheckBox" Content="ProcDiInit" />
+                <CheckBox Name="ProcDiCheckBox" Content="ProcDi" />
+                <CheckBox Name="ProcDoInitCheckBox" Content="ProcDoInit" />
+                <CheckBox Name="ProcDoCheckBox" Content="ProcDo" />
+                <CheckBox Name="ProcImCheckBox" Content="ProcIm" />
+                <CheckBox Name="ProcImInitCheckBox" Content="ProcImInit" />
+                <CheckBox Name="ProcProtectionsCheckBox" Content="ProcProtections" />
+                <CheckBox Name="ProcProtectionsInitCheckBox" Content="ProcProtectionsInit" />
+                <CheckBox Name="OpcAiCheckBox" Content="OpcAi" />
+                <CheckBox Name="OpcImCheckBox" Content="OpcIm" />
+                <CheckBox Name="OpcProtectionsCheckBox" Content="OpcProtections" />
+            </TreeViewItem>
+        </TreeView>
+
+        <Button Name="GenerateButton" Height="40" Width="70" Content="Generate" Grid.Row="1"
+                Click="GenerateButton_OnClick" />
+    </Grid>
+</Window>

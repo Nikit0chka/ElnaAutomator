@@ -1,0 +1,698 @@
+{
+  "$id": "1",
+  "AnalogInputs": [
+    {
+      "$id": "2",
+      "Name": "A1",
+      "HighLimit": 100,
+      "LowLimit": 0,
+      "ModuleId": 0,
+      "HighAlarm": 90,
+      "LowAlarm": 10,
+      "HighWarning": 80,
+      "LowWarning": 20
+    },
+    {
+      "$id": "3",
+      "Name": "A2",
+      "HighLimit": 100,
+      "LowLimit": 0,
+      "ModuleId": 0,
+      "HighAlarm": 90,
+      "LowAlarm": 10,
+      "HighWarning": 80,
+      "LowWarning": 20
+    }
+  ],
+  "DiscreteInputs": [
+    {
+      "$id": "4",
+      "Name": "Di",
+      "ModuleId": 1
+    },
+    {
+      "$id": "5",
+      "Name": "Di1",
+      "ModuleId": 2
+    },
+    {
+      "$id": "6",
+      "Name": "Di2",
+      "ModuleId": 3
+    },
+    {
+      "$id": "7",
+      "Name": "Di3",
+      "ModuleId": 4
+    },
+    {
+      "$id": "8",
+      "Name": "Di4",
+      "ModuleId": 5
+    }
+  ],
+  "DiscreteOutputs": [
+    {
+      "$id": "9",
+      "Name": "Do1",
+      "ModuleId": 1
+    },
+    {
+      "$id": "10",
+      "Name": "Do2",
+      "ModuleId": 2
+    },
+    {
+      "$id": "11",
+      "Name": "Do3",
+      "ModuleId": 3
+    },
+    {
+      "$id": "12",
+      "Name": "Do4",
+      "ModuleId": 4
+    },
+    {
+      "$id": "13",
+      "Name": "Do5",
+      "ModuleId": 5
+    }
+  ],
+  "SingleInputs": [
+    {
+      "$id": "14",
+      "Name": "SI0",
+      "DiscreteInput": {
+        "$ref": "5"
+      },
+      "IsInversed": false,
+      "IsProtectionsSignalling": true,
+      "Address": 1
+    },
+    {
+      "$id": "15",
+      "Name": "SI1",
+      "DiscreteInput": {
+        "$ref": "5"
+      },
+      "IsInversed": false,
+      "IsProtectionsSignalling": false,
+      "Address": 2
+    },
+    {
+      "$id": "16",
+      "Name": "SI2",
+      "DiscreteInput": {
+        "$ref": "4"
+      },
+      "IsInversed": false,
+      "IsProtectionsSignalling": false,
+      "Address": 3
+    },
+    {
+      "$id": "17",
+      "Name": "SI3",
+      "DiscreteInput": {
+        "$ref": "5"
+      },
+      "IsInversed": false,
+      "IsProtectionsSignalling": false,
+      "Address": 4
+    },
+    {
+      "$id": "18",
+      "Name": "SI4",
+      "DiscreteInput": {
+        "$ref": "7"
+      },
+      "IsInversed": false,
+      "IsProtectionsSignalling": false,
+      "Address": 5
+    },
+    {
+      "$id": "19",
+      "Name": "SI5",
+      "DiscreteInput": {
+        "$ref": "7"
+      },
+      "IsInversed": false,
+      "IsProtectionsSignalling": false,
+      "Address": 6
+    },
+    {
+      "$id": "20",
+      "Name": "SI6",
+      "DiscreteInput": {
+        "$ref": "8"
+      },
+      "IsInversed": false,
+      "IsProtectionsSignalling": false,
+      "Address": 7
+    }
+  ],
+  "SingleOutputs": [
+    {
+      "$id": "21",
+      "Name": "So0",
+      "DiscreteOutput": {
+        "$ref": "9"
+      },
+      "Address": 1
+    },
+    {
+      "$id": "22",
+      "Name": "So1",
+      "DiscreteOutput": {
+        "$ref": "10"
+      },
+      "Address": 2
+    },
+    {
+      "$id": "23",
+      "Name": "So2",
+      "DiscreteOutput": {
+        "$ref": "11"
+      },
+      "Address": 3
+    },
+    {
+      "$id": "24",
+      "Name": "So3",
+      "DiscreteOutput": {
+        "$ref": "9"
+      },
+      "Address": 4
+    },
+    {
+      "$id": "25",
+      "Name": "So4",
+      "DiscreteOutput": {
+        "$ref": "10"
+      },
+      "Address": 5
+    },
+    {
+      "$id": "26",
+      "Name": "So5",
+      "DiscreteOutput": {
+        "$ref": "9"
+      },
+      "Address": 6
+    },
+    {
+      "$id": "27",
+      "Name": "So6",
+      "DiscreteOutput": {
+        "$ref": "9"
+      },
+      "Address": 7
+    },
+    {
+      "$id": "28",
+      "Name": "So7",
+      "DiscreteOutput": {
+        "$ref": "10"
+      },
+      "Address": 8
+    }
+  ],
+  "AnalogSignalProtections": [
+    {
+      "$id": "29",
+      "Name": "Ap1",
+      "AnalogInput": {
+        "$ref": "2"
+      },
+      "Delay": 1,
+      "IsRunOnStart": true,
+      "IsUpperLimitProtection": false
+    },
+    {
+      "$id": "30",
+      "Name": "AiP1",
+      "AnalogInput": {
+        "$ref": "3"
+      },
+      "Delay": 2,
+      "IsRunOnStart": false,
+      "IsUpperLimitProtection": true
+    },
+    {
+      "$id": "31",
+      "Name": "AiP2",
+      "AnalogInput": {
+        "$ref": "2"
+      },
+      "Delay": 3,
+      "IsRunOnStart": true,
+      "IsUpperLimitProtection": false
+    },
+    {
+      "$id": "32",
+      "Name": "AiP3",
+      "AnalogInput": {
+        "$ref": "3"
+      },
+      "Delay": 4,
+      "IsRunOnStart": false,
+      "IsUpperLimitProtection": true
+    }
+  ],
+  "DiscreteSignalProtections": [
+    {
+      "$id": "33",
+      "Name": "DiP1",
+      "SingleInput": {
+        "$ref": "16"
+      },
+      "Delay": 1,
+      "IsRunOnStart": true
+    },
+    {
+      "$id": "34",
+      "Name": "DiP2",
+      "SingleInput": {
+        "$ref": "14"
+      },
+      "Delay": 2,
+      "IsRunOnStart": true
+    },
+    {
+      "$id": "35",
+      "Name": "DiP3",
+      "SingleInput": {
+        "$ref": "14"
+      },
+      "Delay": 3,
+      "IsRunOnStart": true
+    },
+    {
+      "$id": "36",
+      "Name": "DiP4",
+      "SingleInput": {
+        "$ref": "16"
+      },
+      "Delay": 4,
+      "IsRunOnStart": false
+    },
+    {
+      "$id": "37",
+      "Name": "DiP5",
+      "SingleInput": {
+        "$ref": "18"
+      },
+      "Delay": 5,
+      "IsRunOnStart": false
+    }
+  ],
+  "Krans": [
+    {
+      "$id": "38",
+      "InDpDiscreteInput": {
+        "$ref": "5"
+      },
+      "InDpDiscreteInputBit": 1,
+      "InSoDiscreteInput": {
+        "$ref": "4"
+      },
+      "InSoDiscreteInputBit": null,
+      "InSzDiscreteInput": {
+        "$ref": "4"
+      },
+      "InSzDiscreteInputBit": null,
+      "Name": "Kran1",
+      "StatOnDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOnDiscreteInputBit": 1,
+      "IsStatOnInversed": true,
+      "StatOffDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOffDiscreteInputBit": 2,
+      "IsStatOffInversed": true,
+      "CmdOnDiscreteOutput": {
+        "$ref": "9"
+      },
+      "CmdOnDiscreteOutputBit": 1,
+      "CmdOffDiscreteOutput": {
+        "$ref": "10"
+      },
+      "CmdOffDiscreteOutputBit": 0
+    },
+    {
+      "$id": "39",
+      "InDpDiscreteInput": {
+        "$ref": "4"
+      },
+      "InDpDiscreteInputBit": 2,
+      "InSoDiscreteInput": {
+        "$ref": "6"
+      },
+      "InSoDiscreteInputBit": null,
+      "InSzDiscreteInput": {
+        "$ref": "5"
+      },
+      "InSzDiscreteInputBit": 1,
+      "Name": "Kran4",
+      "StatOnDiscreteInput": {
+        "$ref": "5"
+      },
+      "StatOnDiscreteInputBit": 2,
+      "IsStatOnInversed": true,
+      "StatOffDiscreteInput": {
+        "$ref": "6"
+      },
+      "StatOffDiscreteInputBit": 2,
+      "IsStatOffInversed": true,
+      "CmdOnDiscreteOutput": {
+        "$ref": "11"
+      },
+      "CmdOnDiscreteOutputBit": 2,
+      "CmdOffDiscreteOutput": {
+        "$ref": "9"
+      },
+      "CmdOffDiscreteOutputBit": 2
+    },
+    {
+      "$id": "40",
+      "InDpDiscreteInput": {
+        "$ref": "8"
+      },
+      "InDpDiscreteInputBit": 3,
+      "InSoDiscreteInput": {
+        "$ref": "5"
+      },
+      "InSoDiscreteInputBit": null,
+      "InSzDiscreteInput": {
+        "$ref": "5"
+      },
+      "InSzDiscreteInputBit": 2,
+      "Name": "Kran2",
+      "StatOnDiscreteInput": {
+        "$ref": "6"
+      },
+      "StatOnDiscreteInputBit": 3,
+      "IsStatOnInversed": false,
+      "StatOffDiscreteInput": {
+        "$ref": "7"
+      },
+      "StatOffDiscreteInputBit": 1,
+      "IsStatOffInversed": true,
+      "CmdOnDiscreteOutput": {
+        "$ref": "11"
+      },
+      "CmdOnDiscreteOutputBit": 3,
+      "CmdOffDiscreteOutput": {
+        "$ref": "10"
+      },
+      "CmdOffDiscreteOutputBit": 3
+    },
+    {
+      "$id": "41",
+      "InDpDiscreteInput": {
+        "$ref": "8"
+      },
+      "InDpDiscreteInputBit": 4,
+      "InSoDiscreteInput": {
+        "$ref": "5"
+      },
+      "InSoDiscreteInputBit": 2,
+      "InSzDiscreteInput": {
+        "$ref": "8"
+      },
+      "InSzDiscreteInputBit": null,
+      "Name": "Kran3",
+      "StatOnDiscreteInput": {
+        "$ref": "7"
+      },
+      "StatOnDiscreteInputBit": 4,
+      "IsStatOnInversed": true,
+      "StatOffDiscreteInput": {
+        "$ref": "8"
+      },
+      "StatOffDiscreteInputBit": 3,
+      "IsStatOffInversed": false,
+      "CmdOnDiscreteOutput": {
+        "$ref": "10"
+      },
+      "CmdOnDiscreteOutputBit": 4,
+      "CmdOffDiscreteOutput": {
+        "$ref": "11"
+      },
+      "CmdOffDiscreteOutputBit": 4
+    }
+  ],
+  "Switches": [
+    {
+      "$id": "42",
+      "InBreakCmdOn": {
+        "$ref": "5"
+      },
+      "InBreakCmdOnBit": 2,
+      "InBreakCmdOff": {
+        "$ref": "4"
+      },
+      "InBreakCmdOffBit": 2,
+      "Name": "Avom1",
+      "StatOnDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOnDiscreteInputBit": 1,
+      "IsStatOnInversed": false,
+      "StatOffDiscreteInput": {
+        "$ref": "5"
+      },
+      "StatOffDiscreteInputBit": 2,
+      "IsStatOffInversed": true,
+      "CmdOnDiscreteOutput": {
+        "$ref": "9"
+      },
+      "CmdOnDiscreteOutputBit": 1,
+      "CmdOffDiscreteOutput": {
+        "$ref": "9"
+      },
+      "CmdOffDiscreteOutputBit": 0
+    },
+    {
+      "$id": "43",
+      "InBreakCmdOn": {
+        "$ref": "5"
+      },
+      "InBreakCmdOnBit": 3,
+      "InBreakCmdOff": {
+        "$ref": "5"
+      },
+      "InBreakCmdOffBit": 3,
+      "Name": "Avom2",
+      "StatOnDiscreteInput": {
+        "$ref": "7"
+      },
+      "StatOnDiscreteInputBit": 2,
+      "IsStatOnInversed": true,
+      "StatOffDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOffDiscreteInputBit": 2,
+      "IsStatOffInversed": false,
+      "CmdOnDiscreteOutput": {
+        "$ref": "12"
+      },
+      "CmdOnDiscreteOutputBit": 3,
+      "CmdOffDiscreteOutput": {
+        "$ref": "10"
+      },
+      "CmdOffDiscreteOutputBit": 1
+    },
+    {
+      "$id": "44",
+      "InBreakCmdOn": {
+        "$ref": "7"
+      },
+      "InBreakCmdOnBit": 4,
+      "InBreakCmdOff": {
+        "$ref": "6"
+      },
+      "InBreakCmdOffBit": 4,
+      "Name": "Avom3",
+      "StatOnDiscreteInput": {
+        "$ref": "5"
+      },
+      "StatOnDiscreteInputBit": 3,
+      "IsStatOnInversed": true,
+      "StatOffDiscreteInput": {
+        "$ref": "6"
+      },
+      "StatOffDiscreteInputBit": 3,
+      "IsStatOffInversed": true,
+      "CmdOnDiscreteOutput": {
+        "$ref": "9"
+      },
+      "CmdOnDiscreteOutputBit": 5,
+      "CmdOffDiscreteOutput": {
+        "$ref": "11"
+      },
+      "CmdOffDiscreteOutputBit": 3
+    },
+    {
+      "$id": "45",
+      "InBreakCmdOn": {
+        "$ref": "7"
+      },
+      "InBreakCmdOnBit": 5,
+      "InBreakCmdOff": {
+        "$ref": "8"
+      },
+      "InBreakCmdOffBit": 5,
+      "Name": "Avom4",
+      "StatOnDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOnDiscreteInputBit": 4,
+      "IsStatOnInversed": true,
+      "StatOffDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOffDiscreteInputBit": 4,
+      "IsStatOffInversed": true,
+      "CmdOnDiscreteOutput": {
+        "$ref": "10"
+      },
+      "CmdOnDiscreteOutputBit": 4,
+      "CmdOffDiscreteOutput": {
+        "$ref": "11"
+      },
+      "CmdOffDiscreteOutputBit": 4
+    }
+  ],
+  "OilPumps": [
+    {
+      "$id": "46",
+      "InBreakCmdOn": {
+        "$ref": "4"
+      },
+      "InBreakCmdOnBit": 3,
+      "InBreakCmdOff": {
+        "$ref": "5"
+      },
+      "InBreakCmdOffBit": 4,
+      "Name": "Nu",
+      "StatOnDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOnDiscreteInputBit": 1,
+      "IsStatOnInversed": true,
+      "StatOffDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOffDiscreteInputBit": 2,
+      "IsStatOffInversed": false,
+      "CmdOnDiscreteOutput": {
+        "$ref": "10"
+      },
+      "CmdOnDiscreteOutputBit": 1,
+      "CmdOffDiscreteOutput": {
+        "$ref": "9"
+      },
+      "CmdOffDiscreteOutputBit": 0
+    },
+    {
+      "$id": "47",
+      "InBreakCmdOn": {
+        "$ref": "4"
+      },
+      "InBreakCmdOnBit": 4,
+      "InBreakCmdOff": {
+        "$ref": "5"
+      },
+      "InBreakCmdOffBit": 3,
+      "Name": "Nu2",
+      "StatOnDiscreteInput": {
+        "$ref": "6"
+      },
+      "StatOnDiscreteInputBit": 2,
+      "IsStatOnInversed": false,
+      "StatOffDiscreteInput": {
+        "$ref": "7"
+      },
+      "StatOffDiscreteInputBit": 3,
+      "IsStatOffInversed": true,
+      "CmdOnDiscreteOutput": {
+        "$ref": "12"
+      },
+      "CmdOnDiscreteOutputBit": 3,
+      "CmdOffDiscreteOutput": {
+        "$ref": "9"
+      },
+      "CmdOffDiscreteOutputBit": 4
+    }
+  ],
+  "SectionSwitches": [
+    {
+      "$id": "48",
+      "BasketInDiscreteInput": {
+        "$ref": "4"
+      },
+      "BasketInDiscreteInputBit": 2,
+      "BasketOutDiscreteInput": {
+        "$ref": "4"
+      },
+      "BasketOutDiscreteInputBit": 3,
+      "BasketTestDiscreteInput": {
+        "$ref": "5"
+      },
+      "BasketTestDiscreteInputBit": 3,
+      "InBreakCmdOn": {
+        "$ref": "7"
+      },
+      "InBreakCmdOnBit": 4,
+      "InBreakCmdOff": {
+        "$ref": "8"
+      },
+      "InBreakCmdOffBit": 3,
+      "Name": "Mv",
+      "StatOnDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOnDiscreteInputBit": 1,
+      "IsStatOnInversed": true,
+      "StatOffDiscreteInput": {
+        "$ref": "4"
+      },
+      "StatOffDiscreteInputBit": 2,
+      "IsStatOffInversed": true,
+      "CmdOnDiscreteOutput": {
+        "$ref": "10"
+      },
+      "CmdOnDiscreteOutputBit": 1,
+      "CmdOffDiscreteOutput": {
+        "$ref": "10"
+      },
+      "CmdOffDiscreteOutputBit": 0
+    },
+    {
+      "$id": "49",
+      "BasketInDiscreteInput": null,
+      "BasketInDiscreteInputBit": null,
+      "BasketOutDiscreteInput": null,
+      "BasketOutDiscreteInputBit": null,
+      "BasketTestDiscreteInput": null,
+      "BasketTestDiscreteInputBit": null,
+      "InBreakCmdOn": null,
+      "InBreakCmdOnBit": null,
+      "InBreakCmdOff": null,
+      "InBreakCmdOffBit": null,
+      "Name": "SectionSwitch1",
+      "StatOnDiscreteInput": null,
+      "StatOnDiscreteInputBit": null,
+      "IsStatOnInversed": false,
+      "StatOffDiscreteInput": null,
+      "StatOffDiscreteInputBit": null,
+      "IsStatOffInversed": false,
+      "CmdOnDiscreteOutput": null,
+      "CmdOnDiscreteOutputBit": null,
+      "CmdOffDiscreteOutput": null,
+      "CmdOffDiscreteOutputBit": null
+    }
+  ]
+}

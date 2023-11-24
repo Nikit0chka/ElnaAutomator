@@ -1,0 +1,8 @@
+TYPE
+TYPE_ProtectionTags : STRUCT 
+	NOTHING : BYTE := 0;
+	AOB : BYTE := 1;
+	AOS : BYTE := 2;
+	AOPOJ : BYTE := 3;
+END_STRUCT;
+END_TYPE
